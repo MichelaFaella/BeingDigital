@@ -20,8 +20,9 @@ In this section we introduce context information for the project.
 
 ## Authors
 
-* **Lorenzo Sorrentino**    - *Developer*         - [losor2002](https://github.com/losor2002)
 * **Michela Faella**     - *Developer*         - [MichelaFaella](https://github.com/MichelaFaella)
+* **Lorenzo Sorrentino**    - *Developer*         - [losor2002](https://github.com/losor2002)
+
 
 # Technical information
 
