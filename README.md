@@ -1,7 +1,7 @@
 # Darn
 
 <p align = "center">
-  <img src = "path/to/logo" width="256" height="256">
+  <img src = "path/to/logo" width="256" height="256" alt="Logo">
 </p>
 
 <p align = "center">
