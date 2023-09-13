@@ -5,23 +5,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Entity
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-@Entity
 public class Domanda {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @EqualsAndHashCode.Include //include solo l'id
   private Long id;
 
   @Column(nullable = false)
@@ -39,12 +38,17 @@ public class Domanda {
   @Column(nullable = false)
   private String sbagliata3;
 
+  @ManyToOne
+  @JoinColumn(nullable = false)
+  private MetaInfo metaInfo;
+
   public Domanda(String testo, String corretta, String sbagliata1, String sbagliata2,
-                 String sbagliata3) {
+                 String sbagliata3, MetaInfo metaInfo) {
     this.testo = testo;
     this.corretta = corretta;
     this.sbagliata1 = sbagliata1;
     this.sbagliata2 = sbagliata2;
     this.sbagliata3 = sbagliata3;
+    this.metaInfo = metaInfo;
   }
 }

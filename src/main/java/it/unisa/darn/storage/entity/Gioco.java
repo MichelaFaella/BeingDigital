@@ -5,23 +5,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Entity
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-@Entity
 public class Gioco {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @EqualsAndHashCode.Include //include solo l'id
   private Long id;
 
   @Column(nullable = false, unique = true)
@@ -30,8 +29,13 @@ public class Gioco {
   @Column(nullable = false)
   private String path;
 
-  public Gioco(String nome, String path) {
+  @OneToOne
+  @JoinColumn(nullable = false)
+  private MetaInfo metaInfo;
+
+  public Gioco(String nome, String path, MetaInfo metaInfo) {
     this.nome = nome;
     this.path = path;
+    this.metaInfo = metaInfo;
   }
 }

@@ -1,27 +1,30 @@
 package it.unisa.darn.storage.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public abstract class Argomento {
+public class Argomento {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @EqualsAndHashCode.Include //include solo l'id
   private Long id;
 
   @Column(nullable = false)
@@ -30,8 +33,13 @@ public abstract class Argomento {
   @Column(nullable = false, length = 65535)
   private String corpo;
 
-  public Argomento(String titolo, String corpo) {
+  @ManyToOne
+  @JoinColumn(nullable = false)
+  private MetaInfo metaInfo;
+
+  protected Argomento(String titolo, String corpo, MetaInfo metaInfo) {
     this.titolo = titolo;
     this.corpo = corpo;
+    this.metaInfo = metaInfo;
   }
 }
