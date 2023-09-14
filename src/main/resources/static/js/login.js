@@ -2,11 +2,11 @@ let siginBtn = document.querySelector('.siginBtn');
 let sigupBtn = document.querySelector('.sigupBtn');
 let body = document.querySelector('body');
 
-sigupBtn.onclick = function (){
+sigupBtn.onclick = function () {
     body.classList.add('slide');
 }
 
-siginBtn.onclick = function (){
+siginBtn.onclick = function () {
     body.classList.remove('slide');
 }
 
@@ -16,32 +16,24 @@ let passwordReg = document.getElementById('passwordReg');
 let occhioLog = document.getElementById('occhioLog');
 let occhioReg = document.getElementById('occhioReg');
 
-function showHide(password){
-    if(password)
-    {
-        if(passwordLog.type == 'password')
-        {
+function showHide(password) {
+    if (password) {
+        if (passwordLog.type == 'password') {
             passwordLog.setAttribute('type', 'text');
-            occhioLog.src = 'hide.png';
-        }
-        else
-        {
+            occhioLog.src = '/img/hide.png';
+        } else {
             passwordLog.setAttribute('type', 'password');
-            occhioLog.src = 'view.png';
+            occhioLog.src = '/img/view.png';
         }
     }
 
-    if(!password)
-    {
-        if(passwordReg.type == 'password')
-        {
+    if (!password) {
+        if (passwordReg.type == 'password') {
             passwordReg.setAttribute('type', 'text');
-            occhioReg.src = 'hide.png';
-        }
-        else
-        {
+            occhioReg.src = '/img/hide.png';
+        } else {
             passwordReg.setAttribute('type', 'password');
-            occhioReg.src = 'view.png';
+            occhioReg.src = '/img/view.png';
         }
     }
 }
