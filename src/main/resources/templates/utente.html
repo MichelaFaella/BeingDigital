@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Area Personale</title>
+    <link href="/stylesheet/utente.css" rel="stylesheet">
+</head>
+<body>
+<th:block th:include="fragments/header"></th:block>
+<div class="utente">
+    <div class="daticard">
+        <span></span>
+        <div class="textUtente">
+            <div class="line"><h3>Email:</h3>
+                <p>fa.mikela@gmail.com</p></div>
+            <div class="line"><h3>Nome:</h3>
+                <p>Mikela</p></div>
+            <div class="line"><h3>Cognome:</h3>
+                <p>Faella</p></div>
+        </div>
+        <div class="areabtn1">
+            <a class="btnUtente" href="">Modifica</a>
+            <a class="btnUtente" href="">Logout</a>
+        </div>
+
+    </div>
+    <div class="plus">
+        <div class="progcard">
+            <span></span>
+            <div class="textProg">
+                <div class="line">
+                    <h3 style="margin-left: 20px;">Hai completato il testo al 63%!</h3>
+                    <p> Perché non torni ad esercitarti?
+                        E se provassi ad affinare le tue conoscenze con i nostri giochi? </p></div>
+            </div>
+            <div class="areabtn">
+                <a class="btnUtente" href="">lezioni</a>
+                <a class="btnUtente" href="">giochi</a>
+            </div>
+
+        </div>
+        <div class="lesscard">
+            <span></span>
+            <div class="textProg">
+                <div class="line">
+                    <h3 style="margin-left: 20px;">Il tuo livello è BASE.</h3>
+                    <p> Ti senti pronto per riprovare il test? </p></div>
+            </div>
+            <div class="areabtn">
+                <a class="btnUtente" href="">Test</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<th:block th:include="fragments/footer"></th:block>
+
+</body>
+</html>
