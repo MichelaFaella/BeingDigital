@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat";
+}
+
+:root {
+    --bg-color: #5f7ed9;
+    --text-color: #f2f2f2;
+    --main-color: #30478c;
+    --second-color: #273a73;
+    --notify-color: #5b6ed9;
+    --white-color: white;
+}
+
+.all-headerbody {
+    box-sizing: border-box;
+    justify-content: right;
+}
+
+header {
+    background: var(--bg-color);
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.6s;
+    padding: 30px 25px;
+    overflow: hidden;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 100000;
+    box-shadow: 0px 7px 0px 0px rgba(0,0,0,0.1);
+}
+
+header .logo {
+    position: absolute;
+    width: 200px;
+    top: 0;
+    left: 5px;
+    margin-top: 0;
+}
+
+header .user {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    margin-left: 85%;
+    margin-bottom: 10px;
+}
+
+
+.user a {
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.user a i {
+    font-size: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+    margin: 10px 0 0 5px;
+}
+
+.user a i:hover {
+    color: var(--second-color);
+}
+
+header .nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 25px; */
+    overflow: hidden;
+}
+
+header .nav-menu li {
+    list-style: none;
+    position: relative;
+}
+
+header .nav-menu li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+
+header .nav-menu li a:hover {
+    color: var(--second-color);
+    font-size: 1.3em;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    margin-left: 95%;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    background-color: var(--text-color);
+}
+
+@media (max-width: 1210px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    header .nav-menu {
+        position: fixed;
+        top: 64px;
+        left: -100%;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--bg-color);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0px 7px 0px 0px rgba(0,0,0,0.1);
+    }
+
+    header .nav-menu li {
+        margin: 16px 0;
+
+    }
+
+    header .nav-menu.active {
+        left: 0;
+    }
+
+    header .nav-menu li a {
+        font-size: 1em;
+
+    }
+
+}

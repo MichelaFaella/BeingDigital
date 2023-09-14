@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Login</title>
+    <link href="../../../../../../Desktop/Laurea/Progetto/Design/HTML/login/login.css" rel="stylesheet"> <!-- style -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'> <!-- font -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+          rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link href="risorse/img/logo2_icon.png" rel="shortcut icon"/>
+</head>
+<body>
+<div class="cont">
+    <div class="login-cont">
+        <div class="box sigin">
+            <h2>Hai già un account?</h2>
+            <button class="siginBtn">Accedi</button>
+        </div>
+        <div class="box sigup">
+            <h2>Non hai un account?</h2>
+            <button class="sigupBtn">Registrati</button>
+        </div>
+
+        <div class="formBox">
+            <div class="form siginform">
+                <form action="">
+                    <h2 class="Log">Login</h2>
+                    <input placeholder="Email" type="text">
+                    <input id="passwordLog" placeholder="Password" type="password">
+                    <div class="occhio" onclick="showHide(true)"><img
+                            alt="" id="occhioLog"
+                            src="../../../../../../Desktop/Laurea/Progetto/Design/HTML/login/view.png"></div>
+                    <input class="LogBtn" type="submit" value="ACCEDI">
+                </form>
+            </div>
+
+            <div class="form sigupform">
+                <form action="">
+                    <h2 class="Reg">Registrazione</h2>
+                    <input placeholder="Email" type="text">
+                    <input id="passwordReg" placeholder="Password" type="password">
+                    <div class="occhio2" onclick="showHide(false)"><img
+                            alt="" id="occhioReg"
+                            src="../../../../../../Desktop/Laurea/Progetto/Design/HTML/login/view.png"></div>
+                    <input placeholder="Nome" type="text">
+                    <input placeholder="Cognome" type="password">
+                    <input class="RegBtn" type="submit" value="REGISTRATI">
+                    <!-- Aggiungere la lettura della privacy -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="../../../../../../Desktop/Laurea/Progetto/Design/HTML/login/login.js"></script>
+
+</html>
