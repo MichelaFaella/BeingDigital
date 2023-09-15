@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Lista Lezioni</title>
+    <link href="/stylesheet/listaLezioni.css" rel="stylesheet">
+</head>
+<body>
+<th:block th:include="fragments/header"></th:block>
+<div class="lezioni">
+
+    <h1 class="livello">Le tue lezioni</h1>
+    <p>Qui sono riportate le nostre lezioni sugli argomenti da te sbagliati al test.</p>
+
+    <div class="box">
+        <span class="etichetta"></span>
+        <h2>Autenticazione</h2>
+        <ul>
+            <li><span>1</span> <a href="">Come scrivere una password</a></li>
+            <li><span>2</span> <a href="">Leggere i file di policy</a></li>
+            <li><span>3</span> <a href="">Come e quando autenticarsi</a></li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <span class="etichetta"></span>
+        <h2>Autenticazione</h2>
+        <ul>
+            <li><span>1</span> <a href="">Come scrivere una password</a></li>
+            <li><span>2</span> <a href="">Leggere i file di policy</a></li>
+            <li><span>3</span> <a href="">Come e quando autenticarsi</a></li>
+        </ul>
+    </div>
+
+
+</div>
+<th:block th:include="fragments/footer"></th:block>
+</body>
+</html>
