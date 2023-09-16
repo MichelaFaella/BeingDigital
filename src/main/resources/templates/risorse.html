@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Lista Lezioni</title>
+    <link href="/stylesheet/risorse.css" rel="stylesheet">
+    <link href="/stylesheet/cancellazione.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<th:block th:include="fragments/header"></th:block>
+<div class="risorse" id="list">
+
+    <h1 class="livello">Le nostre risorse</h1>
+
+    <div class="box">
+        <h2>Argomenti</h2>
+        <table>
+            <tr class="notspecial">
+                <th>Id</th>
+                <th>Titolo</th>
+                <th>Tipo</th>
+                <th>Modifica</th>
+                <th>Elimina</th>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Lois</td>
+                <td>Griffin</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+        </table>
+        <div class="risorsebtn">
+            <a>Aggiungi</a>
+        </div>
+    </div>
+
+
+    <div class="box">
+        <h2>Meta-info</h2>
+        <table>
+            <tr class="notspecial">
+                <th>Id</th>
+                <th>Keyword</th>
+                <th>Modifica</th>
+                <th>Elimina</th>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Lois</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+        </table>
+        <div class="risorsebtn">
+            <a>Aggiungi</a>
+        </div>
+    </div>
+
+
+    <div class="box">
+        <h2>Giochi</h2>
+        <table>
+            <tr class="notspecial">
+                <th>Id</th>
+                <th>Titolo</th>
+                <th>Modifica</th>
+                <th>Elimina</th>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Lois</td>
+                <td><i class="fa-solid fa-pen"></i></td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+        </table>
+        <div class="risorsebtn">
+            <a>Aggiungi</a>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="all-canc" id="conf">
+
+    <div class="cancella">
+        <div class="textcancella">
+            <h1>ATTENZIONE</h1>
+            <p>Stai per eliminare Mikela. Sicuro di voler procedere alla cancellazione di questo account?</p>
+            <div class="btn-canc">
+                <button class="elimina" type="submit">SI</button>
+                <button class="elimina" onclick="hideConferma()">NO</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<th:block th:include="fragments/footer"></th:block>
+<script src="/js/risorse.js"></script>
+</body>
+</html>
