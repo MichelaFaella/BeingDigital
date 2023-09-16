@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat";
+}
+
+:root {
+    --bg-color: #121b37;
+    --text-color: #f2f2f2;
+    --main-color: #30478c;
+    --second-color: #273a73;
+    --notify-color: #5b6ed9;
+    --white-color: white;
+}
+
+.racconto {
+    min-height: 200vh;
+    background-color: var(--second-color);
+}
+
+.bannerRacconto {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), #282828c4), url(/img/lily.png);
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    min-width: 600px;
+    background-size: cover;
+}
+
+.banner-text {
+    text-align: center;
+    color: var(--white-color);
+    padding: 180px 0;
+}
+
+.banner-text h1 {
+    font-size: 125px;
+}
+
+.racconto .raccontoText p {
+    /* justify-content: center; */
+    text-align: justify;
+    /* color: var(--bg-color); */
+}
+
+.raccontoText {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    padding: 0 10%;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: white;
+}

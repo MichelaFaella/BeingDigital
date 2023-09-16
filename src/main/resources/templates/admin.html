@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Admin</title>
+    <link href="/stylesheet/admin.css" rel="stylesheet">
+    <link href="/stylesheet/cancellazione.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<th:block th:include="fragments/header"></th:block>
+<div class="admin" id="list">
+
+    <h1>Area personale</h1>
+    <p>Ti diamo il benvenuto Mikela! Accedi alle risorse di Darn.</p>
+
+    <div class="box">
+        <h2>Lista utenti</h2>
+        <table>
+            <tr class="notspecial">
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Email</th>
+                <th>Elimina</th>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+            <tr class="special">
+                <td>Peter</td>
+                <td>Lois</td>
+                <td>Griffin</td>
+                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<div class="percentualicont" id="percentuali">
+    <div class="text">
+        <h1>Livelli</h1>
+        <p>Questi sono i livelli di DARN. <br>Controlla l'andamento degli utenti o modifica le risorse.</p>
+        <div class="banner-btn">
+            <a>Risorse</a>
+        </div>
+    </div>
+
+    <div class="percentuali">
+        <div class="progress" style="--i:85; --clr:#121b37">
+            <h3>85 <span>%</span></h3>
+            <h4>BASE</h4>
+        </div>
+        <div class="progress less" style="--i:10; --clr:#121b37">
+            <h3>10 <span>%</span></h3>
+            <h4>INTERMEDIO</h4>
+        </div>
+        <div class="progress less" style="--i:5; --clr:#121b37">
+            <h3>5 <span>%</span></h3>
+            <h4>AVANZATO</h4>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="all-canc" id="conf">
+
+    <div class="cancella">
+        <div class="textcancella">
+            <h1>ATTENZIONE</h1>
+            <p>Stai per eliminare Mikela. Sicuro di voler procedere alla cancellazione di questo account?</p>
+            <div class="btn-canc">
+                <button class="elimina" type="submit">SI</button>
+                <button class="elimina" onclick="hideConferma()">NO</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/admin.js">
+
+</script>
+
+<th:block th:include="fragments/footer"></th:block>
+</body>
+</html>
