@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class Lezione extends Argomento {
 
-  public Lezione(String titolo, String corpo, MetaInfo metaInfo) {
-    super(titolo, corpo, metaInfo);
+  public Lezione(String titolo, String corpo, byte[] copertina, MetaInfo metaInfo) {
+    super(titolo, corpo, copertina, metaInfo);
   }
 }

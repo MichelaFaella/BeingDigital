@@ -1,5 +1,6 @@
 package it.unisa.darn.storage.entity;
 
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -30,16 +32,24 @@ public class Argomento {
   @Column(nullable = false)
   private String titolo;
 
+  @Lob
+  @Basic
   @Column(nullable = false, length = 65535)
   private String corpo;
+
+  @Lob
+  @Basic
+  @Column(nullable = false, length = 2097152)
+  private byte[] copertina;
 
   @ManyToOne
   @JoinColumn(nullable = false)
   private MetaInfo metaInfo;
 
-  protected Argomento(String titolo, String corpo, MetaInfo metaInfo) {
+  protected Argomento(String titolo, String corpo, byte[] copertina, MetaInfo metaInfo) {
     this.titolo = titolo;
     this.corpo = corpo;
+    this.copertina = copertina;
     this.metaInfo = metaInfo;
   }
 }
