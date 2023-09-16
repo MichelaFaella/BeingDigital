@@ -4,5 +4,7 @@ public enum Livello {
 
   BASE,
   INTERMEDIO,
-  AVANZATO
+  AVANZATO,
+  MASTER,
+  CITTADINANZA_DIGITALE
 }

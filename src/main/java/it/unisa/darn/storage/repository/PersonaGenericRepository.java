@@ -9,4 +9,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 public interface PersonaGenericRepository<T extends Persona> extends JpaRepository<T, Long> {
 
   Optional<T> findByEmail(String email);
+
+  boolean existsByEmail(String email);
 }
