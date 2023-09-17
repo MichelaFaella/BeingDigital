@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class FilterConfiguration {
 
   @Autowired
-  private PersonaFilter personaFilter;
+  private AuthFilter authFilter;
 
   @Autowired
   private UtenteFilter utenteFilter;
@@ -18,12 +18,12 @@ public class FilterConfiguration {
   private AdminFilter adminFilter;
 
   @Bean
-  public FilterRegistrationBean<PersonaFilter> filterRegistrationBeanPersonaFilter() {
-    FilterRegistrationBean<PersonaFilter> registrationBean
+  public FilterRegistrationBean<AuthFilter> filterRegistrationBeanPersonaFilter() {
+    FilterRegistrationBean<AuthFilter> registrationBean
         = new FilterRegistrationBean<>();
 
-    registrationBean.setFilter(personaFilter);
-    registrationBean.addUrlPatterns("/areaPersonale");
+    registrationBean.setFilter(authFilter);
+    registrationBean.addUrlPatterns("/auth/*");
 
     return registrationBean;
   }
@@ -34,7 +34,7 @@ public class FilterConfiguration {
         = new FilterRegistrationBean<>();
 
     registrationBean.setFilter(utenteFilter);
-    registrationBean.addUrlPatterns("");
+    registrationBean.addUrlPatterns("/utente/*");
 
     return registrationBean;
   }
@@ -45,7 +45,7 @@ public class FilterConfiguration {
         = new FilterRegistrationBean<>();
 
     registrationBean.setFilter(adminFilter);
-    registrationBean.addUrlPatterns("");
+    registrationBean.addUrlPatterns("/admin/*");
 
     return registrationBean;
   }

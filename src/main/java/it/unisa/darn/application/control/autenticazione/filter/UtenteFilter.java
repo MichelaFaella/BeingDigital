@@ -5,7 +5,7 @@ import it.unisa.darn.storage.entity.Utente;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UtenteFilter extends PersonaFilter {
+public class UtenteFilter extends AuthFilter {
 
   @Override
   protected boolean isClassValid(Persona persona) {

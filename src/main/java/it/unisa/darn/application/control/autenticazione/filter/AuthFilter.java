@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PersonaFilter implements Filter {
+public class AuthFilter implements Filter {
 
   @Autowired
   private PersonaAutenticata personaAutenticata;
@@ -26,9 +26,10 @@ public class PersonaFilter implements Filter {
     Optional<Persona> optional = personaAutenticata.getPersona();
     if (optional.isPresent() && isClassValid(optional.get())) {
       filterChain.doFilter(servletRequest, servletResponse);
+    } else {
+      ((HttpServletResponse) servletResponse).sendRedirect(
+          "/login?risorsa=" + ((HttpServletRequest) servletRequest).getRequestURI());
     }
-    ((HttpServletResponse) servletResponse).sendRedirect(
-        "/login?risorsa=" + ((HttpServletRequest) servletRequest).getRequestURI());
   }
 
   protected boolean isClassValid(Persona persona) {
