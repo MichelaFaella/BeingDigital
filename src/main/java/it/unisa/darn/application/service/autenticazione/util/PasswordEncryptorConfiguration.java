@@ -1,4 +1,4 @@
-package it.unisa.darn.application.service.util;
+package it.unisa.darn.application.service.autenticazione.util;
 
 import org.jasypt.util.password.PasswordEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;

@@ -1,6 +1,6 @@
-package it.unisa.darn.application.control.filter;
+package it.unisa.darn.application.control.autenticazione.filter;
 
-import it.unisa.darn.application.service.util.PersonaAutenticata;
+import it.unisa.darn.application.service.autenticazione.util.PersonaAutenticata;
 import it.unisa.darn.storage.entity.Persona;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;

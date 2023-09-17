@@ -1,6 +1,6 @@
-package it.unisa.darn.application.control;
+package it.unisa.darn.application.control.profilo;
 
-import it.unisa.darn.application.service.util.PersonaAutenticata;
+import it.unisa.darn.application.service.autenticazione.util.PersonaAutenticata;
 import it.unisa.darn.storage.entity.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

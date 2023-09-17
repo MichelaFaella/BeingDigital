@@ -1,7 +1,7 @@
-package it.unisa.darn.application.control;
+package it.unisa.darn.application.control.autenticazione;
 
-import it.unisa.darn.application.control.form.RegistrazioneForm;
-import it.unisa.darn.application.service.RegistrazioneService;
+import it.unisa.darn.application.control.autenticazione.form.RegistrazioneForm;
+import it.unisa.darn.application.service.autenticazione.RegistrazioneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

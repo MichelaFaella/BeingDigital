@@ -1,4 +1,4 @@
-package it.unisa.darn.application.control.filter;
+package it.unisa.darn.application.control.autenticazione.filter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

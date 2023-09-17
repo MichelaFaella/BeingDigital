@@ -1,6 +1,6 @@
-package it.unisa.darn.application.service;
+package it.unisa.darn.application.service.autenticazione;
 
-import it.unisa.darn.application.service.util.PersonaAutenticata;
+import it.unisa.darn.application.service.autenticazione.util.PersonaAutenticata;
 import it.unisa.darn.storage.entity.Persona;
 import it.unisa.darn.storage.repository.PersonaRepository;
 import java.util.Optional;

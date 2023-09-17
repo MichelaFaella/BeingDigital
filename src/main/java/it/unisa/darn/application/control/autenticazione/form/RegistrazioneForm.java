@@ -1,4 +1,4 @@
-package it.unisa.darn.application.control.form;
+package it.unisa.darn.application.control.autenticazione.form;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -15,7 +15,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class LoginForm {
+public class RegistrazioneForm {
+
+  @NotBlank
+  @Size(max = 255)
+  private String nome;
+
+  @NotBlank
+  @Size(max = 255)
+  private String cognome;
 
   @NotBlank
   @Email
@@ -25,6 +33,4 @@ public class LoginForm {
   @NotBlank
   @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\p{Punct})[A-Za-z\\d\\p{Punct}]{8,}$")
   private String password;
-  /*La password deve contenere almeno 8 caratteri, di cui almeno una lettera maiuscola,
-      almeno una minuscola, almeno un numero e almeno un carattere speciale*/
 }

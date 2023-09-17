@@ -1,4 +1,4 @@
-package it.unisa.darn.application.service.util;
+package it.unisa.darn.application.service.autenticazione.util;
 
 import it.unisa.darn.storage.entity.Persona;
 import it.unisa.darn.storage.repository.PersonaRepository;
