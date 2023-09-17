@@ -12,6 +12,7 @@
     <link href="risorse/img/logo2_icon.png" rel="shortcut icon"/>
 </head>
 <body>
+
 <div class="cont">
     <div class="login-cont">
         <div class="box sigin">
@@ -27,32 +28,39 @@
             <div class="form siginform">
                 <form action="">
                     <h2 class="Log">Login</h2>
-                    <input placeholder="Email" type="text">
-                    <input id="passwordLog" placeholder="Password" type="password">
+                    <input id="LogEmail" placeholder="Email" required type="email">
+                    <input id="passwordLog" placeholder="Password" required type="password">
                     <div class="occhio" onclick="showHide(true)"><img
                             alt="" id="occhioLog"
                             src="/img/view.png"></div>
-                    <input class="LogBtn" type="submit" value="ACCEDI">
+                    <input class="LogBtn" onclick="return validate(this)" type="submit" value="ACCEDI">
                 </form>
             </div>
 
             <div class="form sigupform">
                 <form action="">
                     <h2 class="Reg">Registrazione</h2>
-                    <input placeholder="Email" type="text">
-                    <input id="passwordReg" placeholder="Password" type="password">
+                    <input id="RegEmail" placeholder="Email" required type="email">
+                    <input id="passwordReg" placeholder="Password" required type="password">
                     <div class="occhio2" onclick="showHide(false)"><img
                             alt="" id="occhioReg"
                             src="/img/view.png"></div>
-                    <input placeholder="Nome" type="text">
-                    <input placeholder="Cognome" type="password">
-                    <input class="RegBtn" type="submit" value="REGISTRATI">
+                    <input id="RegNome" placeholder="Nome" required type="text">
+                    <input id="RegCognome" placeholder="Cognome" required>
+                    <input class="RegBtn" onclick="return validateAll(this)" type="submit" value="REGISTRATI">
                     <!-- Aggiungere la lettura della privacy -->
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+
+<div class="contsnack">
+    <div id="snackbar"></div>
+</div>
+
+
 </body>
 
 <script src="/js/login.js"></script>
