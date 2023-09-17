@@ -12,4 +12,6 @@ public interface RispostaRepository extends JpaRepository<Risposta, RispostaId> 
   List<Risposta> findByUtente(Utente utente);
 
   List<Risposta> findByDomanda(Domanda domanda);
+
+  long countByUtenteAndIndiceSelezione(Utente utente, int indiceSelezione);
 }
