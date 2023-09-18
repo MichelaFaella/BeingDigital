@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
           rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <link href="risorse/img/logo2_icon.png" rel="shortcut icon"/>
 </head>
 <body>
 
@@ -26,10 +25,10 @@
 
         <div class="formBox">
             <div class="form siginform">
-                <form action="">
+                <form>
                     <h2 class="Log">Login</h2>
-                    <input id="LogEmail" placeholder="Email" required type="email">
-                    <input id="passwordLog" placeholder="Password" required type="password">
+                    <input id="LogEmail" placeholder="Email" th:required="required" type="email">
+                    <input id="passwordLog" placeholder="Password" th:required="required" type="password">
                     <div class="occhio" onclick="showHide(true)"><img
                             alt="" id="occhioLog"
                             src="/img/view.png"></div>
