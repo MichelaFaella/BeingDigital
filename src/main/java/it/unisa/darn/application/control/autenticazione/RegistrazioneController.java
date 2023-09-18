@@ -31,6 +31,6 @@ public class RegistrazioneController {
         registrazioneForm.getPassword())) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
-    return "redirect:/login";
+    return "redirect:/login?registrazione=true";
   }
 }
