@@ -42,6 +42,6 @@ public class LoginController {
     if (risorsa != null && !risorsa.isBlank()) {
       return "redirect:" + risorsa;
     }
-    return "redirect:/areaPersonale";
+    return "redirect:/auth/areaPersonale";
   }
 }
