@@ -20,20 +20,20 @@ function showHide(password) {
     if (password) {
         if (passwordLog.type == 'password') {
             passwordLog.setAttribute('type', 'text');
-            occhioLog.src = 'hide.png';
+            occhioLog.src = '/img/hide.png';
         } else {
             passwordLog.setAttribute('type', 'password');
-            occhioLog.src = 'view.png';
+            occhioLog.src = '/img/view.png';
         }
     }
 
     if (!password) {
         if (passwordReg.type == 'password') {
             passwordReg.setAttribute('type', 'text');
-            occhioReg.src = 'hide.png';
+            occhioReg.src = '/img/hide.png';
         } else {
             passwordReg.setAttribute('type', 'password');
-            occhioReg.src = 'view.png';
+            occhioReg.src = '/img/view.png';
         }
     }
 }
@@ -89,6 +89,7 @@ function validation_email(input) {
 
     var pattern = /^[^ ]+@[^ ]+.[a-z]{2,3}$/;
 
+
     if (input == null) {
         return false
     }
@@ -98,6 +99,8 @@ function validation_email(input) {
     } else {
         return false;
     }
+
+
 }
 
 function validation_password(input) {
@@ -152,7 +155,7 @@ function validateAll(obj) {
     var cognome = document.getElementById("RegCognome").value;
     var txt_c = document.getElementById("RegCognome");
 
-    if (validation_email(email) && validation_password(password) && validation_name(nome) && validation_surname(cognome)) {
+    if (validation_email(email) && validation_password(password) && validation_name(nome) && validation_surname(cognome) && validEmail) {
         console.log("entra1");
 
         return true;
@@ -172,3 +175,21 @@ function validateAll(obj) {
 
 
 }
+
+//ajax
+let validEmail = false;
+$('#RegEmail').onchange(function () {
+    validEmail = false;
+    console.log(this.value);
+    $.post('/existsEmail', {email: this.value}, function (data) {
+        if (data.result == true) {
+            this.style.color = "#c80e00";
+            toast("Email già esistente.")
+        } else {
+            validEmail = true;
+            this.style.color = "#78c800";
+            toast("Email valida.")
+        }
+
+    });
+})
