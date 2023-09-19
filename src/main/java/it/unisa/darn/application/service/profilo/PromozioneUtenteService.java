@@ -30,6 +30,7 @@ public class PromozioneUtenteService {
 
     Utente utente = optional.get();
     cancellazioneAccountService.cancellazioneUtente(id);
+    utenteRepository.flush();
     Admin admin = new Admin(utente.getNome(), utente.getCognome(), utente.getEmail(),
         utente.getPassword());
     adminRepository.save(admin);
