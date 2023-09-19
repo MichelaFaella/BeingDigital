@@ -178,16 +178,22 @@ function validateAll(obj) {
 
 //ajax
 let validEmail = false;
-$('#RegEmail').onchange(function () {
+$('#RegEmail').on("change", function () {
     validEmail = false;
     console.log(this.value);
+
+    if (!validation_email(this.value)) {
+        return;
+    }
+
     $.post('/existsEmail', {email: this.value}, function (data) {
+        var txt_em = document.getElementById("RegEmail");
         if (data.result == true) {
-            this.style.color = "#c80e00";
+            txt_em.style.color = "#c80e00";
             toast("Email già esistente.")
         } else {
             validEmail = true;
-            this.style.color = "#78c800";
+            txt_em.style.color = "#78c800";
             toast("Email valida.")
         }
 

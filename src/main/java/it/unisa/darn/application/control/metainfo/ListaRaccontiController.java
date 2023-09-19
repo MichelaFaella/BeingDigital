@@ -10,6 +10,6 @@ public class ListaRaccontiController {
 
   @GetMapping
   public String get() {
-    return "listaRacconti";
+    return "metainfo/listaRacconti";
   }
 }

@@ -24,7 +24,7 @@ public class LoginController {
 
   @GetMapping
   public String get(@ModelAttribute LoginForm loginForm) {
-    return "login";
+    return "autenticazione/login";
   }
 
   @PostMapping
@@ -36,7 +36,7 @@ public class LoginController {
 
     if (!loginService.login(loginForm.getEmail(), loginForm.getPassword())) {
       model.addAttribute("error", true);
-      return "login";
+      return "autenticazione/login";
     }
 
     if (risorsa != null && !risorsa.isBlank()) {

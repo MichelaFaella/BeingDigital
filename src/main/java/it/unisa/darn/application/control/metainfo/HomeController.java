@@ -10,6 +10,6 @@ public class HomeController {
 
   @GetMapping
   public String get() {
-    return "homepage";
+    return "metainfo/homepage";
   }
 }

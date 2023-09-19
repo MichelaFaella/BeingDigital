@@ -12,6 +12,6 @@ public class TestController {
 
   @GetMapping
   public String get() {
-    return "test";
+    return "metainfo/test";
   }
 }

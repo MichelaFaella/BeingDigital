@@ -10,6 +10,6 @@ public class RaccontoController {
 
   @GetMapping
   public String get() {
-    return "racconto";
+    return "metainfo/racconto";
   }
 }

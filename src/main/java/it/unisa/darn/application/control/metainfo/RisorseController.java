@@ -10,7 +10,7 @@ public class RisorseController {
 
   @GetMapping
   public String get() {
-    return "risorse";
+    return "metainfo/risorse";
   }
 }
 

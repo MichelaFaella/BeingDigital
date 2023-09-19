@@ -10,7 +10,7 @@ public class ListaLezioniController {
 
   @GetMapping
   public String get() {
-    return "listaLezioni";
+    return "metainfo/listaLezioni";
   }
 
 }

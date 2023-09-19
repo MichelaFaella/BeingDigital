@@ -27,12 +27,12 @@ public class AreaPersonaleController {
 
     if (persona instanceof Admin) {
       model.addAttribute("admin", persona);
-      return "admin";
+      return "profilo/admin";
     } else {
       model.addAttribute("utente", persona);
       model.addAttribute("percentuale", areaUtenteService.getPercentualeCompletamento(
           (Utente) persona));
-      return "utente";
+      return "profilo/utente";
     }
   }
 }
