@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link href="/stylesheet/test.css" rel="stylesheet"/>
-    <script defer src="/js/test.js"></script>
+    <link rel="stylesheet" th:href="@{/stylesheet/test.css}" type="text/css"/>
+
     <title>Registraion Form</title>
 </head>
 <body>
@@ -204,6 +204,6 @@
         </div>
     </form>
 </div>
-
+<script th:src="@{/js/test.js}"></script>
 </body>
 </html>

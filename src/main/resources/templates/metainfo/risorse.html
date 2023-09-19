@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Lista Lezioni</title>
-    <link href="/stylesheet/risorse.css" rel="stylesheet">
-    <link href="/stylesheet/cancellazione.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/stylesheet/risorse.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/stylesheet/cancellazione.css}" type="text/css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -152,6 +152,6 @@
 
 
 <th:block th:include="fragments/footer"></th:block>
-<script src="/js/risorse.js"></script>
+<script th:src="@{/js/risorse.js}"></script>
 </body>
 </html>

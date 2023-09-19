@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Area Personale</title>
-    <link href="/stylesheet/utente.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/stylesheet/utente.css}" type="text/css"/>
 </head>
 <body>
 <th:block th:include="fragments/header"></th:block>
@@ -13,15 +13,15 @@
         <span></span>
         <div class="textUtente">
             <div class="line"><h3>Email:</h3>
-                <p>fa.mikela@gmail.com</p></div>
+                <p th:text="${utente.email}"></p></div>
             <div class="line"><h3>Nome:</h3>
-                <p>Mikela</p></div>
+                <p th:text="${utente.nome}"></p></div>
             <div class="line"><h3>Cognome:</h3>
-                <p>Faella</p></div>
+                <p th:text="${utente.cognome}"></p></div>
         </div>
         <div class="areabtn1">
             <a class="btnUtente" href="">Modifica</a>
-            <a class="btnUtente" href="">Logout</a>
+            <a class="btnUtente" href="/logout">Logout</a>
         </div>
 
     </div>
@@ -30,8 +30,11 @@
             <span></span>
             <div class="textProg">
                 <div class="line">
-                    <h3 style="margin-left: 20px;">Hai completato il testo al 63%!</h3>
-                    <p> Perché non torni ad esercitarti?
+                    <h3 style="margin-left: 20px;">Hai completato il test al
+                        <th:block th:text="${percentuale}"></th:block>
+                        %!
+                    </h3>
+                    <p> Perché non torni a esercitarti?
                         E se provassi ad affinare le tue conoscenze con i nostri giochi? </p></div>
             </div>
             <div class="areabtn">
@@ -44,7 +47,10 @@
             <span></span>
             <div class="textProg">
                 <div class="line">
-                    <h3 style="margin-left: 20px;">Il tuo livello è BASE.</h3>
+                    <h3 style="margin-left: 20px;">Il tuo livello è
+                        <th:block th:text="${utente.livello}"></th:block>
+                        .
+                    </h3>
                     <p> Ti senti pronto per riprovare il test? </p></div>
             </div>
             <div class="areabtn">
