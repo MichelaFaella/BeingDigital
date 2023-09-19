@@ -7,4 +7,6 @@ import java.util.List;
 public interface UtenteRepository extends PersonaGenericRepository<Utente> {
 
   List<Utente> findByLivello(Livello livello);
+
+  long countByLivello(Livello livello);
 }
