@@ -102,7 +102,6 @@
 }
 
 .admin p {
-    margin-bottom: 195px;
     font-size: 20px;
     color: var(--white-color);
     font-weight: 500;
@@ -229,6 +228,9 @@
     border-radius: 50%;
 }
 
+.mamma {
+    margin-bottom: 180px;
+}
 
 .banner-btn a {
     width: 150px;
@@ -241,6 +243,7 @@
     position: relative;
     transition: 0.5s;
     cursor: pointer;
+    text-align: center;
     margin-top: 20px;
 }
 
