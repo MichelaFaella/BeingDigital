@@ -1,6 +1,7 @@
 package it.unisa.darn.application.service.profilo;
 
 import it.unisa.darn.storage.entity.Utente;
+import it.unisa.darn.storage.repository.AdminRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
 import it.unisa.darn.storage.repository.UtenteRepository;
 import java.util.Optional;
@@ -10,10 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class CancellazioneUtenteService {
+public class CancellazioneAccountService {
 
   @Autowired
   private UtenteRepository utenteRepository;
+
+  @Autowired
+  private AdminRepository adminRepository;
 
   @Autowired
   private RispostaRepository rispostaRepository;
@@ -27,6 +31,14 @@ public class CancellazioneUtenteService {
     Utente utente = optional.get();
     rispostaRepository.deleteByUtente(utente);
     utenteRepository.delete(utente);
+    return true;
+  }
+
+  public boolean cancellazioneAdmin(Long id) {
+    if (!adminRepository.existsById(id)) {
+      return false;
+    }
+    adminRepository.deleteById(id);
     return true;
   }
 }

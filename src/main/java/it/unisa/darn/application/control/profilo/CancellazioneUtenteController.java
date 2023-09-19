@@ -1,6 +1,6 @@
 package it.unisa.darn.application.control.profilo;
 
-import it.unisa.darn.application.service.profilo.CancellazioneUtenteService;
+import it.unisa.darn.application.service.profilo.CancellazioneAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -14,11 +14,11 @@ import org.springframework.web.server.ResponseStatusException;
 public class CancellazioneUtenteController {
 
   @Autowired
-  private CancellazioneUtenteService cancellazioneUtenteService;
+  private CancellazioneAccountService cancellazioneAccountService;
 
   @PostMapping
   public String post(@RequestParam Long id) {
-    if (!cancellazioneUtenteService.cancellazioneUtente(id)) {
+    if (!cancellazioneAccountService.cancellazioneUtente(id)) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
     return "redirect:/auth/areaPersonale";
