@@ -37,7 +37,7 @@
                     <td th:text="${utente.email}"></td>
                     <td th:text="${utente.nome}"></td>
                     <td th:text="${utente.cognome}"></td>
-                    <td><i class="fa-solid fa-crown"></i></td>
+                    <td><i class="fa-solid fa-crown" th:id="${utente.id}" onclick="showConferma3(this)"></i></td>
                     <td><i class="fa-solid fa-trash" th:id="${utente.id}" onclick="showConferma(this)"></i></td>
                 </tr>
             </th:block>
@@ -112,6 +112,22 @@
                 <div class="btn-canc">
                     <button class="elimina" type="submit">SI</button>
                     <a class="elimina" onclick="hideConferma2()">NO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form action="/admin/promozioneUtente" method="post">
+    <input id="utentePromosso" name="id" style="display:none">
+    <div id="prom" class="all-canc">
+        <div class="cancella">
+            <div class="textcancella">
+                <h1>ATTENZIONE</h1>
+                <p> Sicuro di voler procedere alla promozione di questo account?</p>
+                <div class="btn-canc">
+                    <button class="elimina" type="submit">SI</button>
+                    <a class="elimina" onclick="hideConferma3()">NO</a>
                 </div>
             </div>
         </div>
