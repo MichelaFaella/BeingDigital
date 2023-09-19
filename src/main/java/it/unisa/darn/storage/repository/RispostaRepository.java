@@ -14,4 +14,6 @@ public interface RispostaRepository extends JpaRepository<Risposta, RispostaId> 
   List<Risposta> findByDomanda(Domanda domanda);
 
   long countByUtenteAndIndiceSelezione(Utente utente, int indiceSelezione);
+
+  void deleteByUtente(Utente utente);
 }
