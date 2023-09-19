@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Admin</title>
-    <link href="/stylesheet/admin.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/stylesheet/cancellazione.css}" type="text/css"/>
     <link rel="stylesheet" th:href="@{/stylesheet/admin.css}" type="text/css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
 </head>
@@ -13,7 +13,10 @@
 <div class="admin" id="list">
 
     <h1>Area personale</h1>
-    <p>Ti diamo il benvenuto Mikela! Accedi alle risorse di Darn.</p>
+    <p>Ti diamo il benvenuto
+        <th:block>${admin.nome}</th:block>
+        ! Accedi alle risorse di Darn.
+    </p>
 
     <div class="box">
         <h2>Lista utenti</h2>
@@ -25,34 +28,16 @@
                 <th>Promuovi</th>
                 <th>Elimina</th>
             </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Lois</td>
-                <td>Griffin</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
+            <th:block th:each="utente: ${listaUtenti}">
+                <tr class="special">
+                    <td th:text="${utente.email}"></td>
+                    <td th:text="${utente.nome}">Peter</td>
+                    <td th:text="${utente.cognome}">Griffin</td>
+                    <td><i class="fa-solid fa-pen"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                </tr>
+            </th:block>
+
         </table>
     </div>
 
@@ -68,17 +53,28 @@
     </div>
 
     <div class="percentuali">
-        <div class="progress" style="--i:85; --clr:#121b37">
-            <h3>85 <span>%</span></h3>
+        <div th:class="${percentualeBase<=50}? 'progress less': 'progress'"
+             th:style="'--i: '+${percentualeBase}+'; --clr:#121b37'">
+            <h3><span th:text="${percentualeBase}"></span>%</h3>
             <h4>BASE</h4>
         </div>
-        <div class="progress less" style="--i:10; --clr:#121b37">
-            <h3>10 <span>%</span></h3>
+
+        <div th:class="${percentualeIntermedio<=50}? 'progress less': 'progress'"
+             th:style="'--i: '+${percentualeIntermedio}+'; --clr:#121b37'">
+            <h3><span th:text="${percentualeIntermedio}"></span>%</h3>
             <h4>INTERMEDIO</h4>
         </div>
-        <div class="progress less" style="--i:5; --clr:#121b37">
-            <h3>5 <span>%</span></h3>
+
+        <div th:class="${percentualeAvanzato<=50}? 'progress less': 'progress'"
+             th:style="'--i: '+${percentualeAvanzato}+'; --clr:#121b37'">
+            <h3><span th:text="${percentualeAvanzato}"></span>%</h3>
             <h4>AVANZATO</h4>
+        </div>
+
+        <div th:class="${percentualeMaster<=50}? 'progress less': 'progress'"
+             th:style="'--i: '+${percentualeMaster}+'; --clr:#121b37'">
+            <h3><span th:text="${percentualeMaster}"></span>%</h3>
+            <h4>MASTER</h4>
         </div>
     </div>
 
@@ -101,7 +97,7 @@
 </div>
 
 
-<script src="/js/admin.js">
+<script th:src="@{/js/admin.js}"></script>
 
 </script>
 
