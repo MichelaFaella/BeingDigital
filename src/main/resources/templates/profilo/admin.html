@@ -19,7 +19,7 @@
     </p>
     <div class="banner-btn mamma">
         <a href="/logout">Logout</a>
-        <a href="">Elimina</a>
+        <a onclick="showConferma2()">Elimina</a>
     </div>
 
     <div class="box">
@@ -33,12 +33,12 @@
                 <th>Elimina</th>
             </tr>
             <th:block th:each="utente: ${listaUtenti}">
-                <tr class="special">
+                <tr class="special" >
                     <td th:text="${utente.email}"></td>
                     <td th:text="${utente.nome}"></td>
                     <td th:text="${utente.cognome}"></td>
-                    <td><i class="fa-solid fa-pen"></i></td>
-                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                    <td><i class="fa-solid fa-crown"></i></td>
+                    <td><i class="fa-solid fa-trash" th:id="${utente.id}" onclick="showConferma(this)"></i></td>
                 </tr>
             </th:block>
 
@@ -86,19 +86,37 @@
 </div>
 
 
-<div class="all-canc" id="conf">
-
-    <div class="cancella">
-        <div class="textcancella">
-            <h1>ATTENZIONE</h1>
-            <p>Sicuro di voler procedere alla cancellazione di questo account?</p>
-            <div class="btn-canc">
-                <button class="elimina" type="submit">SI</button>
-                <button class="elimina" onclick="hideConferma()">NO</button>
+<form action="/admin/cancellazioneUtente" method="post">
+    <input id="utenteEliminato" name="id" style="display:none">
+    <div id="conf" class="all-canc">
+        <div class="cancella">
+            <div class="textcancella">
+                <h1>ATTENZIONE</h1>
+                <p> Sicuro di voler procedere alla cancellazione di questo account?</p>
+                <div class="btn-canc">
+                    <button class="elimina" type="submit">SI</button>
+                    <a class="elimina" onclick="hideConferma()">NO</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
+
+
+<form action="/auth/cancellazioneAccount" method="post">
+    <div id="acc" class="all-canc">
+        <div class="cancella">
+            <div class="textcancella">
+                <h1>ATTENZIONE</h1>
+                <p> Sicuro di voler procedere alla cancellazione di questo account?</p>
+                <div class="btn-canc">
+                    <button class="elimina" type="submit">SI</button>
+                    <a class="elimina" onclick="hideConferma2()">NO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 
 <script th:src="@{/js/admin.js}"></script>

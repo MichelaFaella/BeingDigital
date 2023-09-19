@@ -219,6 +219,7 @@
     position: absolute;
     cursor: pointer;
     transition: 0.5s;
+    text-decoration: none;
 }
 
 .eliminaAcc:hover {
