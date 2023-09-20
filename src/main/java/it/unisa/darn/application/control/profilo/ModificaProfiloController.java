@@ -1,6 +1,7 @@
 package it.unisa.darn.application.control.profilo;
 
 import it.unisa.darn.application.control.profilo.form.ModificaProfiloForm;
+import it.unisa.darn.application.service.autenticazione.CheckPasswordService;
 import it.unisa.darn.application.service.autenticazione.util.PersonaAutenticata;
 import it.unisa.darn.application.service.profilo.ModificaProfiloService;
 import it.unisa.darn.storage.entity.Persona;
@@ -25,11 +26,13 @@ public class ModificaProfiloController {
   @Autowired
   private ModificaProfiloService modificaProfiloService;
 
+  @Autowired
+  private CheckPasswordService checkPasswordService;
+
   @GetMapping
   public String get(@ModelAttribute ModificaProfiloForm modificaProfiloForm) {
     Persona persona = personaAutenticata.getPersona().get();
 
-    modificaProfiloForm.setId(persona.getId());
     modificaProfiloForm.setNome(persona.getNome());
     modificaProfiloForm.setCognome(persona.getCognome());
     modificaProfiloForm.setEmail(persona.getEmail());
@@ -45,14 +48,20 @@ public class ModificaProfiloController {
 
     Persona persona = personaAutenticata.getPersona().get();
 
-    if (!persona.getId().equals(modificaProfiloForm.getId())) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    String passwordNuova = null;
+
+    if (!modificaProfiloForm.getPasswordAttuale().isEmpty()) {
+      if (!checkPasswordService.checkPassword(persona, modificaProfiloForm.getPasswordAttuale())) {
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+      }
+
+      if (!modificaProfiloForm.getPasswordNuova().isEmpty()) {
+        passwordNuova = modificaProfiloForm.getPasswordNuova();
+      }
     }
 
-    if (!modificaProfiloService.modificaProfilo(modificaProfiloForm.getId(),
-        modificaProfiloForm.getNome(), modificaProfiloForm.getCognome(),
-        modificaProfiloForm.getEmail(), modificaProfiloForm.getPasswordAttuale(),
-        modificaProfiloForm.getPasswordNuova())) {
+    if (!modificaProfiloService.modificaProfilo(persona.getId(), modificaProfiloForm.getNome(),
+        modificaProfiloForm.getCognome(), modificaProfiloForm.getEmail(), passwordNuova)) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 

@@ -19,30 +19,34 @@ public class ModificaProfiloService {
   private PasswordEncryptor passwordEncryptor;
 
   public boolean modificaProfilo(Long id, String nome, String cognome, String email,
-                                 String passwordAttuale, String passwordNuova) {
+                                 String password) {
     Optional<Persona> optional = personaRepository.findById(id);
     if (optional.isEmpty()) {
       return false;
     }
 
     Persona persona = optional.get();
-    Optional<Persona> optionalAltro = personaRepository.findByEmail(email);
-    if (optionalAltro.isPresent() && !optionalAltro.get().equals(persona)) {
-      return false;
-    }
 
-    if (passwordAttuale != null && passwordNuova == null) {
-      return false;
-    } else if (passwordAttuale != null) {
-      if (!passwordEncryptor.checkPassword(passwordAttuale, persona.getPassword())) {
+    if (email != null) {
+      Optional<Persona> optionalAltro = personaRepository.findByEmail(email);
+      if (optionalAltro.isPresent() && !optionalAltro.get().equals(persona)) {
         return false;
       }
-      persona.setPassword(passwordEncryptor.encryptPassword(passwordNuova));
+      persona.setEmail(email);
     }
 
-    persona.setEmail(email);
-    persona.setNome(nome);
-    persona.setCognome(cognome);
+    if (nome != null) {
+      persona.setNome(nome);
+    }
+
+    if (cognome != null) {
+      persona.setCognome(cognome);
+    }
+
+    if (password != null) {
+      persona.setPassword(passwordEncryptor.encryptPassword(password));
+    }
+
     return true;
   }
 }

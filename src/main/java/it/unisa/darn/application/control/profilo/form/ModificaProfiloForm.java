@@ -18,9 +18,6 @@ import lombok.ToString;
 @ToString
 public class ModificaProfiloForm {
 
-  @NotNull
-  private Long id;
-
   @NotBlank
   @Size(max = 255)
   private String nome;
@@ -34,9 +31,13 @@ public class ModificaProfiloForm {
   @Size(max = 319)
   private String email;
 
-  @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\p{Punct})[A-Za-z\\d\\p{Punct}]{8,}$")
+  @NotNull
+  @Pattern(regexp =
+      "^(()|((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\p{Punct})[A-Za-z\\d\\p{Punct}]{8,}))$")
   private String passwordAttuale;
 
-  @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\p{Punct})[A-Za-z\\d\\p{Punct}]{8,}$")
+  @NotNull
+  @Pattern(regexp =
+      "^(()|((?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*\\p{Punct})[A-Za-z\\d\\p{Punct}]{8,}))$")
   private String passwordNuova;
 }
