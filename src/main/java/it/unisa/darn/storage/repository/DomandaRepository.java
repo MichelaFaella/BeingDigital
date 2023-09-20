@@ -11,4 +11,6 @@ public interface DomandaRepository extends JpaRepository<Domanda, Long> {
   List<Domanda> findByMetaInfo(MetaInfo metaInfo);
 
   long countByMetaInfoLivello(Livello livello);
+
+  List<Domanda> findByMetaInfoLivello(Livello livello);
 }
