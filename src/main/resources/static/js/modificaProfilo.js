@@ -157,7 +157,7 @@ $('#email').on("change", function () {
         return;
     }
 
-    $.post('/auth/checkPassword', {email: this.value}, function (data) {
+    $.post('/existsEmail', {email: this.value}, function (data) {
 
         if (data.result == true) {
             txt_em.style.color = "#c80e00";
