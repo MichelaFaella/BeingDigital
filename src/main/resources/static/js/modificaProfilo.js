@@ -81,7 +81,7 @@ function validation_password(input) {
     console.log("password")
     var pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\p{P})[A-Za-z\d\p{P}]{8,}$/u;
 
-    if (input.value == null) {
+    if (input.length == 0) {
         return true
     }
 
@@ -154,6 +154,7 @@ $('#email').on("change", function () {
 
 
     if (!validation_email(this.value)) {
+        txt_em.style.color = "#c80e00";
         return;
     }
 
@@ -180,10 +181,11 @@ $('#p_vecchia').on("change", function () {
 
 
     if (!validation_password(this.value)) {
+        txt_p.style.color = "#c80e00";
         return;
     }
 
-    if (this.value == '') {
+    if (this.length == 0) {
         validPassword = true;
         return
     }
