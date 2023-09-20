@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifica</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/modifica.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/stylesheet/drag_drop.css}" type="text/css"/>
+</head>
+<body>
+<div class="modifica" id="modArg">
+    <div class="daticard">
+        <span class="etichetta"></span>
+        <form action="">
+            <label for="titolo">Titolo:</label>
+            <input class="input" id="titolo" name="titolo" type="text">
+            <label class="plus" for="corpo">Corpo:</label>
+            <textarea class="input" cols="50" id="corpo" name="corpo" rows="4" style="resize: none;"> </textarea>
+            <div class="drop-zone">
+                <span class="drop-zone__prompt">Inserisci un'immagine</span>
+                <input accept="image/jpeg" class="drop-zone__input" name="myFile" type="file">
+            </div>
+            <input type="submit" value="COMPLETATO">
+        </form>
+    </div>
+</div>
+</body>
+
+
+<script th:src="@{/js/drag_drop.js}"></script>
+</html>

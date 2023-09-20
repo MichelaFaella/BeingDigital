@@ -8,20 +8,20 @@ function showHide(password) {
     if (password) {
         if (p_vecchia.type == 'password') {
             p_vecchia.setAttribute('type', 'text');
-            occhio_vecchio.src = 'hide.png';
+            occhio_vecchio.src = '/img/hide.png';
         } else {
             p_vecchia.setAttribute('type', 'password');
-            occhio_vecchio.src = 'view.png';
+            occhio_vecchio.src = '/img/view.png';
         }
     }
 
     if (!password) {
         if (p_nuova.type == 'password') {
             p_nuova.setAttribute('type', 'text');
-            occhio_nuovo.src = 'hide.png';
+            occhio_nuovo.src = '/img/hide.png';
         } else {
             p_nuova.setAttribute('type', 'password');
-            occhio_nuovo.src = 'view.png';
+            occhio_nuovo.src = '/img/view.png';
         }
     }
 }
@@ -81,9 +81,8 @@ function validation_password(input) {
     console.log("password")
     var pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\p{P})[A-Za-z\d\p{P}]{8,}$/u;
 
-    if (input == null) {
-        toast()
-        return false
+    if (input.value == null) {
+        return true
     }
 
     if (input.match(pattern)) {
@@ -117,12 +116,12 @@ function validate(obj) {
     var password_n = document.getElementById("p_nuova").value;
     var txt_pn = document.getElementById("p_nuova");
 
-    if (validation_email(email) && validation_name(nome) && validation_surname(cognome) && validation_password(password_v) && validation_password(password_n) && validEmail) {
+    if (validation_email(email) && validation_name(nome) && validation_surname(cognome) && validation_password(password_v) && validation_password(password_n) && validEmail && validPassword) {
         console.log("entra1");
 
-
+        return true
     } else {
-        console.log("entra2");
+        console.log("entra2: em" + validation_email(email) + " pv " + validation_password(password_v) + " pn " + validation_password(password_n) + " nome " + validation_name(nome) + " cognome " + validation_surname(cognome));
         if (!validation_email(email))
             txt_em.style.color = "#c80e00";
         if (!validation_password(password_v))
@@ -136,26 +135,30 @@ function validate(obj) {
 
         return false;
     }
-
-    return false;
 }
 
 
 //ajax
-let validEmail = false;
-$('#RegEmail').on("change", function () {
+let validEmail = true;
+$('#email').on("change", function () {
     validEmail = false;
     console.log(this.value);
+    var txt_em = document.getElementById("email");
 
-    document.getElementById('email_v').va
+    var vecchia = document.getElementById('email_v').value
+    if (vecchia.match(this.value)) {
+        validEmail = true;
+        txt_em.style.color = "#78c800";
+        return;
+    }
 
 
     if (!validation_email(this.value)) {
         return;
     }
 
-    $.post('/existsEmail', {email: this.value}, function (data) {
-        var txt_em = document.getElementById("RegEmail");
+    $.post('/auth/checkPassword', {email: this.value}, function (data) {
+
         if (data.result == true) {
             txt_em.style.color = "#c80e00";
             toast("Email già esistente.")
@@ -163,6 +166,37 @@ $('#RegEmail').on("change", function () {
             validEmail = true;
             txt_em.style.color = "#78c800";
             toast("Email valida.")
+        }
+
+    });
+})
+
+//ajax
+let validPassword = true;
+$('#p_vecchia').on("change", function () {
+    validPassword = false;
+    console.log(this.value);
+    var txt_p = document.getElementById("p_vecchia");
+
+
+    if (!validation_password(this.value)) {
+        return;
+    }
+
+    if (this.value == '') {
+        validPassword = true;
+        return
+    }
+
+    $.post('/auth/checkPassword', {password: this.value}, function (data) {
+
+        if (data.result == true) {
+            txt_p.style.color = "#78c800";
+            toast("Password attuale corretta.")
+            validPassword = true;
+        } else {
+            txt_p.style.color = "#c80e00";
+            toast("Password attuale sbagliata. <br> Riprovare")
         }
 
     });

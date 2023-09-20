@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -28,6 +28,7 @@
                     <h2 class="Log">Login</h2>
                     <input id="LogEmail" placeholder="Email" th:field="*{email}" type="email">
                     <input id="passwordLog" placeholder="Password" th:field="*{password}" type="password">
+                    <input id="risorsa" name="risorsa" style="display: none" th:value="${param.risorsa}" type="text">
                     <div class="occhio" onclick="showHide(true)"><img
                             alt="" id="occhioLog"
                             src="/img/view.png"></div>

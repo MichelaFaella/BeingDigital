@@ -13,25 +13,17 @@
     <h1 class="livello">Le tue lezioni</h1>
     <p>Qui sono riportate le nostre lezioni sugli argomenti da te sbagliati al test.</p>
 
-    <div class="box">
-        <span class="etichetta"></span> <!-- aggiungere la classe del livello -->
-        <h2>Autenticazione</h2>
-        <ul>
-            <li><span>1</span> <a href="">Come scrivere una password</a></li>
-            <li><span>2</span> <a href="">Leggere i file di policy</a></li>
-            <li><span>3</span> <a href="">Come e quando autenticarsi</a></li>
-        </ul>
-    </div>
-
-    <div class="box">
-        <span class="etichetta"></span>
-        <h2>Autenticazione</h2>
-        <ul>
-            <li><span>1</span> <a href="">Come scrivere una password</a></li>
-            <li><span>2</span> <a href="">Leggere i file di policy</a></li>
-            <li><span>3</span> <a href="">Come e quando autenticarsi</a></li>
-        </ul>
-    </div>
+    <th:block th:each="instance: ${lezioniPerMetaInfo}">
+        <div class="box">
+            <span class="etichetta"></span> <!-- aggiungere la classe del livello -->
+            <h2 th:text="${instance.key.keyword}"></h2>
+            <ul>
+                <th:block th:each="arg, istat: ${instance.value}">
+                    <li><span th:text="${istat.count}"></span> <a href="" th:text="${arg.titolo}"></a></li>
+                </th:block>
+            </ul>
+        </div>
+    </th:block>
 
 
 </div>

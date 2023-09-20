@@ -5,7 +5,7 @@ var gioco = document.getElementById("giocoRimosso");
 
 
 function showConfermaArg(key) {
-    console.log("è stata chiamata l'argomento con titolo: " + key.id);
+    console.log("è stata chiamata l'argomento con keyword: " + key.id);
     document.getElementById('meta').value = key.id;
     lista.style.display = "none";
     arg.style.display = "flex";
