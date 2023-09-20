@@ -185,7 +185,7 @@ $('#p_vecchia').on("change", function () {
         return;
     }
 
-    if (this.length == 0) {
+    if (this.value.length == 0) {
         validPassword = true;
         return
     }
