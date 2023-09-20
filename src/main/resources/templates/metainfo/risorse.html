@@ -15,46 +15,6 @@
     <h1 class="livello">Le nostre risorse</h1>
 
     <div class="box">
-        <h2>Argomenti</h2>
-        <table>
-            <tr class="notspecial">
-                <th>Titolo</th>
-                <th>Tipo</th>
-                <th>Modifica</th>
-                <th>Elimina</th>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Griffin</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Lois</td>
-                <td>Griffin</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-        </table>
-        <div class="risorsebtn">
-            <a>Aggiungi</a>
-        </div>
-    </div>
-
-
-    <div class="box">
         <h2>Meta-info</h2>
         <table>
             <tr class="notspecial">
@@ -63,30 +23,62 @@
                 <th>Modifica</th>
                 <th>Elimina</th>
             </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Peter</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            <th:block th:each="meta: ${metainfo}">
+                <tr class="special">
+                    <td th:text="${meta.keyword}"></td>
+                    <td th:text="${meta.livello}"></td>
+                    <td><i class="fa-solid fa-pen"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                </tr>
+            </th:block>
+        </table>
+        <div class="risorsebtn">
+            <a>Aggiungi</a>
+        </div>
+    </div>
+
+
+    <div class="box">
+        <h2>Lezioni</h2>
+        <table>
+            <tr class="notspecial">
+                <th>Titolo</th>
+                <th>Meta-info</th>
+                <th>Modifica</th>
+                <th>Elimina</th>
             </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Peter</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+            <th:block th:each="lezione: ${lezioni}">
+                <tr class="special">
+                    <td th:text="${lezione.titolo}"></td>
+                    <td th:text="${lezione.metaInfo.keyword}"></td>
+                    <td><i class="fa-solid fa-pen"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                </tr>
+            </th:block>
+        </table>
+        <div class="risorsebtn">
+            <a>Aggiungi</a>
+        </div>
+    </div>
+
+
+    <div class="box">
+        <h2>Racconto</h2>
+        <table>
+            <tr class="notspecial">
+                <th>Titolo</th>
+                <th>Meta-info</th>
+                <th>Modifica</th>
+                <th>Elimina</th>
             </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Peter</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Lois</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
+            <th:block th:each="racconto: ${racconti}">
+                <tr class="special">
+                    <td th:text="${racconto.titolo}"></td>
+                    <td th:text="${racconto.metaInfo.keyword}"></td>
+                    <td><i class="fa-solid fa-pen"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                </tr>
+            </th:block>
         </table>
         <div class="risorsebtn">
             <a>Aggiungi</a>
@@ -100,33 +92,19 @@
             <tr class="notspecial">
                 <th>Titolo</th>
                 <th>Path</th>
+                <th>Meta-info</th>
                 <th>Modifica</th>
                 <th>Elimina</th>
             </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Peter</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Peter</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Peter</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
-            <tr class="special">
-                <td>Peter</td>
-                <td>Lois</td>
-                <td><i class="fa-solid fa-pen"></i></td>
-                <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
-            </tr>
+            <th:block th:each="gioco: ${giochi}">
+                <tr class="special">
+                    <td th:text="${gioco.titolo}"></td>
+                    <td th:text="${gioco.path}"></td>
+                    <td th:text="${gioco.metaInfo.keyword}"></td>
+                    <td><i class="fa-solid fa-pen"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                </tr>
+            </th:block>
         </table>
         <div class="risorsebtn">
             <a>Aggiungi</a>
