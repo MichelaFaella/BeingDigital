@@ -28,7 +28,7 @@
                     <td th:text="${meta.keyword}"></td>
                     <td th:text="${meta.livello}"></td>
                     <td><i class="fa-solid fa-pen"></i></td>
-                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConfermaMeta(this)" th:id="${meta.keyword}"></i></td>
                 </tr>
             </th:block>
         </table>
@@ -52,7 +52,7 @@
                     <td th:text="${lezione.titolo}"></td>
                     <td th:text="${lezione.metaInfo.keyword}"></td>
                     <td><i class="fa-solid fa-pen"></i></td>
-                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConfermaArg(this)" th:id="${lezione.titolo}"></i></td>
                 </tr>
             </th:block>
         </table>
@@ -98,11 +98,11 @@
             </tr>
             <th:block th:each="gioco: ${giochi}">
                 <tr class="special">
-                    <td th:text="${gioco.titolo}"></td>
+                    <td th:text="${gioco.nome}"></td>
                     <td th:text="${gioco.path}"></td>
                     <td th:text="${gioco.metaInfo.keyword}"></td>
                     <td><i class="fa-solid fa-pen"></i></td>
-                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConfermaGioco()" th:id="${gioco.nome}"></i></td>
                 </tr>
             </th:block>
         </table>
@@ -114,19 +114,53 @@
 </div>
 
 
-<div class="all-canc" id="conf">
-
-    <div class="cancella">
-        <div class="textcancella">
-            <h1>ATTENZIONE</h1>
-            <p>Stai per eliminare Mikela. Sicuro di voler procedere alla cancellazione di questo account?</p>
-            <div class="btn-canc">
-                <button class="elimina" type="submit">SI</button>
-                <button class="elimina" onclick="hideConferma()">NO</button>
+<form action="" method="post">
+    <input id="argomentoRimosso" name="id" style="display:none">
+    <div class="all-canc" id="arg">
+        <div class="cancella">
+            <div class="textcancella">
+                <h1>ATTENZIONE</h1>
+                <p> Sicuro di voler procedere alla promozione di questo argomento?</p>
+                <div class="btn-canc">
+                    <button class="elimina" type="submit">SI</button>
+                    <a class="elimina" onclick="hideConfermaArg()">NO</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
+
+<form action="" method="post">
+    <input id="matainfoRimossa" name="id" style="display:none">
+    <div class="all-canc" id="meta">
+        <div class="cancella">
+            <div class="textcancella">
+                <h1>ATTENZIONE</h1>
+                <p> Sicuro di voler procedere alla promozione di questa meta-info?</p>
+                <div class="btn-canc">
+                    <button class="elimina" type="submit">SI</button>
+                    <a class="elimina" onclick="hideConfermaMeta()">NO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form action="" method="post">
+    <input id="giocoRimosso" name="id" style="display:none">
+    <div class="all-canc" id="gioco">
+        <div class="cancella">
+            <div class="textcancella">
+                <h1>ATTENZIONE</h1>
+                <p> Sicuro di voler procedere alla promozione di questo gioco?</p>
+                <div class="btn-canc">
+                    <button class="elimina" type="submit">SI</button>
+                    <a class="elimina" onclick="hideConfermaGioco()">NO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 
 <th:block th:include="fragments/footer"></th:block>
