@@ -11,3 +11,4 @@ function hideConferma() {
     lista.style.display = "flex";
     conf.style.display = "none";
 }
+
