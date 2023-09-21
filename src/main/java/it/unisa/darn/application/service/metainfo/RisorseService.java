@@ -52,6 +52,6 @@ public class RisorseService {
   }
 
   public List<Domanda> getAllDomande() {
-    return domandaRepository.findAll(Sort.by(Sort.Direction.ASC, "meta_info_id"));
+    return domandaRepository.findAll(Sort.by(Sort.Direction.ASC, "metaInfo"));
   }
 }
