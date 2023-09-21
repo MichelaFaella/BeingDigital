@@ -36,7 +36,7 @@ public class RisorseService {
   private DomandaRepository domandaRepository;
 
   public List<MetaInfo> getAllMetaInfo() {
-    return metaInfoRepository.findAll(Sort.by(Sort.Direction.ASC, "keyword"));
+    return metaInfoRepository.findAll(Sort.by(Sort.Direction.ASC, "livello"));
   }
 
   public List<Lezione> getAllLezioni() {
