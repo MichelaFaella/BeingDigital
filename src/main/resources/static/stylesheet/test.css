@@ -116,6 +116,7 @@
     background-color: var(--white-color);
     border-radius: 0.35rem;
     padding: 1.5rem;
+    min-height: 500px;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
 }
 
@@ -127,6 +128,11 @@
 
 .form-step-active {
     display: block;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .input-group {
@@ -152,6 +158,10 @@
     justify-content: center;
     align-items: center;
     justify-items: center;
+}
+
+.plus {
+    margin-top: 55px;
 }
 
 .btn {
@@ -193,8 +203,9 @@
 }
 
 .test p {
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
+    width: 500px;
     color: var(--bg-color);
     font-weight: 400;
 }

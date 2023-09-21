@@ -1,6 +1,7 @@
 package it.unisa.darn.application.service.metainfo;
 
 import it.unisa.darn.storage.repository.ArgomentoRepository;
+import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,12 @@ public class CancellazioneRisorsaService {
   @Autowired
   private GiocoRepository giocoRepository;
 
+  @Autowired
+  private DomandaRepository domandaRepository;
+
 
   public boolean cancellazioneMetainfo(Long id) {
-    if (metaInfoRepository.existsById(id)) {
+    if (!metaInfoRepository.existsById(id)) {
       return false;
     }
     metaInfoRepository.deleteById(id);
@@ -30,7 +34,7 @@ public class CancellazioneRisorsaService {
   }
 
   public boolean cancellazioneArgomento(Long id) {
-    if (argomentoRepository.existsById(id)) {
+    if (!argomentoRepository.existsById(id)) {
       return false;
     }
     argomentoRepository.deleteById(id);
@@ -38,10 +42,18 @@ public class CancellazioneRisorsaService {
   }
 
   public boolean cancellazioneGioco(Long id) {
-    if (giocoRepository.existsById(id)) {
+    if (!giocoRepository.existsById(id)) {
       return false;
     }
     giocoRepository.deleteById(id);
+    return true;
+  }
+
+  public boolean cancellazioneDomanda(Long id) {
+    if (!domandaRepository.existsById(id)) {
+      return false;
+    }
+    domandaRepository.deleteById(id);
     return true;
   }
 }
