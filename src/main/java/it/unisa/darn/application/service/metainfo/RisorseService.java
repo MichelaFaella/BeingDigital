@@ -1,9 +1,11 @@
 package it.unisa.darn.application.service.metainfo;
 
+import it.unisa.darn.storage.entity.Domanda;
 import it.unisa.darn.storage.entity.Gioco;
 import it.unisa.darn.storage.entity.Lezione;
 import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.entity.Racconto;
+import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.LezioneRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
@@ -30,6 +32,9 @@ public class RisorseService {
   @Autowired
   private GiocoRepository giocoRepository;
 
+  @Autowired
+  private DomandaRepository domandaRepository;
+
   public List<MetaInfo> getAllMetaInfo() {
     return metaInfoRepository.findAll(Sort.by(Sort.Direction.ASC, "keyword"));
   }
@@ -46,4 +51,7 @@ public class RisorseService {
     return giocoRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
   }
 
+  public List<Domanda> getAllDomande() {
+    return domandaRepository.findAll(Sort.by(Sort.Direction.ASC, "meta_info_id"));
+  }
 }

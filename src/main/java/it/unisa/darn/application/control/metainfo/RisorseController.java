@@ -20,6 +20,7 @@ public class RisorseController {
     model.addAttribute("racconti", risorseService.getAllRacconti());
     model.addAttribute("metainfo", risorseService.getAllMetaInfo());
     model.addAttribute("giochi", risorseService.getAllGiochi());
+    model.addAttribute("domande", risorseService.getAllDomande());
     return "metainfo/risorse";
   }
 }

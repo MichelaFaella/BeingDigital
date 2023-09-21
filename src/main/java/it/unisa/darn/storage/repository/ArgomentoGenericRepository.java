@@ -10,4 +10,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 public interface ArgomentoGenericRepository<T extends Argomento> extends JpaRepository<T, Long> {
 
   List<T> findByMetaInfo(MetaInfo metaInfo);
+
+  void deleteByMetaInfo(MetaInfo metaInfo);
 }

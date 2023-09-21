@@ -1,6 +1,7 @@
 package it.unisa.darn.storage.repository;
 
 import it.unisa.darn.storage.entity.Domanda;
+import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.entity.Risposta;
 import it.unisa.darn.storage.entity.Utente;
 import it.unisa.darn.storage.entity.util.RispostaId;
@@ -16,4 +17,8 @@ public interface RispostaRepository extends JpaRepository<Risposta, RispostaId> 
   long countByUtenteAndIndiceSelezione(Utente utente, int indiceSelezione);
 
   void deleteByUtente(Utente utente);
+
+  void deleteByDomandaMetaInfo(MetaInfo metaInfo);
+
+  void deleteByDomanda(Domanda domanda);
 }

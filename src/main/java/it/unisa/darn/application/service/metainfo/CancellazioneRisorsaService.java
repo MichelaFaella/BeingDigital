@@ -1,9 +1,13 @@
 package it.unisa.darn.application.service.metainfo;
 
+import it.unisa.darn.storage.entity.Domanda;
+import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.repository.ArgomentoRepository;
 import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
+import it.unisa.darn.storage.repository.RispostaRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,12 +28,21 @@ public class CancellazioneRisorsaService {
   @Autowired
   private DomandaRepository domandaRepository;
 
+  @Autowired
+  private RispostaRepository rispostaRepository;
 
-  public boolean cancellazioneMetainfo(Long id) {
-    if (!metaInfoRepository.existsById(id)) {
+  public boolean cancellazioneMetaInfo(Long id) {
+    Optional<MetaInfo> optional = metaInfoRepository.findById(id);
+    if (optional.isEmpty()) {
       return false;
     }
-    metaInfoRepository.deleteById(id);
+
+    MetaInfo metaInfo = optional.get();
+    giocoRepository.deleteByMetaInfo(metaInfo);
+    argomentoRepository.deleteByMetaInfo(metaInfo);
+    domandaRepository.deleteByMetaInfo(metaInfo);
+    rispostaRepository.deleteByDomandaMetaInfo(metaInfo);
+    metaInfoRepository.delete(metaInfo);
     return true;
   }
 
@@ -37,6 +50,7 @@ public class CancellazioneRisorsaService {
     if (!argomentoRepository.existsById(id)) {
       return false;
     }
+
     argomentoRepository.deleteById(id);
     return true;
   }
@@ -45,15 +59,20 @@ public class CancellazioneRisorsaService {
     if (!giocoRepository.existsById(id)) {
       return false;
     }
+
     giocoRepository.deleteById(id);
     return true;
   }
 
   public boolean cancellazioneDomanda(Long id) {
-    if (!domandaRepository.existsById(id)) {
+    Optional<Domanda> optional = domandaRepository.findById(id);
+    if (optional.isEmpty()) {
       return false;
     }
-    domandaRepository.deleteById(id);
+
+    Domanda domanda = optional.get();
+    rispostaRepository.deleteByDomanda(domanda);
+    domandaRepository.delete(domanda);
     return true;
   }
 }

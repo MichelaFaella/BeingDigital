@@ -10,4 +10,6 @@ public interface GiocoRepository extends JpaRepository<Gioco, Long> {
   Optional<Gioco> findByNome(String nome);
 
   Optional<Gioco> findByMetaInfo(MetaInfo metaInfo);
+
+  void deleteByMetaInfo(MetaInfo metaInfo);
 }
