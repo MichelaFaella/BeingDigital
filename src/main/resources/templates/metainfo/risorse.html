@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Lista Lezioni</title>
+    <title>Risorse</title>
     <link rel="stylesheet" th:href="@{/stylesheet/risorse.css}" type="text/css"/>
     <link rel="stylesheet" th:href="@{/stylesheet/cancellazione.css}" type="text/css"/>
 
@@ -29,7 +29,7 @@
                     <td th:text="${meta.keyword}"></td>
                     <td th:text="${meta.livello}"></td>
                     <td><i class="fa-solid fa-pen"></i></td>
-                    <td><i class="fa-solid fa-trash" onclick="showConfermaMeta(this)" th:id="${meta.keyword}"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConfermaMeta(this)" th:id="${meta.id}"></i></td>
                 </tr>
             </th:block>
         </table>
@@ -53,7 +53,7 @@
                     <td th:text="${lezione.titolo}"></td>
                     <td th:text="${lezione.metaInfo.keyword}"></td>
                     <td><i class="fa-solid fa-pen"></i></td>
-                    <td><i class="fa-solid fa-trash" onclick="showConfermaArg(this)" th:id="${lezione.titolo}"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConfermaArg(this)" th:id="${lezione.id}"></i></td>
                 </tr>
             </th:block>
         </table>
@@ -77,7 +77,7 @@
                     <td th:text="${racconto.titolo}"></td>
                     <td th:text="${racconto.metaInfo.keyword}"></td>
                     <td><i class="fa-solid fa-pen"></i></td>
-                    <td><i class="fa-solid fa-trash" onclick="showConferma()"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConfermaArg()" th:id="${racconto.id}"></i></td>
                 </tr>
             </th:block>
         </table>
@@ -103,7 +103,7 @@
                     <td th:text="${gioco.path}"></td>
                     <td th:text="${gioco.metaInfo.keyword}"></td>
                     <td><i class="fa-solid fa-pen"></i></td>
-                    <td><i class="fa-solid fa-trash" onclick="showConfermaGioco()" th:id="${gioco.nome}"></i></td>
+                    <td><i class="fa-solid fa-trash" onclick="showConfermaGioco()" th:id="${gioco.id}"></i></td>
                 </tr>
             </th:block>
         </table>
@@ -116,8 +116,8 @@
 
 
 <form action="" method="post">
-    <input id="argomentoRimosso" name="id" style="display:none">
-    <div class="all-canc" id="arg">
+    <input id="arg" name="id" style="display:none">
+    <div class="all-canc" id="argomentoRimosso">
         <div class="cancella">
             <div class="textcancella">
                 <h1>ATTENZIONE</h1>
@@ -132,8 +132,8 @@
 </form>
 
 <form action="" method="post">
-    <input id="matainfoRimossa" name="id" style="display:none">
-    <div class="all-canc" id="meta">
+    <input id="meta" name="id" style="display:none">
+    <div class="all-canc" id="mammeta">
         <div class="cancella">
             <div class="textcancella">
                 <h1>ATTENZIONE</h1>
@@ -148,8 +148,8 @@
 </form>
 
 <form action="" method="post">
-    <input id="giocoRimosso" name="id" style="display:none">
-    <div class="all-canc" id="gioco">
+    <input id="gioco" name="id" style="display:none">
+    <div class="all-canc" id="giocoRimosso">
         <div class="cancella">
             <div class="textcancella">
                 <h1>ATTENZIONE</h1>

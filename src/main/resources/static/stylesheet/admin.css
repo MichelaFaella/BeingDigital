@@ -236,19 +236,21 @@
     width: 150px;
     text-decoration: none;
     display: inline-block;
-    text-transform: uppercase;
+    margin: 10px 0;
     padding: 12px 0;
     color: var(--white-color);
-    border: 0.5px solid var(--white-color);
+    background-color: var(--notify-color);
+    border: 3px solid var(--notify-color);
     position: relative;
     transition: 0.5s;
     cursor: pointer;
     text-align: center;
-    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 
 .banner-btn a:hover {
-    background-color: white;
-    color: var(--second-color);
+    background-color: var(--white-color);
+    color: var(--notify-color);
 }

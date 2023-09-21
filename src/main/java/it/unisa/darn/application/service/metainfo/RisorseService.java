@@ -45,4 +45,5 @@ public class RisorseService {
   public List<Gioco> getAllGiochi() {
     return giocoRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
   }
+
 }

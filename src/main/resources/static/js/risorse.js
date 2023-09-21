@@ -1,6 +1,6 @@
 var lista = document.getElementById("list");
 var arg = document.getElementById("argomentoRimosso");
-var meta = document.getElementById("metainfoRimossa");
+var meta = document.getElementById("mammeta");
 var gioco = document.getElementById("giocoRimosso");
 
 
