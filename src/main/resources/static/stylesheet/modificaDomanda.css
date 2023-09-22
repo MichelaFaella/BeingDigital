@@ -168,7 +168,7 @@
     position: absolute;
     background-color: var(--notify-color);
     top: 100%;
-    width: 224px;
+    width: 101%;
     max-height: 110px;
     left: 0;
     overflow-y: auto;
@@ -194,8 +194,19 @@
     margin-bottom: 20px;
 }
 
-.strunz {
-    margin-left: -3px;
+.select-items::-webkit-scrollbar-track {
+    background: white;
+    border: 1px solid;
+
+}
+
+
+.select-items::-webkit-scrollbar {
+    width: 10px;
+}
+
+.select-items::-webkit-scrollbar-thumb {
+    background: var(--second-color);
 }
 
 .label {

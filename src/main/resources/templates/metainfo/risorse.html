@@ -14,8 +14,15 @@
 <div class="risorse" id="list">
 
     <h1 class="livello">Le nostre risorse</h1>
-
-    <div class="box">
+    <div class="filtri">
+        <a onclick="Tutti()">Tutti</a>
+        <a onclick="Meta()">Meta-info</a>
+        <a onclick="Lezioni()">Lezioni</a>
+        <a onclick="Racconti()">Racconti</a>
+        <a onclick="Giochi()">Giochi</a>
+        <a onclick="Domande()">Domande</a>
+    </div>
+    <div class="box" id="boxMeta">
         <h2>Meta-info</h2>
         <table>
             <tr class="notspecial">
@@ -39,7 +46,7 @@
     </div>
 
 
-    <div class="box">
+    <div class="box" id="boxLezioni">
         <h2>Lezioni</h2>
         <table>
             <tr class="notspecial">
@@ -63,8 +70,8 @@
     </div>
 
 
-    <div class="box">
-        <h2>Racconto</h2>
+    <div class="box" id="boxRacconti">
+        <h2>Racconti</h2>
         <table>
             <tr class="notspecial">
                 <th>Titolo</th>
@@ -88,7 +95,7 @@
     </div>
 
 
-    <div class="box">
+    <div class="box" id="boxGiochi">
         <h2>Giochi</h2>
         <table>
             <tr class="notspecial">
@@ -111,7 +118,7 @@
         </div>
     </div>
 
-    <div class="box">
+    <div class="box" id="boxDomande">
         <h2>Domande</h2>
         <table>
             <tr class="notspecial">

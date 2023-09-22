@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Meta-info</title>
-    <link rel="stylesheet" th:href="@{/stylesheet/modificaMetainfo.css}" type="text/css"/>
+    <title>Gioco</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/modificaGioco.css}" type="text/css"/>
 </head>
 <th:block th:include="fragments/header"></th:block>
 <body>
 <div class="modifica" id="modArg">
-    <h2>Meta-info</h2>
+    <h2>Gioco</h2>
     <div class="daticard">
         <form action="" method="post">
-            <label for="titolo">Keyword:</label>
-            <input class="input" id="titolo" name="keyword" type="text">
+            <label for="nome">Nome:</label>
+            <input class="input" id="nome" name="nome" type="text">
+            <label for="path">Path:</label>
+            <input class="input" id="path" name="path" type="text">
             <div class="lala">
-                <label class="label" for="livello">Livello:</label>
+                <label class="label" for="livello">Meta-info:</label>
                 <div class="custom-select">
                     <select id="livello" name="livello">
                         <option value="-1">Inserire</option>
