@@ -147,6 +147,7 @@
     gap: 25px;
     margin-bottom: 100px;
     display: flex;
+    justify-items: center;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -169,4 +170,17 @@
 .filtri a:hover {
     background-color: var(--white-color);
     color: var(--notify-color);
+}
+
+@media (max-width: 936px) {
+    .filtri {
+        gap: 25px;
+        margin-bottom: 100px;
+        display: grid;
+        grid-template-columns:1fr 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        width: 700px;
+    }
+
 }

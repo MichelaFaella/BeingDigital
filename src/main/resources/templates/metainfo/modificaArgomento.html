@@ -44,12 +44,19 @@
             </div>
             <div class="drop-zone">
                 <span class="drop-zone__prompt">Inserisci un'immagine</span>
-                <input accept="image/jpeg" class="drop-zone__input" name="copertina" required type="file">
+                <input accept="image/jpeg" class="drop-zone__input" id="copertina" name="copertina" onchange="img()"
+                       required type="file">
             </div>
             <input onclick="return validateArgomento(this)" type="submit" value="COMPLETATO">
         </form>
     </div>
 </div>
+
+
+<div class="contsnack">
+    <div id="snackbar"></div>
+</div>
+
 </body>
 <th:block th:include="fragments/footer"></th:block>
 

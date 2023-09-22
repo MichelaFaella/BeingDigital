@@ -225,3 +225,32 @@
         /* height: 720px; */
     }
 }
+
+.contsnack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+
+#snackbar {
+    visibility: hidden;
+    width: 400px;
+    margin-left: -125px;
+    background-color: #33383b;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    font-size: 14px;
+    z-index: 1;
+    left: 47%;
+    bottom: 30px;
+}
+
+
+#snackbar.show {
+    visibility: visible;
+}

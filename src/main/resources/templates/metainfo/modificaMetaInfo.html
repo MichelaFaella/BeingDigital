@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Meta-info</title>
-    <link rel="stylesheet" th:href="@{/stylesheet/modificaMetainfo.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/stylesheet/modificaMetaInfo.css}" type="text/css"/>
 </head>
 <th:block th:include="fragments/header"></th:block>
 <body>
@@ -24,10 +24,14 @@
                     </select>
                 </div>
             </div>
-            <input type="submit" value="COMPLETATO">
+            <input onclick="validateMeta(this)" type="submit" value="COMPLETATO">
         </form>
     </div>
 </div>
+<div class="contsnack">
+    <div id="snackbar"></div>
+</div>
+
 </body>
 <th:block th:include="fragments/footer"></th:block>
 <script th:src="@{/js/select.js}"></script>

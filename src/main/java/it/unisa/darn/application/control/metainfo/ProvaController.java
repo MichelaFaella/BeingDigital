@@ -15,6 +15,6 @@ public class ProvaController {
   @GetMapping
   public String get() {
 
-    return "metainfo/modificaGioco";
+    return "metainfo/modificaMetaInfo";
   }
 }

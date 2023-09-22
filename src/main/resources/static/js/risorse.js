@@ -65,7 +65,11 @@ var DomandeBox = document.getElementById("boxDomande");
 var GiochiBox = document.getElementById("boxGiochi");
 
 function Tutti() {
-    location.reload();
+    LezioneBox.classList.remove("none");
+    RaccontiBox.classList.remove("none");
+    MetaBox.classList.remove("none");
+    DomandeBox.classList.remove("none");
+    GiochiBox.classList.remove("none");
 }
 
 function Meta() {
