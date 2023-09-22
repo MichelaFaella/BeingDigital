@@ -59,7 +59,8 @@
                 <tr class="special">
                     <td th:text="${lezione.titolo}"></td>
                     <td th:text="${lezione.metaInfo.keyword}"></td>
-                    <td><i class="fa-solid fa-pen"></i></td>
+                    <td><a th:href="@{/admin/modificaArgomento(id=${lezione.id})}"><i class="fa-solid fa-pen"> </i></a>
+                    </td>
                     <td><i class="fa-solid fa-trash" onclick="showConfermaArg(this)" th:id="${lezione.id}"></i></td>
                 </tr>
             </th:block>

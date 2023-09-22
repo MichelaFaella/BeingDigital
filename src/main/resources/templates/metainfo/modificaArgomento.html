@@ -13,16 +13,17 @@
 
     <div class="daticard">
         <span class="etichetta"></span>
-        <form action="/admin/inserimentoArgomento" enctype="multipart/form-data" method="post">
+        <form action="/admin/inserimentoArgomento" enctype="multipart/form-data" method="post"
+              th:object="${argomentoForm}">
             <label for="titolo">Titolo:</label>
-            <input class="input" id="titolo" name="titolo" required type="text">
+            <input class="input" id="titolo" name="titolo" required th:field="*{titolo}" type="text">
             <label class="plus" for="corpo">Corpo:</label>
             <textarea class="input" cols="50" id="corpo" name="corpo" required rows="4"
-                      style="resize: none;"> </textarea>
+                      style="resize: none;" th:field="*{corpo}"> </textarea>
             <div class="lala">
                 <label class="label" for="meta">Meta-info:</label>
                 <div class="custom-select strunz">
-                    <select id="meta" name="metaInfoId" required>
+                    <select id="meta" name="metaInfoId" required th:field="*{metaInfoId}">
                         <option value="-1">Inserire</option>
                         <th:block th:each="meta: ${metaInfo}">
                             <option th:text="${meta.keyword}" th:value="${meta.id}"></option>
@@ -32,7 +33,7 @@
                     </select>
                 </div>
             </div>
-            <div class="lala">
+            <div class="lala" th:if="${param.id==null}">
                 <label class="label" for="tipo">Tipologia:</label>
                 <div class="custom-select">
                     <select id="tipo" name="tipo" required>

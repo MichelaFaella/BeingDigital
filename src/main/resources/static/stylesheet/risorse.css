@@ -106,6 +106,10 @@
     padding: 0 20px;
 }
 
+.risorse td a {
+    text-decoration: none;
+    color: var(--bg-color);
+}
 
 .risorse i:hover {
     color: var(--white-color);
