@@ -2,46 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Argomento</title>
-    <link rel="stylesheet" th:href="@{/stylesheet/modificaArgomento.css}" type="text/css"/>
-    <link rel="stylesheet" th:href="@{/stylesheet/drag_drop.css}" type="text/css"/>
+    <title>Meta-info</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/modificaMetainfo.css}" type="text/css"/>
 </head>
 <body>
 <div class="modifica" id="modArg">
-    <h2>Argomento</h2>
+    <h2>Meta-info</h2>
     <div class="daticard">
-        <span class="etichetta"></span>
-        <form action="/admin/inserimentoArgomento" enctype="multipart/form-data" method="post">
-            <label for="titolo">Titolo:</label>
-            <input class="input" id="titolo" name="titolo" type="text">
-            <label class="plus" for="corpo">Corpo:</label>
-            <textarea class="input" cols="50" id="corpo" name="corpo" rows="4" style="resize: none;"> </textarea>
+        <form action="" method="post">
+            <label for="titolo">Keyword:</label>
+            <input class="input" id="titolo" name="keyword" type="text">
             <div class="lala">
-                <label class="label" for="meta">Meta-info:</label>
+                <label class="label" for="livello">Livello:</label>
                 <div class="custom-select strunz">
-                    <select id="meta" name="metaInfoId">
+                    <select id="livello" name="livello">
                         <option value="-1">Inserire</option>
                         <th:block th:each="meta: ${metaInfo}">
                             <option th:text="${meta.keyword}" th:value="${meta.id}"></option>
                         </th:block>
-
-
                     </select>
                 </div>
-            </div>
-            <div class="lala">
-                <label class="label" for="tipo">Tipologia:</label>
-                <div class="custom-select">
-                    <select id="tipo" name="tipo">
-                        <option value="0">Inserire</option>
-                        <option value="racconto">Racconto</option>
-                        <option value="lezione">Lezione</option>
-                    </select>
-                </div>
-            </div>
-            <div class="drop-zone">
-                <span class="drop-zone__prompt">Inserisci un'immagine</span>
-                <input accept="image/jpeg" class="drop-zone__input" name="copertina" type="file">
             </div>
             <input type="submit" value="COMPLETATO">
         </form>
@@ -49,8 +29,6 @@
 </div>
 </body>
 
-
-<script th:src="@{/js/drag_drop.js}"></script>
 <script>
     var x, i, j, l, ll, selElmnt, a, b, c;
     /*look for any elements with the class "custom-select":*/
