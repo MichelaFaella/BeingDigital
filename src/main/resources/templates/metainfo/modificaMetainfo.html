@@ -5,6 +5,7 @@
     <title>Meta-info</title>
     <link rel="stylesheet" th:href="@{/stylesheet/modificaMetainfo.css}" type="text/css"/>
 </head>
+<th:block th:include="fragments/header"></th:block>
 <body>
 <div class="modifica" id="modArg">
     <h2>Meta-info</h2>
@@ -20,6 +21,7 @@
                         <th:block th:each="meta: ${metaInfo}">
                             <option th:text="${meta.keyword}" th:value="${meta.id}"></option>
                         </th:block>
+                        <option value="-1">Inserire</option>
                     </select>
                 </div>
             </div>
@@ -28,7 +30,7 @@
     </div>
 </div>
 </body>
-
+<th:block th:include="fragments/footer"></th:block>
 <script>
     var x, i, j, l, ll, selElmnt, a, b, c;
     /*look for any elements with the class "custom-select":*/

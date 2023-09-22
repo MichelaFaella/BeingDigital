@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/modificaMetainfo")
+@RequestMapping("/modificaDomanda")
 public class ProvaController {
   @Autowired
   private RisorseService risorseService;
@@ -15,6 +15,6 @@ public class ProvaController {
   @GetMapping
   public String get() {
 
-    return "metainfo/modificaMetainfo";
+    return "metainfo/modificaDomanda";
   }
 }

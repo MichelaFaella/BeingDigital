@@ -2,21 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Argomento</title>
-    <link rel="stylesheet" th:href="@{/stylesheet/modificaArgomento.css}" type="text/css"/>
-    <link rel="stylesheet" th:href="@{/stylesheet/drag_drop.css}" type="text/css"/>
+    <title>Domanda</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/modificaDomanda.css}" type="text/css"/>
 </head>
-<body>
 <th:block th:include="fragments/header"></th:block>
+<body>
 <div class="modifica" id="modArg">
-    <h2>Argomento</h2>
+    <h2>Domanda</h2>
     <div class="daticard">
         <span class="etichetta"></span>
         <form action="/admin/inserimentoArgomento" enctype="multipart/form-data" method="post">
-            <label for="titolo">Titolo:</label>
-            <input class="input" id="titolo" name="titolo" type="text">
-            <label class="plus" for="corpo">Corpo:</label>
-            <textarea class="input" cols="50" id="corpo" name="corpo" rows="4" style="resize: none;"> </textarea>
+            <label for="testo">Testo:</label>
+            <input class="input" id="testo" name="testo" type="text">
             <div class="lala">
                 <label class="label" for="meta">Meta-info:</label>
                 <div class="custom-select strunz">
@@ -25,25 +22,17 @@
                         <th:block th:each="meta: ${metaInfo}">
                             <option th:text="${meta.keyword}" th:value="${meta.id}"></option>
                         </th:block>
-
-
                     </select>
                 </div>
             </div>
-            <div class="lala">
-                <label class="label" for="tipo">Tipologia:</label>
-                <div class="custom-select">
-                    <select id="tipo" name="tipo">
-                        <option value="0">Inserire</option>
-                        <option value="racconto">Racconto</option>
-                        <option value="lezione">Lezione</option>
-                    </select>
-                </div>
-            </div>
-            <div class="drop-zone">
-                <span class="drop-zone__prompt">Inserisci un'immagine</span>
-                <input accept="image/jpeg" class="drop-zone__input" name="copertina" type="file">
-            </div>
+            <label for="testo">Risposta corretta:</label>
+            <input class="input" id="corretta" name="corretta" type="text">
+            <label for="sbagliata1">Prima risposta sbagliata:</label>
+            <input class="input" id="sbagliata1" name="sbagliata1" type="text">
+            <label for="sbagliata2">Seconda risposta sbagliata:</label>
+            <input class="input" id="sbagliata2" name="sbagliata2" type="text">
+            <label for="sbagliata3">Terza risposta sbagliata:</label>
+            <input class="input" id="sbagliata3" name="sbagliata3" type="text">
             <input type="submit" value="COMPLETATO">
         </form>
     </div>
@@ -51,7 +40,6 @@
 </body>
 <th:block th:include="fragments/footer"></th:block>
 
-<script th:src="@{/js/drag_drop.js}"></script>
 <script>
     var x, i, j, l, ll, selElmnt, a, b, c;
     /*look for any elements with the class "custom-select":*/
