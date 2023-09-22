@@ -28,7 +28,7 @@ public class InserimentoArgomentoController {
   private RisorseService risorseService;
 
   @GetMapping
-  public String get(Model model) {
+  public String get(@ModelAttribute ArgomentoForm argomentoForm, Model model) {
     model.addAttribute("metaInfo", risorseService.getAllMetaInfo());
 
     return "metainfo/modificaArgomento";
