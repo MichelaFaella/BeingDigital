@@ -2,12 +2,15 @@ package it.unisa.darn.application.control.metainfo;
 
 import it.unisa.darn.application.control.metainfo.form.ArgomentoForm;
 import it.unisa.darn.application.service.metainfo.InserimentoArgomentoService;
+import it.unisa.darn.application.service.metainfo.RisorseService;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,16 @@ public class InserimentoArgomentoController {
 
   @Autowired
   private InserimentoArgomentoService inserimentoArgomentoService;
+
+  @Autowired
+  private RisorseService risorseService;
+
+  @GetMapping
+  public String get(Model model) {
+    model.addAttribute("metaInfo", risorseService.getAllMetaInfo());
+
+    return "metainfo/modificaArgomento";
+  }
 
   @PostMapping
   public String post(@RequestParam String tipo, @ModelAttribute @Valid ArgomentoForm argomentoForm,
