@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class RisorseService {
+public class VisualizzazioneRisorseService {
 
   @Autowired
   private MetaInfoRepository metaInfoRepository;

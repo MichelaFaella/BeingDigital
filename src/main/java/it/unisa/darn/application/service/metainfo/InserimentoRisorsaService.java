@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class InserimentoArgomentoService {
+public class InserimentoRisorsaService {
 
   @Autowired
   private ArgomentoRepository argomentoRepository;

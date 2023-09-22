@@ -1,8 +1,8 @@
 package it.unisa.darn.application.control.metainfo;
 
 import it.unisa.darn.application.control.metainfo.form.ArgomentoForm;
-import it.unisa.darn.application.service.metainfo.InserimentoArgomentoService;
-import it.unisa.darn.application.service.metainfo.RisorseService;
+import it.unisa.darn.application.service.metainfo.InserimentoRisorsaService;
+import it.unisa.darn.application.service.metainfo.VisualizzazioneRisorseService;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,30 +13,29 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 @Controller
-@RequestMapping("/admin/inserimentoArgomento")
-public class InserimentoArgomentoController {
+public class InserimentoRisorsaController {
 
   @Autowired
-  private InserimentoArgomentoService inserimentoArgomentoService;
+  private InserimentoRisorsaService inserimentoRisorsaService;
 
   @Autowired
-  private RisorseService risorseService;
+  private VisualizzazioneRisorseService visualizzazioneRisorseService;
 
-  @GetMapping
-  public String get(@ModelAttribute ArgomentoForm argomentoForm, Model model) {
-    model.addAttribute("metaInfo", risorseService.getAllMetaInfo());
+  @GetMapping("/admin/inserimentoArgomento")
+  public String inserimentoArgomentoGet(@ModelAttribute ArgomentoForm argomentoForm, Model model) {
+    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
 
     return "metainfo/modificaArgomento";
   }
 
-  @PostMapping
-  public String post(@RequestParam String tipo, @ModelAttribute @Valid ArgomentoForm argomentoForm,
-                     BindingResult bindingResult) throws IOException {
+  @PostMapping("/admin/inserimentoArgomento")
+  public String inserimentoArgomentoPost(@RequestParam String tipo,
+                                         @ModelAttribute @Valid ArgomentoForm argomentoForm,
+                                         BindingResult bindingResult) throws IOException {
     if (bindingResult.hasErrors()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
@@ -46,10 +45,10 @@ public class InserimentoArgomentoController {
     }
 
     boolean result = switch (tipo) {
-      case "lezione" -> inserimentoArgomentoService.inserimentoLezione(argomentoForm.getTitolo(),
+      case "lezione" -> inserimentoRisorsaService.inserimentoLezione(argomentoForm.getTitolo(),
           argomentoForm.getCorpo(), argomentoForm.getCopertina().getBytes(),
           argomentoForm.getMetaInfoId());
-      case "racconto" -> inserimentoArgomentoService.inserimentoRacconto(argomentoForm.getTitolo(),
+      case "racconto" -> inserimentoRisorsaService.inserimentoRacconto(argomentoForm.getTitolo(),
           argomentoForm.getCorpo(), argomentoForm.getCopertina().getBytes(),
           argomentoForm.getMetaInfoId());
       default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

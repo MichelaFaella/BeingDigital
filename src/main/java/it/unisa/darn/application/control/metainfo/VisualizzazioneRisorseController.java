@@ -8,15 +8,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/listaRacconti")
-public class ListaRaccontiController {
+@RequestMapping("/admin/visualizzazioneRisorse")
+public class VisualizzazioneRisorseController {
 
   @Autowired
   private VisualizzazioneRisorseService visualizzazioneRisorseService;
 
   @GetMapping
   public String get(Model model) {
+    model.addAttribute("lezioni", visualizzazioneRisorseService.getAllLezioni());
     model.addAttribute("racconti", visualizzazioneRisorseService.getAllRacconti());
-    return "metainfo/listaRacconti";
+    model.addAttribute("metainfo", visualizzazioneRisorseService.getAllMetaInfo());
+    model.addAttribute("giochi", visualizzazioneRisorseService.getAllGiochi());
+    model.addAttribute("domande", visualizzazioneRisorseService.getAllDomande());
+    return "metainfo/risorse";
   }
 }
+
