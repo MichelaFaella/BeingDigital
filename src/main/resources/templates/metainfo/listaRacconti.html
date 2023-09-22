@@ -18,61 +18,23 @@
     </div>
 
     <div class="racconto">
+        <th:block th:each="racconto: ${racconti}">
+            <a href="/racconto">
+                <div class="cardracconto">
+                    <input name="" type="checkbox">
+                    <div class="toggleracconto">+</div>
+                    <div class="imageracconto">
+                        <img alt="" srcset="" th:src="">
+                    </div>
 
-        <a href="/visualizzazioneRacconto">
-            <div class="cardracconto">
-                <input name="" type="checkbox">
-                <div class="toggleracconto">+</div>
-                <div class="imageracconto">
-                    <img alt="" src="/img/lily.png" srcset="">
+                    <div class="textRacconto">
+                        <h2>Il diario segreto di Lily <i class="fa-solid fa-book fa-bounce"></i></h2>
+                    </div>
                 </div>
+            </a>
+        </th:block>
 
-                <div class="textRacconto">
-                    <h2>Il diario segreto di Lily <i class="fa-solid fa-book fa-bounce"></i></h2>
-                </div>
-            </div>
-        </a>
 
-        <a href="/visualizzazioneRacconto">
-            <div class="cardracconto">
-                <input id="" name="" type="checkbox">
-                <div class="toggleracconto">+</div>
-                <div class="imageracconto">
-                    <img alt="" src="/img/lily.png" srcset="">
-                </div>
-
-                <div class="textRacconto">
-                    <h2>Il diario segreto di Lily <i class="fa-solid fa-book fa-bounce"></i></h2>
-                </div>
-            </div>
-        </a>
-
-        <a href="/visualizzazioneRacconto">
-            <div class="cardracconto">
-                <input name="" type="checkbox">
-                <div class="toggleracconto">+</div>
-                <div class="imageracconto">
-                    <img alt="" src="/img/lily.png" srcset="">
-                </div>
-
-                <div class="textRacconto">
-                    <h2>Il diario segreto di Lily <i class="fa-solid fa-book fa-bounce"></i></h2>
-                </div>
-            </div>
-        </a>
-        <a href="/visualizzazioneRacconto">
-            <div class="cardracconto">
-                <input name="" type="checkbox">
-                <div class="toggleracconto">+</div>
-                <div class="imageracconto">
-                    <img alt="" src="/img/lily.png" srcset="">
-                </div>
-
-                <div class="textRacconto">
-                    <h2>Il diario segreto di Lily <i class="fa-solid fa-book fa-bounce"></i></h2>
-                </div>
-            </div>
-        </a>
     </div>
 </div>
 <th:block th:include="fragments/footer"></th:block>

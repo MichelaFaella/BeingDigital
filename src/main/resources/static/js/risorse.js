@@ -55,3 +55,59 @@ function hideConfermaGioco() {
     lista.style.display = "flex";
     gioco.style.display = "none";
 }
+
+//filtri
+
+var LezioneBox = document.getElementById("boxLezioni");
+var RaccontiBox = document.getElementById("boxRacconti");
+var MetaBox = document.getElementById("boxMeta");
+var DomandeBox = document.getElementById("boxDomande");
+var GiochiBox = document.getElementById("boxGiochi");
+
+function Tutti() {
+    LezioneBox.classList.remove("none");
+    RaccontiBox.classList.remove("none");
+    MetaBox.classList.remove("none");
+    DomandeBox.classList.remove("none");
+    GiochiBox.classList.remove("none");
+}
+
+function Meta() {
+    LezioneBox.classList.add("none");
+    RaccontiBox.classList.add("none");
+    MetaBox.classList.remove("none");
+    DomandeBox.classList.add("none");
+    GiochiBox.classList.add("none");
+}
+
+function Lezioni() {
+    LezioneBox.classList.remove("none");
+    RaccontiBox.classList.add("none");
+    MetaBox.classList.add("none");
+    DomandeBox.classList.add("none");
+    GiochiBox.classList.add("none");
+}
+
+function Racconti() {
+    LezioneBox.classList.add("none");
+    RaccontiBox.classList.remove("none");
+    MetaBox.classList.add("none");
+    DomandeBox.classList.add("none");
+    GiochiBox.classList.add("none");
+}
+
+function Giochi() {
+    LezioneBox.classList.add("none");
+    RaccontiBox.classList.add("none");
+    MetaBox.classList.add("none");
+    DomandeBox.classList.add("none");
+    GiochiBox.classList.remove("none");
+}
+
+function Domande() {
+    LezioneBox.classList.add("none");
+    RaccontiBox.classList.add("none");
+    MetaBox.classList.add("none");
+    DomandeBox.classList.remove("none");
+    GiochiBox.classList.add("none");
+}

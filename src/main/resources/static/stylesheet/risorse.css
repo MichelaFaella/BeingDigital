@@ -31,6 +31,9 @@
     margin-bottom: 120px;
 }
 
+.none {
+    display: none;
+}
 
 .risorse .box h2 {
     text-align: center;
@@ -47,7 +50,7 @@
 
 .livello {
     font-size: 35px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--white-color);
@@ -138,4 +141,46 @@
 .risorsebtn a:hover {
     background-color: white;
     color: var(--second-color);
+}
+
+.filtri {
+    gap: 25px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-items: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.filtri a {
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    width: 100px;
+    padding: 10px;
+    border: 3px solid var(--notify-color);
+    background-color: var(--notify-color);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.filtri a:hover {
+    background-color: var(--white-color);
+    color: var(--notify-color);
+}
+
+@media (max-width: 936px) {
+    .filtri {
+        gap: 25px;
+        margin-bottom: 100px;
+        display: grid;
+        grid-template-columns:1fr 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        width: 700px;
+    }
+
 }

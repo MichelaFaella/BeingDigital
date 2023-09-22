@@ -50,6 +50,20 @@
     overflow-y: auto;
 }
 
+.lezioni .box ul::-webkit-scrollbar-track {
+    background: white;
+    border: 1px solid;
+
+}
+
+
+.lezioni .box ul::-webkit-scrollbar {
+    width: 10px;
+}
+
+.lezioni .box ul::-webkit-scrollbar-thumb {
+    background: var(--second-color);
+}
 
 .lezioni .box ul li {
     list-style: none;

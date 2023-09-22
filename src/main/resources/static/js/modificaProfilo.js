@@ -81,7 +81,7 @@ function validation_password(input) {
     console.log("password")
     var pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\p{P})[A-Za-z\d\p{P}]{8,}$/u;
 
-    if (input.length == 0) {
+    if (input.value.length == 0) {
         return true
     }
 
