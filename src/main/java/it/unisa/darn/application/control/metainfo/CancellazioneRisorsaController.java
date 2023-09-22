@@ -29,6 +29,6 @@ public class CancellazioneRisorsaController {
     if (!result) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
-    return "redirect:/admin/risorse";
+    return "redirect:/admin/visualizzazioneRisorse";
   }
 }

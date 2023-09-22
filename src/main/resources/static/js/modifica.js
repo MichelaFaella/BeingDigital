@@ -1,6 +1,6 @@
 function validateArgomento(obj) {
     var titolo = document.getElementById('titolo');
-    if (validateTitolo(titolo)) {
+    if (validateTitolo(titolo) && validateSelect()) {
         console.log("va")
         return true
     } else {
@@ -33,6 +33,8 @@ function validateTitolo(titolo) {
     if (titolo.value.length != 0 && titolo.value.length <= 255) {
         console.log("La lunghezza del titolo è: " + titolo.value.length)
         return true;
+    } else if (titolo.value.length == 0) {
+        return false;
     }
     toast("Il titolo risulta essere troppo lungo. <br> Inserisci al massimo 255 caratteri.")
     return false
@@ -45,6 +47,21 @@ function validateNome(nome) {
     }
     toast("Il nome risulta essere troppo lungo. <br> Inserisci al massimo 255 caratteri.")
     return false
+}
+
+function validateSelect() {
+    var tipo = document.getElementById('tipo');
+    var meta = document.getElementById('meta');
+    console.log(tipo.value);
+    console.log(meta.value);
+    if (tipo.value == -1) {
+        toast("ATTENZIONE! <br>Inserire la tipologia.");
+        return false
+    } else if (meta.value == -1) {
+        toast("ATTENZIONE! <br>Inserire la meta-info.");
+        return false
+    }
+    return true;
 }
 
 function validatePath(path) {

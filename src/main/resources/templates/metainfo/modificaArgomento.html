@@ -13,9 +13,11 @@
 
     <div class="daticard">
         <span class="etichetta"></span>
-        <form action="/admin/inserimentoArgomento" enctype="multipart/form-data" method="post"
+        <form enctype="multipart/form-data" method="post"
+              th:action="${param.id==null ? '/admin/inserimentoArgomento':'/admin/modificaArgomento'}"
               th:object="${argomentoForm}">
             <label for="titolo">Titolo:</label>
+            <input class="input" id="id" name="id" style="display: none" th:value="${param.id}" type="text">
             <input class="input" id="titolo" name="titolo" required th:field="*{titolo}" type="text">
             <label class="plus" for="corpo">Corpo:</label>
             <textarea class="input" cols="50" id="corpo" name="corpo" required rows="4"
@@ -37,16 +39,23 @@
                 <label class="label" for="tipo">Tipologia:</label>
                 <div class="custom-select">
                     <select id="tipo" name="tipo" required>
-                        <option value="0">Inserire</option>
+                        <option value="-1">Inserire</option>
                         <option value="racconto">Racconto</option>
                         <option value="lezione">Lezione</option>
                     </select>
                 </div>
             </div>
             <div class="drop-zone">
-                <span class="drop-zone__prompt">Inserisci un'immagine</span>
-                <input accept="image/jpeg" class="drop-zone__input" id="copertina" name="copertina" onchange="img()"
-                       required type="file" value="">
+                <span class="drop-zone__prompt" th:if="${param.id==null}"
+                >Inserisci un'immagine</span>
+                <input accept="image/jpeg" class="drop-zone__input" id="copertina" name="copertina"
+                       onchange="img()" th:if="${param.id!=null}"
+                       type="file">
+                <input accept="image/jpeg" class="drop-zone__input" id="copertina" name="copertina"
+                       onchange="img()" required
+                       th:if="${param.id==null} " type="file">
+                <div class="drop-zone__thumb" th:if="${param.id!=null}"
+                     th:style="'background-image: url('+@{/copertina(idArgomento=${param.id})}+')'"></div>
             </div>
             <input onclick="return validateArgomento(this)" type="submit" value="COMPLETATO">
         </form>

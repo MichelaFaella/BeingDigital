@@ -47,6 +47,7 @@
     /* overflow: hidden; */
     background-color: #cccccc;
     background-size: cover;
+    background-position: center;
     position: relative;
 }
 
