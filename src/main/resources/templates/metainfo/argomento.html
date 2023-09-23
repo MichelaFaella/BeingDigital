@@ -3,74 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Nome Racconto</title>
-    <link rel="stylesheet" th:href="@{/stylesheet/racconto.css}" type="text/css"/>
+    <title th:text="${argomento.titolo}"></title>
+    <link rel="stylesheet" th:href="@{/stylesheet/argomento.css}" type="text/css"/>
 </head>
 <body>
 <th:block th:include="fragments/header"></th:block>
 <div class="racconto">
     <section class="bannerRacconto"
-             th:style="'background: linear-gradient(rgba(0, 0, 0, 0.5), #282828c4), url('+@{/copertina(idArgomento=${param.id})}+')'">
+             th:style="'background: linear-gradient(rgba(0, 0, 0, 0.5), #282828c4), url('+@{/copertina(idArgomento=${param.id})}+'); background-size: cover; background-position: center;'">
         <div class="banner-text">
-            <h1>Il diario di Lily</h1>
+            <h1 th:text="${argomento.titolo}"></h1>
         </div>
     </section>
 
 
     <div class="raccontoText">
-        <p>Una bambina di nome Lily amava trascorrere il suo tempo nel
-            parco, giocando sulle altalene, sugli scivoli, sui trampolini e
-            arrampicandosi sulla palestra della giungla. Passava ore a correre,
-            giocare e inventare avventure diverse ogni volta.
-            Un giorno, mentre giocava nel parco, Lily notò una nuova
-            ragazza seduta su una panchina. La ragazza sembrava sola, così Lily
-            decise di avvicinarsi.
-            "Ciao! Come ti chiami?" salutò Lily.
-            "Mi chiamo Sarah, e tu?" rispose la nuova
-            ragazza.
-            "Sono Lily. Vuoi giocare con me sull'altalena?"
-            invitò Lily.
-            Così le due ragazze si conobbero meglio, e Lily apprese che
-            Sarah si era appena trasferita in città e non aveva ancora molti
-            amici. Presto, Lily e Sarah divennero inseparabili e spesso giocavano
-            insieme nel parco dopo la scuola.
-
-            <br><br>
-            Un giorno Sarah notò qualcosa... "C'è qualcosa che non va?" chiese Sarah preoccupata a Lily.
-            "Sembri triste."
-
-            Inizialmente, Lily negò di essere triste, ma alla fine confidò
-            timidamente a Sarah cosa era successo poche ore prima.
-
-            "Stamattina a scuola, mentre ero al bagno, il
-            mio amico Luca ha trovato e preso il mio diario segreto dalla mia
-            borsa senza il mio permesso, poi l'ha letto ad alta voce davanti a
-            tutti. Ora tutti sanno di chi sono innamorata. Quando sono tornata
-            dal bagno, tutti mi fissavano, mi puntavano il dito e ridevano di
-            me, ma io non capivo... finché non ho visto Luca con il mio diario
-            in mano.""Incredibile!" esclamò Sarah. "Hai detto qualcosa alla
-            maestra?" chiese incredula."No," rispose Lily, "mi sono solo arrabbiata con Luca e ho
-            rimesso il diario nello zaino. Ma non mi sono sentita a mio agio, mi
-            sono sentita imbarazzata e derisa da tutti."
-            Sarah consolò la sua amica e le disse che se mai dovesse
-            succedere di nuovo che qualcuno toccasse le sue cose senza il suo
-            permesso, avrebbe dovuto chiedere aiuto alla maestra o a un adulto
-            senza sentirsi in imbarazzo.
-            È sbagliato usare le informazioni private di una persona senza
-            il suo permesso, come aveva fatto Luca. Si chiama "violare la privacy
-            degli altri".
-            <br><br>
-            Sarah spiegò che sua madre le aveva spiegato il significato di
-            questa importante parola: la privacy è tutto ciò che desideriamo
-            tenere riservato, e nessuno ha il diritto di utilizzarla. Quando le
-            persone sentono che la loro privacy viene violata, possono sentirsi
-            spaventate, arrabbiate e violate. Sarah suggerì a Lily di mettere un
-            lucchetto sul suo diario, così nessuno potrebbe leggerlo senza il suo
-            permesso.
-            <br><br>
-            Lily e Sarah impararono che la privacy è importante perché
-            permette alle persone di sentirsi sicure e a loro agio. È
-            fondamentale non solo rispettarla, ma anche proteggerla.</p>
+        <p th:text="${argomento.corpo}"></p>
     </div>
 
 

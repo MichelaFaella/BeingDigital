@@ -19,11 +19,8 @@
 }
 
 .bannerRacconto {
-    background-size: cover;
-    background-position: center;
     height: 80vh;
     min-width: 600px;
-    background-size: cover;
 }
 
 .banner-text {
