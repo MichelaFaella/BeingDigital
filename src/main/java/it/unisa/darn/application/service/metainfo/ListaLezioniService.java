@@ -5,9 +5,11 @@ import it.unisa.darn.storage.entity.Lezione;
 import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.entity.Risposta;
 import it.unisa.darn.storage.entity.Utente;
+import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.LezioneRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -31,18 +33,31 @@ public class ListaLezioniService {
   @Autowired
   private LezioneRepository lezioneRepository;
 
+  @Autowired
+  private DomandaRepository domandaRepository;
+
   public Map<MetaInfo, List<Lezione>> getLezioniDaStudiare(Utente utente) {
-    Set<MetaInfo> metaInfoEsatte =
+    Set<Domanda> domandeEsatte =
         rispostaRepository.findByUtente(utente).stream()
             .filter(risposta -> risposta.getIndiceSelezione() == 0).map(Risposta::getDomanda)
-            .map(Domanda::getMetaInfo).collect(Collectors.toSet());
+            .collect(Collectors.toSet());
 
-    Set<MetaInfo> metaInfoTotali =
-        new HashSet<>(metaInfoRepository.findByLivello(utente.getLivello()));
-    metaInfoTotali.removeAll(metaInfoEsatte);
+    List<MetaInfo> metaInfoLivello = metaInfoRepository.findByLivello(utente.getLivello());
+    List<MetaInfo> metaInfoSbagliate = new ArrayList<>();
+    for (MetaInfo metaInfo : metaInfoLivello) {
+      Set<Domanda> domandeMetaInfo = new HashSet<>(domandaRepository.findByMetaInfo(metaInfo));
+      if (domandeMetaInfo.isEmpty()) {
+        metaInfoSbagliate.add(metaInfo);
+        continue;
+      }
+      domandeMetaInfo.removeAll(domandeEsatte);
+      if (!domandeMetaInfo.isEmpty()) {
+        metaInfoSbagliate.add(metaInfo);
+      }
+    }
 
     Map<MetaInfo, List<Lezione>> lezioniPerMetaInfo = new HashMap<>();
-    for (MetaInfo metaInfo : metaInfoTotali) {
+    for (MetaInfo metaInfo : metaInfoSbagliate) {
       List<Lezione> lezioni = lezioneRepository.findByMetaInfo(metaInfo);
       if (!lezioni.isEmpty()) {
         lezioniPerMetaInfo.put(metaInfo, lezioni);
