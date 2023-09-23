@@ -2,6 +2,7 @@ package it.unisa.darn.application.service.metainfo;
 
 import it.unisa.darn.storage.entity.Argomento;
 import it.unisa.darn.storage.entity.MetaInfo;
+import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.ArgomentoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import java.util.Optional;
@@ -47,6 +48,29 @@ public class ModificaRisorsaService {
 
     if (copertina != null) {
       argomento.setCopertina(copertina);
+    }
+
+    return true;
+  }
+
+  public boolean modificaMetaInfo(Long id, String keyword, Livello livello) {
+    Optional<MetaInfo> optional = metaInfoRepository.findById(id);
+    if (optional.isEmpty()) {
+      return false;
+    }
+
+    MetaInfo metaInfo = optional.get();
+
+    if (keyword != null) {
+      Optional<MetaInfo> optionalAltro = metaInfoRepository.findByKeyword(keyword);
+      if (optionalAltro.isPresent() && !optionalAltro.get().equals(metaInfo)) {
+        return false;
+      }
+      metaInfo.setKeyword(keyword);
+    }
+
+    if (livello != null) {
+      metaInfo.setLivello(livello);
     }
 
     return true;

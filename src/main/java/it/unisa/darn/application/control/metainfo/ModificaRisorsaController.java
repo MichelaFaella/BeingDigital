@@ -1,10 +1,12 @@
 package it.unisa.darn.application.control.metainfo;
 
 import it.unisa.darn.application.control.metainfo.form.ArgomentoForm;
+import it.unisa.darn.application.control.metainfo.form.MetaInfoForm;
 import it.unisa.darn.application.service.metainfo.ModificaRisorsaService;
 import it.unisa.darn.application.service.metainfo.VisualizzazioneRisorsaService;
 import it.unisa.darn.application.service.metainfo.VisualizzazioneRisorseService;
 import it.unisa.darn.storage.entity.Argomento;
+import it.unisa.darn.storage.entity.MetaInfo;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import java.util.Optional;
@@ -72,7 +74,33 @@ public class ModificaRisorsaController {
   }
 
   @GetMapping("/admin/modificaMetaInfo")
-  public String modificaMetaInfoGet() {
+  public String modificaMetaInfoGet(@RequestParam Long id,
+                                    @ModelAttribute MetaInfoForm metaInfoForm) {
+    Optional<MetaInfo> optional = visualizzazioneRisorsaService.getMetaInfo(id);
+    if (optional.isEmpty()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    MetaInfo metaInfo = optional.get();
+    metaInfoForm.setKeyword(metaInfo.getKeyword());
+    metaInfoForm.setLivello(metaInfo.getLivello());
     return "metainfo/modificaMetaInfo";
+  }
+
+  @PostMapping("/admin/modificaMetaInfo")
+  public String modificaMetaInfoPost(@RequestParam Long id,
+                                     @ModelAttribute @Valid MetaInfoForm metaInfoForm,
+                                     BindingResult bindingResult, Model model) {
+    if (bindingResult.hasErrors()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    if (!modificaRisorsaService.modificaMetaInfo(id, metaInfoForm.getKeyword(),
+        metaInfoForm.getLivello())) {
+      model.addAttribute("keywordEsistente", true);
+      return "metainfo/modificaMetaInfo";
+    }
+
+    return "redirect:/admin/visualizzazioneRisorse";
   }
 }
