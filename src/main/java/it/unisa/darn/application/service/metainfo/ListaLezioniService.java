@@ -43,7 +43,10 @@ public class ListaLezioniService {
 
     Map<MetaInfo, List<Lezione>> lezioniPerMetaInfo = new HashMap<>();
     for (MetaInfo metaInfo : metaInfoTotali) {
-      lezioniPerMetaInfo.put(metaInfo, lezioneRepository.findByMetaInfo(metaInfo));
+      List<Lezione> lezioni = lezioneRepository.findByMetaInfo(metaInfo);
+      if (!lezioni.isEmpty()) {
+        lezioniPerMetaInfo.put(metaInfo, lezioni);
+      }
     }
 
     return lezioniPerMetaInfo;
