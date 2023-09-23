@@ -11,4 +11,6 @@ public interface MetaInfoRepository extends JpaRepository<MetaInfo, Long> {
   Optional<MetaInfo> findByKeyword(String keyword);
 
   List<MetaInfo> findByLivello(Livello livello);
+
+  boolean existsByKeyword(String keyword);
 }
