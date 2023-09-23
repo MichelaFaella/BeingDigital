@@ -18,7 +18,9 @@
 
 
     <div class="raccontoText">
-        <p th:text="${argomento.corpo}"></p>
+        <p>
+            <th:block th:utext="${@textEncoder.htmlEncode(argomento.corpo)}"></th:block>
+        </p>
     </div>
 
 
