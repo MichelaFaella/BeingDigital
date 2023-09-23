@@ -10,21 +10,24 @@
 <div class="modifica" id="modArg">
     <h2>Meta-info</h2>
     <div class="daticard">
-        <form action="" method="post">
-            <label for="titolo">Keyword:</label>
-            <input class="input" id="titolo" name="keyword" type="text">
+        <form method="post" th:action="${param.id==null ? '/admin/inserimentoMetaInfo':'/admin/modificaMetaInfo'}"
+              th:object="${metaInfoForm}">
+            <input class="input" id="id" name="id" style="display: none" th:value="${param.id}" type="text">
+            <label for="keyword">Keyword:</label>
+            <input class="input" id="keyword" name="keyword" required th:field="*{keyword}" type="text">
             <div class="lala">
                 <label class="label" for="livello">Livello:</label>
                 <div class="custom-select">
-                    <select id="livello" name="livello">
+                    <select id="livello" name="livello" th:field="*{livello}">
                         <option value="-1">Inserire</option>
-                        <th:block th:each="meta: ${metaInfo}">
-                            <option th:text="${meta.keyword}" th:value="${meta.id}"></option>
-                        </th:block>
+                        <option value="BASE">base</option>
+                        <option value="INTERMEDIO">intermedio</option>
+                        <option value="AVANZATO">avanzato</option>
+                        <option value="CITTADINANZA_DIGITALE">cittadinanza digitale</option>
                     </select>
                 </div>
             </div>
-            <input onclick="validateMeta(this)" type="submit" value="COMPLETATO">
+            <input onclick="return validateMeta(this)" type="submit" value="COMPLETATO">
         </form>
     </div>
 </div>
@@ -35,4 +38,8 @@
 </body>
 <th:block th:include="fragments/footer"></th:block>
 <script th:src="@{/js/select.js}"></script>
+<script th:src="@{/js/modifica.js}"></script>
+<script th:if="${keywordEsistente!=null}">
+    toast("La keyword risulta essere già esistente! <br> Inserirne un'altra.");
+</script>
 </html>

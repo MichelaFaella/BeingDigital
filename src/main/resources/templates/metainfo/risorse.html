@@ -35,13 +35,14 @@
                 <tr class="special">
                     <td th:text="${meta.keyword}"></td>
                     <td th:text="${meta.livello}"></td>
-                    <td><i class="fa-solid fa-pen"></i></td>
+                    <td><a th:href="@{/admin/modificaMetaInfo(id=${meta.id})}"><i class="fa-solid fa-pen"> </i></a>
+                    </td>
                     <td><i class="fa-solid fa-trash" onclick="showConfermaMeta(this)" th:id="${meta.id}"></i></td>
                 </tr>
             </th:block>
         </table>
         <div class="risorsebtn">
-            <a>Aggiungi</a>
+            <a href="/admin/inserimentoMetaInfo">Aggiungi</a>
         </div>
     </div>
 

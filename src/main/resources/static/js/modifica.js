@@ -21,12 +21,11 @@ function validateGioco(obj) {
 
 function validateMeta(obj) {
     var key = document.getElementById("keyword");
-    if (validateNome(key)) {
+    if (validateKey(key) && validateLivello()) {
         console.log("Vai");
         return true;
-    } else {
-        return false;
     }
+    return false
 }
 
 function validateTitolo(titolo) {
@@ -59,6 +58,16 @@ function validateSelect() {
         return false
     } else if (meta.value == -1) {
         toast("ATTENZIONE! <br>Inserire la meta-info.");
+        return false
+    }
+    return true;
+}
+
+function validateLivello() {
+    var livello = document.getElementById('livello');
+    console.log(livello.value);
+    if (livello.value == -1) {
+        toast("ATTENZIONE! <br>Inserire il livello.");
         return false
     }
     return true;

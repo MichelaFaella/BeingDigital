@@ -15,7 +15,7 @@
 
     <th:block th:each="instance: ${lezioniPerMetaInfo}">
         <div class="box">
-            <span class="etichetta"></span> <!-- aggiungere la classe del livello -->
+            
             <h2 th:text="${instance.key.keyword}"></h2>
             <ul>
                 <th:block th:each="arg, istat: ${instance.value}">

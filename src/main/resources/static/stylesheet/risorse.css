@@ -91,7 +91,7 @@
 }
 
 .special td {
-    padding: 10px 0;
+    padding: 10px 10px;
     width: 300px;
     text-align: center;
     box-shadow: inset 0px -24px 15px 0px rgba(0, 0, 0, 0.1);
