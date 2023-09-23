@@ -17,23 +17,24 @@
             online.</p>
     </div>
 
-    <div class="racconto">
-        <a href="/racconto">
-            <div class="cardracconto">
-                <input name="" type="checkbox">
-                <div class="toggleracconto">+</div>
-                <div class="imageracconto">
-                    <img alt="">
+    <th:block th:each="racconto : ${racconti}">
+        <div class="racconto">
+            <a th:href="@{/(id=${racconto.id})}">
+                <div class="cardracconto">
+                    <input name="" type="checkbox">
+                    <div class="toggleracconto">+</div>
+                    <div class="imageracconto">
+                        <img alt="" th:src="@{/copertina(idArgomento=${racconto.id})}">
+                    </div>
+
+                    <div class="textRacconto">
+                        <h2 th:text="${racconto.titolo}"></h2>
+                    </div>
                 </div>
+            </a>
+        </div>
+    </th:block>
 
-                <div class="textRacconto">
-                    <h2>Il diario segreto di Lily</h2>
-                </div>
-            </div>
-        </a>
-
-
-    </div>
 </div>
 <th:block th:include="fragments/footer"></th:block>
 </body>

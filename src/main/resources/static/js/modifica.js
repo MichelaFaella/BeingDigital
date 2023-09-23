@@ -86,6 +86,8 @@ function validateKey(key) {
     if (key.value.length != 0 && key.value.length <= 255) {
         console.log("La lunghezza della key è: " + key.value.length)
         return true;
+    } else if (key.value.length == 0) {
+        return false;
     }
     toast("La keyword risulta essere troppo lungo. <br> Inserisci al massimo 255 caratteri.")
     return false
