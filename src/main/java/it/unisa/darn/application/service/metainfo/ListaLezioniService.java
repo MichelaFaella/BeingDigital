@@ -5,8 +5,8 @@ import it.unisa.darn.storage.entity.Lezione;
 import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.entity.Risposta;
 import it.unisa.darn.storage.entity.Utente;
-import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.LezioneRepository;
+import it.unisa.darn.storage.repository.MetaInfoRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,27 +26,24 @@ public class ListaLezioniService {
   private RispostaRepository rispostaRepository;
 
   @Autowired
-  private DomandaRepository domandaRepository;
+  private MetaInfoRepository metaInfoRepository;
 
   @Autowired
   private LezioneRepository lezioneRepository;
 
   public Map<MetaInfo, List<Lezione>> getLezioniDaStudiare(Utente utente) {
-    Set<Domanda> domandeEsatte =
+    Set<MetaInfo> metaInfoEsatte =
         rispostaRepository.findByUtente(utente).stream()
             .filter(risposta -> risposta.getIndiceSelezione() == 0).map(Risposta::getDomanda)
-            .collect(Collectors.toSet());
+            .map(Domanda::getMetaInfo).collect(Collectors.toSet());
 
-    Set<Domanda> domandTotali =
-        new HashSet<>(domandaRepository.findByMetaInfoLivello(utente.getLivello()));
-    domandTotali.removeAll(domandeEsatte);
-
-    Set<MetaInfo> metaInfo =
-        domandTotali.stream().map(Domanda::getMetaInfo).collect(Collectors.toSet());
+    Set<MetaInfo> metaInfoTotali =
+        new HashSet<>(metaInfoRepository.findByLivello(utente.getLivello()));
+    metaInfoTotali.removeAll(metaInfoEsatte);
 
     Map<MetaInfo, List<Lezione>> lezioniPerMetaInfo = new HashMap<>();
-    for (MetaInfo metaInfo1 : metaInfo) {
-      lezioniPerMetaInfo.put(metaInfo1, lezioneRepository.findByMetaInfo(metaInfo1));
+    for (MetaInfo metaInfo : metaInfoTotali) {
+      lezioniPerMetaInfo.put(metaInfo, lezioneRepository.findByMetaInfo(metaInfo));
     }
 
     return lezioniPerMetaInfo;
