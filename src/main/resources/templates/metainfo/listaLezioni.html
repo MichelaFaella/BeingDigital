@@ -15,11 +15,13 @@
 
     <th:block th:each="instance: ${lezioniPerMetaInfo}">
         <div class="box">
-            
+
             <h2 th:text="${instance.key.keyword}"></h2>
             <ul>
                 <th:block th:each="arg, istat: ${instance.value}">
-                    <li><span th:text="${istat.count}"></span> <a href="" th:text="${arg.titolo}"></a></li>
+                    <li><span th:text="${istat.count}"></span> <a
+                            th:href="@{/auth/visualizzazioneLezione(id=${arg.id})}"
+                            th:text="${arg.titolo}"></a></li>
                 </th:block>
             </ul>
         </div>

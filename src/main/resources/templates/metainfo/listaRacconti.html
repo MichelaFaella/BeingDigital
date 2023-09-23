@@ -17,9 +17,10 @@
             online.</p>
     </div>
 
-    <th:block th:each="racconto : ${racconti}">
-        <div class="racconto">
-            <a th:href="@{/(id=${racconto.id})}">
+
+    <div class="racconto">
+        <th:block th:each="racconto : ${racconti}">
+            <a th:href="@{/visualizzazioneRacconto(id=${racconto.id})}">
                 <div class="cardracconto">
                     <input name="" type="checkbox">
                     <div class="toggleracconto">+</div>
@@ -32,8 +33,9 @@
                     </div>
                 </div>
             </a>
-        </div>
-    </th:block>
+        </th:block>
+    </div>
+
 
 </div>
 <th:block th:include="fragments/footer"></th:block>

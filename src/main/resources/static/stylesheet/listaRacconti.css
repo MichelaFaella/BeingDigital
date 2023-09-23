@@ -143,6 +143,6 @@
         justify-items: center;
         align-items: center;
         min-height: 100vh;
-        background-color: var(--text-color);
+        background-color: var(--second-color);
     }
 }
