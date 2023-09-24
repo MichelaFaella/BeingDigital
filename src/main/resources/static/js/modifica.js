@@ -28,6 +28,31 @@ function validateMeta(obj) {
     return false
 }
 
+function validateDomanda(obj) {
+    var testo = document.getElementById("testo");
+    var cor = document.getElementById("corretta");
+    var s1 = document.getElementById("sbagliata1");
+    var s2 = document.getElementById("sbagliata2");
+    var s3 = document.getElementById("sbagliata3");
+
+    if (validateTesto(testo) && validateTesto(cor) && validateTesto(s1) && validateTesto(s2) && validateTesto(s3) && validateMetaInf()) {
+        console.log("Vai");
+        return true;
+    }
+    return false
+}
+
+function validateTesto(testo) {
+    if (testo.value.length != 0 && testo.value.length <= 255) {
+        console.log("La lunghezza del titolo è: " + testo.value.length)
+        return true;
+    } else if (testo.value.length == 0) {
+        return false;
+    }
+    toast("ATTENZIONE <br> Inserisci al massimo 255 caratteri.")
+    return false
+}
+
 function validateTitolo(titolo) {
     if (titolo.value.length != 0 && titolo.value.length <= 255) {
         console.log("La lunghezza del titolo è: " + titolo.value.length)
@@ -68,6 +93,16 @@ function validateLivello() {
     console.log(livello.value);
     if (livello.value == -1) {
         toast("ATTENZIONE! <br>Inserire il livello.");
+        return false
+    }
+    return true;
+}
+
+function validateMetaInf() {
+    var meta = document.getElementById('meta');
+    console.log(meta.value);
+    if (meta.value == -1) {
+        toast("ATTENZIONE! <br>Inserire la meta-info.");
         return false
     }
     return true;
