@@ -1,6 +1,7 @@
 package it.unisa.darn.application.control.metainfo;
 
 import it.unisa.darn.application.control.metainfo.form.ArgomentoForm;
+import it.unisa.darn.application.control.metainfo.form.DomandaForm;
 import it.unisa.darn.application.control.metainfo.form.MetaInfoForm;
 import it.unisa.darn.application.service.metainfo.InserimentoRisorsaService;
 import it.unisa.darn.application.service.metainfo.VisualizzazioneRisorseService;
@@ -77,6 +78,30 @@ public class InserimentoRisorsaController {
         metaInfoForm.getLivello())) {
       model.addAttribute("keywordEsistente", true);
       return "metainfo/modificaMetaInfo";
+    }
+
+    return "redirect:/admin/visualizzazioneRisorse";
+  }
+
+  @GetMapping("/admin/inserimentoDomanda")
+  public String inserimentoDomandaGet(@ModelAttribute DomandaForm domandaForm, Model model) {
+    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+
+    return "metainfo/modificaDomanda";
+  }
+
+  @PostMapping("/admin/inserimentoDomanda")
+  public String inserimentoDomandaPost(@ModelAttribute @Valid DomandaForm domandaForm,
+                                       BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    if (!inserimentoRisorsaService.inserimentoDomanda(domandaForm.getTesto(),
+        domandaForm.getCorretta(), domandaForm.getSbagliata1(), domandaForm.getSbagliata2(),
+        domandaForm.getSbagliata3(),
+        domandaForm.getMetaInfoId())) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     return "redirect:/admin/visualizzazioneRisorse";

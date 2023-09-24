@@ -1,10 +1,12 @@
 package it.unisa.darn.application.service.metainfo;
 
+import it.unisa.darn.storage.entity.Domanda;
 import it.unisa.darn.storage.entity.Lezione;
 import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.entity.Racconto;
 import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.ArgomentoRepository;
+import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class InserimentoRisorsaService {
 
   @Autowired
   private MetaInfoRepository metaInfoRepository;
+
+  @Autowired
+  private DomandaRepository domandaRepository;
 
   public boolean inserimentoLezione(String titolo, String corpo, byte[] copertina,
                                     Long metaInfoId) {
@@ -52,6 +57,19 @@ public class InserimentoRisorsaService {
 
     MetaInfo metaInfo = new MetaInfo(keyword, livello);
     metaInfoRepository.save(metaInfo);
+    return true;
+  }
+
+  public boolean inserimentoDomanda(String testo, String corretta, String sbagliata1,
+                                    String sbagliata2, String sbagliata3, Long metaInfoId) {
+    Optional<MetaInfo> optional = metaInfoRepository.findById(metaInfoId);
+    if (optional.isEmpty()) {
+      return false;
+    }
+
+    Domanda domanda =
+        new Domanda(testo, corretta, sbagliata1, sbagliata2, sbagliata3, optional.get());
+    domandaRepository.save(domanda);
     return true;
   }
 }
