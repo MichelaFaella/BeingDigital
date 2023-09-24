@@ -1,9 +1,11 @@
 package it.unisa.darn.application.service.metainfo;
 
 import it.unisa.darn.storage.entity.Argomento;
+import it.unisa.darn.storage.entity.Domanda;
 import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.ArgomentoRepository;
+import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class ModificaRisorsaService {
 
   @Autowired
   private MetaInfoRepository metaInfoRepository;
+
+  @Autowired
+  private DomandaRepository domandaRepository;
 
   public boolean modificaArgomento(Long id, String titolo, String corpo, byte[] copertina,
                                    Long metaInfoId) {
@@ -71,6 +76,47 @@ public class ModificaRisorsaService {
 
     if (livello != null) {
       metaInfo.setLivello(livello);
+    }
+
+    return true;
+  }
+
+  public boolean modificaDomanda(Long id, String testo, String corretta, String sbagliata1,
+                                 String sbagliata2, String sbagliata3, Long metaInfoId) {
+    Optional<Domanda> optional = domandaRepository.findById(id);
+    if (optional.isEmpty()) {
+      return false;
+    }
+
+    Domanda domanda = optional.get();
+
+    if (metaInfoId != null) {
+      Optional<MetaInfo> optionalMetaInfo = metaInfoRepository.findById(metaInfoId);
+      if (optionalMetaInfo.isEmpty()) {
+        return false;
+      }
+
+      domanda.setMetaInfo(optionalMetaInfo.get());
+    }
+
+    if (testo != null) {
+      domanda.setTesto(testo);
+    }
+
+    if (corretta != null) {
+      domanda.setCorretta(corretta);
+    }
+
+    if (sbagliata1 != null) {
+      domanda.setSbagliata1(sbagliata1);
+    }
+
+    if (sbagliata2 != null) {
+      domanda.setSbagliata2(sbagliata2);
+    }
+
+    if (sbagliata3 != null) {
+      domanda.setSbagliata3(sbagliata3);
     }
 
     return true;

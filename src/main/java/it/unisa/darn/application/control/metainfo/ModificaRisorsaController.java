@@ -1,11 +1,13 @@
 package it.unisa.darn.application.control.metainfo;
 
 import it.unisa.darn.application.control.metainfo.form.ArgomentoForm;
+import it.unisa.darn.application.control.metainfo.form.DomandaForm;
 import it.unisa.darn.application.control.metainfo.form.MetaInfoForm;
 import it.unisa.darn.application.service.metainfo.ModificaRisorsaService;
 import it.unisa.darn.application.service.metainfo.VisualizzazioneRisorsaService;
 import it.unisa.darn.application.service.metainfo.VisualizzazioneRisorseService;
 import it.unisa.darn.storage.entity.Argomento;
+import it.unisa.darn.storage.entity.Domanda;
 import it.unisa.darn.storage.entity.MetaInfo;
 import jakarta.validation.Valid;
 import java.io.IOException;
@@ -99,6 +101,45 @@ public class ModificaRisorsaController {
         metaInfoForm.getLivello())) {
       model.addAttribute("keywordEsistente", true);
       return "metainfo/modificaMetaInfo";
+    }
+
+    return "redirect:/admin/visualizzazioneRisorse";
+  }
+
+  @GetMapping("/admin/modificaDomanda")
+  public String modificaDomandaGet(@RequestParam Long id, @ModelAttribute DomandaForm domandaForm,
+                                   Model model) {
+    Optional<Domanda> optional = visualizzazioneRisorsaService.getDomanda(id);
+    if (optional.isEmpty()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    Domanda domanda = optional.get();
+    domandaForm.setTesto(domanda.getTesto());
+    domandaForm.setCorretta(domanda.getCorretta());
+    domandaForm.setSbagliata1(domanda.getSbagliata1());
+    domandaForm.setSbagliata2(domanda.getSbagliata2());
+    domandaForm.setSbagliata3(domanda.getSbagliata3());
+    domandaForm.setMetaInfoId(domanda.getMetaInfo().getId());
+
+    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+
+    return "metainfo/modificaDomanda";
+  }
+
+  @PostMapping("/admin/modificaDomanda")
+  public String modificaDomandaPost(@RequestParam Long id,
+                                    @ModelAttribute @Valid DomandaForm domandaForm,
+                                    BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    if (!modificaRisorsaService.modificaDomanda(id, domandaForm.getTesto(),
+        domandaForm.getCorretta(), domandaForm.getSbagliata1(), domandaForm.getSbagliata2(),
+        domandaForm.getSbagliata3(),
+        domandaForm.getMetaInfoId())) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     return "redirect:/admin/visualizzazioneRisorse";
