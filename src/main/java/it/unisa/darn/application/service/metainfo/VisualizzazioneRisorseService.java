@@ -39,25 +39,41 @@ public class VisualizzazioneRisorseService {
   @Autowired
   private DomandaRepository domandaRepository;
 
-  public List<MetaInfo> getAllMetaInfo() {
-    return metaInfoRepository.findAll().stream().sorted(Comparator.comparing(MetaInfo::getLivello))
+  public List<MetaInfo> getAllMetaInfoSortedByLivelloKeyword() {
+    return metaInfoRepository.findAll().stream()
+        .sorted(Comparator.comparing(MetaInfo::getLivello).thenComparing(MetaInfo::getKeyword))
         .toList();
   }
 
-  public List<Lezione> getAllLezioni() {
-    return lezioneRepository.findAll(Sort.by(Sort.Direction.ASC, "titolo"));
+  public List<Lezione> getAllLezioniSortedByLivelloKeywordTitolo() {
+    return lezioneRepository.findAll().stream()
+        .sorted(Comparator.comparing((Lezione lezione) -> lezione.getMetaInfo().getLivello())
+            .thenComparing(lezione -> lezione.getMetaInfo().getKeyword())
+            .thenComparing(Lezione::getTitolo)).toList();
   }
 
-  public List<Racconto> getAllRacconti() {
-    return raccontoRepository.findAll(Sort.by(Sort.Direction.ASC, "titolo"));
+  public List<Racconto> getAllRaccontiSortedByTitolo() {
+    return raccontoRepository.findAll(Sort.by("titolo"));
   }
 
-  public List<Gioco> getAllGiochi() {
-    return giocoRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
+  public List<Racconto> getAllRaccontiSortedByLivelloKeywordTitolo() {
+    return raccontoRepository.findAll().stream()
+        .sorted(Comparator.comparing((Racconto racconto) -> racconto.getMetaInfo().getLivello())
+            .thenComparing(racconto -> racconto.getMetaInfo().getKeyword())
+            .thenComparing(Racconto::getTitolo)).toList();
   }
 
-  public List<Domanda> getAllDomande() {
-    return domandaRepository.findAll(Sort.by(Sort.Direction.ASC, "metaInfo"));
+  public List<Gioco> getAllGiochiSortedByLivelloKeyword() {
+    return giocoRepository.findAll().stream()
+        .sorted(Comparator.comparing((Gioco gioco) -> gioco.getMetaInfo().getLivello())
+            .thenComparing(gioco -> gioco.getMetaInfo().getKeyword())).toList();
+  }
+
+  public List<Domanda> getAllDomandeSortedByLivelloKeywordTesto() {
+    return domandaRepository.findAll().stream()
+        .sorted(Comparator.comparing((Domanda domanda) -> domanda.getMetaInfo().getLivello())
+            .thenComparing(domanda -> domanda.getMetaInfo().getKeyword())
+            .thenComparing(Domanda::getTesto)).toList();
   }
 
   public List<MetaInfo> getMetaInfoSenzaGioco(Long includeMetaInfoId) {
@@ -69,6 +85,8 @@ public class VisualizzazioneRisorseService {
     Set<MetaInfo> metaInfo = new HashSet<>(metaInfoRepository.findAll());
     metaInfo.removeAll(metaInfoConGioco);
 
-    return metaInfo.stream().sorted(Comparator.comparing(MetaInfo::getLivello)).toList();
+    return metaInfo.stream()
+        .sorted(Comparator.comparing(MetaInfo::getLivello).thenComparing(MetaInfo::getKeyword))
+        .toList();
   }
 }

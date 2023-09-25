@@ -30,7 +30,8 @@ public class InserimentoRisorsaController {
 
   @GetMapping("/admin/inserimentoArgomento")
   public String inserimentoArgomentoGet(@ModelAttribute ArgomentoForm argomentoForm, Model model) {
-    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+    model.addAttribute("metaInfo",
+        visualizzazioneRisorseService.getAllMetaInfoSortedByLivelloKeyword());
 
     return "metainfo/modificaArgomento";
   }
@@ -86,7 +87,8 @@ public class InserimentoRisorsaController {
 
   @GetMapping("/admin/inserimentoDomanda")
   public String inserimentoDomandaGet(@ModelAttribute DomandaForm domandaForm, Model model) {
-    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+    model.addAttribute("metaInfo",
+        visualizzazioneRisorseService.getAllMetaInfoSortedByLivelloKeyword());
 
     return "metainfo/modificaDomanda";
   }

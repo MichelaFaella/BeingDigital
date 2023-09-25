@@ -50,7 +50,8 @@ public class ModificaRisorsaController {
     argomentoForm.setCorpo(argomento.getCorpo());
     argomentoForm.setMetaInfoId(argomento.getMetaInfo().getId());
 
-    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+    model.addAttribute("metaInfo",
+        visualizzazioneRisorseService.getAllMetaInfoSortedByLivelloKeyword());
 
     return "metainfo/modificaArgomento";
   }
@@ -124,7 +125,8 @@ public class ModificaRisorsaController {
     domandaForm.setSbagliata3(domanda.getSbagliata3());
     domandaForm.setMetaInfoId(domanda.getMetaInfo().getId());
 
-    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+    model.addAttribute("metaInfo",
+        visualizzazioneRisorseService.getAllMetaInfoSortedByLivelloKeyword());
 
     return "metainfo/modificaDomanda";
   }
