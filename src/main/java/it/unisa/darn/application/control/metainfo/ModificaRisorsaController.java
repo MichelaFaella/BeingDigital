@@ -177,6 +177,8 @@ public class ModificaRisorsaController {
     if (!modificaRisorsaService.modificaGioco(id, giocoForm.getNome(), giocoForm.getPath(),
         giocoForm.getMetaInfoId())) {
       model.addAttribute("nomeEsistente", true);
+      model.addAttribute("metaInfo", visualizzazioneRisorseService.getMetaInfoSenzaGioco(
+          giocoForm.getMetaInfoId()));
       return "metainfo/modificaGioco";
     }
 

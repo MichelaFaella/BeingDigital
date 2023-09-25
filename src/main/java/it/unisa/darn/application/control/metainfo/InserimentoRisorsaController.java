@@ -125,6 +125,7 @@ public class InserimentoRisorsaController {
     if (!inserimentoRisorsaService.inserimentoGioco(giocoForm.getNome(), giocoForm.getPath(),
         giocoForm.getMetaInfoId())) {
       model.addAttribute("nomeEsistente", true);
+      model.addAttribute("metaInfo", visualizzazioneRisorseService.getMetaInfoSenzaGioco(null));
       return "metainfo/modificaGioco";
     }
 
