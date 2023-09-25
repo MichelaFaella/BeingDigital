@@ -41,4 +41,7 @@
 <th:block th:include="fragments/footer"></th:block>
 <script th:src="@{/js/select.js}"></script>
 <script th:src="@{/js/modifica.js}"></script>
+<script th:if="${nomeEsistente != null}">
+    toast("Il nome risulta essere già esistente! <br> Inserirne un altro.");
+</script>
 </html>
