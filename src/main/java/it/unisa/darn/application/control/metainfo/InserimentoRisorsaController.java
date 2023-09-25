@@ -117,17 +117,17 @@ public class InserimentoRisorsaController {
 
   @PostMapping("/admin/inserimentoGioco")
   public String inserimentoGiocoPost(@ModelAttribute @Valid GiocoForm giocoForm,
-                                     BindingResult bindingResult) {
+                                     BindingResult bindingResult, Model model) {
     if (bindingResult.hasErrors()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     if (!inserimentoRisorsaService.inserimentoGioco(giocoForm.getNome(), giocoForm.getPath(),
         giocoForm.getMetaInfoId())) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+      model.addAttribute("nomeEsistente", true);
+      return "metainfo/modificaGioco";
     }
 
     return "redirect:/admin/visualizzazioneRisorse";
   }
-
 }

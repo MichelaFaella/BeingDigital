@@ -168,14 +168,15 @@ public class ModificaRisorsaController {
   @PostMapping("/admin/modificaGioco")
   public String modificaGiocoPost(@RequestParam Long id,
                                   @ModelAttribute @Valid GiocoForm giocoForm,
-                                  BindingResult bindingResult) {
+                                  BindingResult bindingResult, Model model) {
     if (bindingResult.hasErrors()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     if (!modificaRisorsaService.modificaGioco(id, giocoForm.getNome(), giocoForm.getPath(),
         giocoForm.getMetaInfoId())) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+      model.addAttribute("nomeEsistente", true);
+      return "metainfo/modificaGioco";
     }
 
     return "redirect:/admin/visualizzazioneRisorse";

@@ -83,6 +83,11 @@ public class InserimentoRisorsaService {
     if (optional.isEmpty()) {
       return false;
     }
+
+    if (giocoRepository.existsByNome(nome)) {
+      return false;
+    }
+
     Gioco gioco = new Gioco(nome, path, optional.get());
     giocoRepository.save(gioco);
     return true;

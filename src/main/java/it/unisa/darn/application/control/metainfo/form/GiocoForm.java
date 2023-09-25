@@ -26,5 +26,4 @@ public class GiocoForm {
 
   @NotNull
   private Long metaInfoId;
-
 }

@@ -12,4 +12,6 @@ public interface GiocoRepository extends JpaRepository<Gioco, Long> {
   Optional<Gioco> findByMetaInfo(MetaInfo metaInfo);
 
   void deleteByMetaInfo(MetaInfo metaInfo);
+
+  boolean existsByNome(String nome);
 }
