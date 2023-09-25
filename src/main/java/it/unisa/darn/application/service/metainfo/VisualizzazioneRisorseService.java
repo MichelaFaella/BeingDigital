@@ -10,7 +10,11 @@ import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.LezioneRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import it.unisa.darn.storage.repository.RaccontoRepository;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -36,7 +40,8 @@ public class VisualizzazioneRisorseService {
   private DomandaRepository domandaRepository;
 
   public List<MetaInfo> getAllMetaInfo() {
-    return metaInfoRepository.findAll(Sort.by(Sort.Direction.ASC, "livello"));
+    return metaInfoRepository.findAll().stream().sorted(Comparator.comparing(MetaInfo::getLivello))
+        .toList();
   }
 
   public List<Lezione> getAllLezioni() {
@@ -53,5 +58,17 @@ public class VisualizzazioneRisorseService {
 
   public List<Domanda> getAllDomande() {
     return domandaRepository.findAll(Sort.by(Sort.Direction.ASC, "metaInfo"));
+  }
+
+  public List<MetaInfo> getMetaInfoSenzaGioco(Long includeMetaInfoId) {
+    Set<MetaInfo> metaInfoConGioco =
+        giocoRepository.findAll().stream().map(Gioco::getMetaInfo)
+            .filter(metaInfo -> !metaInfo.getId().equals(includeMetaInfoId))
+            .collect(Collectors.toSet());
+
+    Set<MetaInfo> metaInfo = new HashSet<>(metaInfoRepository.findAll());
+    metaInfo.removeAll(metaInfoConGioco);
+
+    return metaInfo.stream().sorted(Comparator.comparing(MetaInfo::getLivello)).toList();
   }
 }

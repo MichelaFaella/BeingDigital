@@ -135,32 +135,29 @@ public class ModificaRisorsaService {
 
     Gioco gioco = optional.get();
 
-    boolean modificaNome = false;
     if (nome != null) {
       Optional<Gioco> optionalAltro = giocoRepository.findByNome(nome);
       if (optionalAltro.isPresent() && !optionalAltro.get().equals(gioco)) {
         return false;
       }
-      modificaNome = true;
     }
 
-    boolean modificaMetaInfo = false;
-    MetaInfo metaInfo = null;
     if (metaInfoId != null) {
       Optional<MetaInfo> optionalMetaInfo = metaInfoRepository.findById(metaInfoId);
       if (optionalMetaInfo.isEmpty()) {
         return false;
       }
-      modificaMetaInfo = true;
-      metaInfo = optionalMetaInfo.get();
+
+      Optional<Gioco> optionalGioco = giocoRepository.findByMetaInfo(optionalMetaInfo.get());
+      if (optionalGioco.isPresent() && !optionalGioco.get().equals(gioco)) {
+        return false;
+      }
+
+      gioco.setMetaInfo(optionalMetaInfo.get());
     }
 
-    if (modificaNome) {
+    if (nome != null) {
       gioco.setNome(nome);
-    }
-
-    if (modificaMetaInfo) {
-      gioco.setMetaInfo(metaInfo);
     }
 
     if (path != null) {

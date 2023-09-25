@@ -110,7 +110,7 @@ public class InserimentoRisorsaController {
 
   @GetMapping("/admin/inserimentoGioco")
   public String inserimentoGiocoGet(@ModelAttribute GiocoForm giocoForm, Model model) {
-    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+    model.addAttribute("metaInfo", visualizzazioneRisorseService.getMetaInfoSenzaGioco(null));
 
     return "metainfo/modificaGioco";
   }

@@ -84,11 +84,16 @@ public class InserimentoRisorsaService {
       return false;
     }
 
+    MetaInfo metaInfo = optional.get();
+    if (giocoRepository.existsByMetaInfo(metaInfo)) {
+      return false;
+    }
+
     if (giocoRepository.existsByNome(nome)) {
       return false;
     }
 
-    Gioco gioco = new Gioco(nome, path, optional.get());
+    Gioco gioco = new Gioco(nome, path, metaInfo);
     giocoRepository.save(gioco);
     return true;
   }

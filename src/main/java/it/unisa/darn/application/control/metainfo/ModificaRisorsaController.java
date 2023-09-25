@@ -160,7 +160,8 @@ public class ModificaRisorsaController {
     giocoForm.setPath(gioco.getPath());
     giocoForm.setMetaInfoId(gioco.getMetaInfo().getId());
 
-    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+    model.addAttribute("metaInfo", visualizzazioneRisorseService.getMetaInfoSenzaGioco(
+        giocoForm.getMetaInfoId()));
 
     return "metainfo/modificaGioco";
   }
