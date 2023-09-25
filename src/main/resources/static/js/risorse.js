@@ -7,7 +7,7 @@ var dom = document.getElementById("domandaRimossa");
 function showConfermaDom(key) {
     console.log("è stata chiamata la domanda con id: " + key.id);
     document.getElementById('id_dom').value = key.id;
-    document.getElementById('meta').value = "metainfo";
+    document.getElementById('dom').value = "domanda";
     lista.style.display = "none";
     dom.style.display = "flex";
 }

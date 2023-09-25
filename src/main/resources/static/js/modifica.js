@@ -11,7 +11,7 @@ function validateArgomento(obj) {
 function validateGioco(obj) {
     var nome = document.getElementById("nome");
     var path = document.getElementById("path");
-    if (validateNome(nome) && validatePath(path)) {
+    if (validateNome(nome) && validatePath(path) && validateMetaInf()) {
         console.log("Vai");
         return true;
     } else {

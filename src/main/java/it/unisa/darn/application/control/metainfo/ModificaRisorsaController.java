@@ -2,12 +2,14 @@ package it.unisa.darn.application.control.metainfo;
 
 import it.unisa.darn.application.control.metainfo.form.ArgomentoForm;
 import it.unisa.darn.application.control.metainfo.form.DomandaForm;
+import it.unisa.darn.application.control.metainfo.form.GiocoForm;
 import it.unisa.darn.application.control.metainfo.form.MetaInfoForm;
 import it.unisa.darn.application.service.metainfo.ModificaRisorsaService;
 import it.unisa.darn.application.service.metainfo.VisualizzazioneRisorsaService;
 import it.unisa.darn.application.service.metainfo.VisualizzazioneRisorseService;
 import it.unisa.darn.storage.entity.Argomento;
 import it.unisa.darn.storage.entity.Domanda;
+import it.unisa.darn.storage.entity.Gioco;
 import it.unisa.darn.storage.entity.MetaInfo;
 import jakarta.validation.Valid;
 import java.io.IOException;
@@ -139,6 +141,40 @@ public class ModificaRisorsaController {
         domandaForm.getCorretta(), domandaForm.getSbagliata1(), domandaForm.getSbagliata2(),
         domandaForm.getSbagliata3(),
         domandaForm.getMetaInfoId())) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    return "redirect:/admin/visualizzazioneRisorse";
+  }
+
+  @GetMapping("/admin/modificaGioco")
+  public String modificaGiocoGet(@RequestParam Long id, @ModelAttribute GiocoForm giocoForm,
+                                 Model model) {
+    Optional<Gioco> optional = visualizzazioneRisorsaService.getGioco(id);
+    if (optional.isEmpty()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    Gioco gioco = optional.get();
+    giocoForm.setNome(gioco.getNome());
+    giocoForm.setPath(gioco.getPath());
+    giocoForm.setMetaInfoId(gioco.getMetaInfo().getId());
+
+    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+
+    return "metainfo/modificaGioco";
+  }
+
+  @PostMapping("/admin/modificaGioco")
+  public String modificaGiocoPost(@RequestParam Long id,
+                                  @ModelAttribute @Valid GiocoForm giocoForm,
+                                  BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    if (!modificaRisorsaService.modificaGioco(id, giocoForm.getNome(), giocoForm.getPath(),
+        giocoForm.getMetaInfoId())) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 

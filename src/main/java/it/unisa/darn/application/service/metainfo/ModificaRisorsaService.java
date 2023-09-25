@@ -2,10 +2,12 @@ package it.unisa.darn.application.service.metainfo;
 
 import it.unisa.darn.storage.entity.Argomento;
 import it.unisa.darn.storage.entity.Domanda;
+import it.unisa.darn.storage.entity.Gioco;
 import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.ArgomentoRepository;
 import it.unisa.darn.storage.repository.DomandaRepository;
+import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class ModificaRisorsaService {
 
   @Autowired
   private DomandaRepository domandaRepository;
+
+  @Autowired
+  private GiocoRepository giocoRepository;
 
   public boolean modificaArgomento(Long id, String titolo, String corpo, byte[] copertina,
                                    Long metaInfoId) {
@@ -117,6 +122,38 @@ public class ModificaRisorsaService {
 
     if (sbagliata3 != null) {
       domanda.setSbagliata3(sbagliata3);
+    }
+
+    return true;
+  }
+
+  public boolean modificaGioco(Long id, String nome, String path, Long metaInfoId) {
+    Optional<Gioco> optional = giocoRepository.findById(id);
+    if (optional.isEmpty()) {
+      return false;
+    }
+
+    Gioco gioco = optional.get();
+
+    if (nome != null) {
+      Optional<Gioco> optionalAltro = giocoRepository.findByNome(nome);
+      if (optionalAltro.isPresent() && !optionalAltro.get().equals(gioco)) {
+        return false;
+      }
+      gioco.setNome(nome);
+    }
+
+    if (path != null) {
+      gioco.setPath(path);
+    }
+
+    if (metaInfoId != null) {
+      Optional<MetaInfo> optionalMetaInfo = metaInfoRepository.findById(metaInfoId);
+      if (optionalMetaInfo.isEmpty()) {
+        return false;
+      }
+
+      gioco.setMetaInfo(optionalMetaInfo.get());
     }
 
     return true;

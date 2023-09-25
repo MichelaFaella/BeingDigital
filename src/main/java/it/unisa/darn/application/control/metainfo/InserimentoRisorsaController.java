@@ -2,6 +2,7 @@ package it.unisa.darn.application.control.metainfo;
 
 import it.unisa.darn.application.control.metainfo.form.ArgomentoForm;
 import it.unisa.darn.application.control.metainfo.form.DomandaForm;
+import it.unisa.darn.application.control.metainfo.form.GiocoForm;
 import it.unisa.darn.application.control.metainfo.form.MetaInfoForm;
 import it.unisa.darn.application.service.metainfo.InserimentoRisorsaService;
 import it.unisa.darn.application.service.metainfo.VisualizzazioneRisorseService;
@@ -106,4 +107,27 @@ public class InserimentoRisorsaController {
 
     return "redirect:/admin/visualizzazioneRisorse";
   }
+
+  @GetMapping("/admin/inserimentoGioco")
+  public String inserimentoGiocoGet(@ModelAttribute GiocoForm giocoForm, Model model) {
+    model.addAttribute("metaInfo", visualizzazioneRisorseService.getAllMetaInfo());
+
+    return "metainfo/modificaGioco";
+  }
+
+  @PostMapping("/admin/inserimentoGioco")
+  public String inserimentoGiocoPost(@ModelAttribute @Valid GiocoForm giocoForm,
+                                     BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    if (!inserimentoRisorsaService.inserimentoGioco(giocoForm.getNome(), giocoForm.getPath(),
+        giocoForm.getMetaInfoId())) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
+    return "redirect:/admin/visualizzazioneRisorse";
+  }
+
 }

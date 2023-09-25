@@ -10,18 +10,20 @@
 <div class="modifica" id="modArg">
     <h2>Gioco</h2>
     <div class="daticard">
-        <form action="" method="post">
+        <form method="post" th:action="${param.id==null ? '/admin/inserimentoGioco':'/admin/modificaGioco'}"
+              th:object="${giocoForm}">
+            <input class="input" id="id" name="id" style="display: none" th:value="${param.id}" type="text">
             <label for="nome">Nome:</label>
-            <input class="input" id="nome" name="nome" type="text">
+            <input class="input" id="nome" name="nome" required th:field="*{nome}" type="text">
             <label for="path">Path:</label>
-            <input class="input" id="path" name="path" type="text">
+            <input class="input" id="path" name="path" required th:field="*{path}" type="text">
             <div class="lala">
-                <label class="label" for="livello">Meta-info:</label>
+                <label class="label" for="meta">Meta-info:</label>
                 <div class="custom-select">
-                    <select id="livello" name="livello">
+                    <select id="meta" name="metaInfoId" th:field="*{metaInfoId}">
                         <option value="-1">Inserire</option>
                         <th:block th:each="meta: ${metaInfo}">
-                            <option th:text="${meta.keyword}" th:value="${meta.id}"></option>
+                            <option th:id="${meta.id}" th:text="${meta.keyword}" th:value="${meta.id}"></option>
                         </th:block>
                     </select>
                 </div>
@@ -38,4 +40,5 @@
 </body>
 <th:block th:include="fragments/footer"></th:block>
 <script th:src="@{/js/select.js}"></script>
+<script th:src="@{/js/modifica.js}"></script>
 </html>
