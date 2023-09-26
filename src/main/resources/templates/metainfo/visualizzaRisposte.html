@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Risposte</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/risorse.css}" type="text/css"/>
+</head>
+<th:block th:include="fragments/header"></th:block>
+<body>
+<h1 class="livello">Recap delle tue risposte</h1>
+<div class="box" id="boxCorrette">
+    <h2>Rsposte corrette</h2>
+    <table>
+        <tr class="notspecial">
+            <th>Testo</th>
+            <th>Meta-info</th>
+        </tr>
+        <th:block th:each="meta: ${metainfo}">
+            <tr class="special">
+                <td th:text="${meta.keyword}"></td>
+                <td th:text="${meta.livello}"></td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+
+<div class="box" id="boxSbagliate">
+    <h2>Rsposte sbagliate</h2>
+    <table>
+        <tr class="notspecial">
+            <th>Testo</th>
+            <th>Meta-info</th>
+        </tr>
+        <th:block th:each="meta: ${metainfo}">
+            <tr class="special">
+                <td th:text="${meta.keyword}"></td>
+                <td th:text="${meta.livello}"></td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+
+</body>
+<th:block th:include="fragments/footer"></th:block>
+</html>
