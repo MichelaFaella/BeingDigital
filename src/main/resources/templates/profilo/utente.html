@@ -34,13 +34,20 @@
         <div class="progcard">
             <span></span>
             <div class="textProg">
-                <div class="line">
+                <div class="line" th:if="${utente.livello.name()!='MASTER'}">
                     <h3 style="margin-left: 20px;">Hai completato il test al
                         <th:block th:text="${percentuale}"></th:block>
                         %!
                     </h3>
                     <p> Perché non torni a esercitarti?
-                        E se provassi ad affinare le tue conoscenze con i nostri giochi? </p></div>
+                        E se provassi ad affinare le tue conoscenze con i nostri giochi? </p>
+                </div>
+                <div class="line" th:if="${utente.livello.name()=='MASTER'}">
+                    <h3 style="margin-left: 20px;">Hai completato tutti i test al 100%!
+                    </h3>
+                    <p> Perché non ti rinfreschi la memoria?
+                        E se provassi ad affinare le tue conoscenze con i nostri giochi? </p>
+                </div>
             </div>
             <div class="areabtn">
                 <a class="btnUtente" href="/utente/listaLezioni">lezioni</a>
@@ -51,14 +58,21 @@
         <div class="lesscard">
             <span></span>
             <div class="textProg">
-                <div class="line">
+                <div class="line" th:if="${utente.livello.name()!='MASTER'}">
                     <h3 style="margin-left: 20px;">Il tuo livello è
                         <th:block th:text="${utente.livello}"></th:block>
                     </h3>
-                    <p> Ti senti pronto per riprovare il test? </p></div>
+                    <p> Ti senti pronto per riprovare il test? </p>
+                </div>
+                <div class="line" th:if="${utente.livello.name()=='MASTER'}">
+                    <h3 style="margin-left: 20px;">Il tuo livello è
+                        <th:block th:text="${utente.livello}"></th:block>
+                    </h3>
+                    <p> Hai completato tutti i test, complimenti! </p>
+                </div>
             </div>
             <div class="areabtn">
-                <a class="btnUtente" href="">Test</a>
+                <a class="btnUtente" href="" th:if="${utente.livello.name()!='MASTER'}">Test</a>
             </div>
 
         </div>
