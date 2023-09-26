@@ -5,14 +5,21 @@ import it.unisa.darn.storage.entity.Gioco;
 import it.unisa.darn.storage.entity.Lezione;
 import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.entity.Racconto;
+import it.unisa.darn.storage.entity.Risposta;
+import it.unisa.darn.storage.entity.Utente;
+import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.LezioneRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import it.unisa.darn.storage.repository.RaccontoRepository;
+import it.unisa.darn.storage.repository.RispostaRepository;
+import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +45,9 @@ public class VisualizzazioneRisorseService {
 
   @Autowired
   private DomandaRepository domandaRepository;
+
+  @Autowired
+  private RispostaRepository rispostaRepository;
 
   public List<MetaInfo> getAllMetaInfoSortedByLivelloKeyword() {
     return metaInfoRepository.findAll().stream()
@@ -88,5 +98,43 @@ public class VisualizzazioneRisorseService {
     return metaInfo.stream()
         .sorted(Comparator.comparing(MetaInfo::getLivello).thenComparing(MetaInfo::getKeyword))
         .toList();
+  }
+
+  public List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniDaStudiare(Utente utente) {
+    List<MetaInfo> metaInfoDaVedere;
+
+    if (utente.getLivello() != Livello.MASTER) {
+      Set<Domanda> domandeEsatte =
+          rispostaRepository.findByUtente(utente).stream()
+              .filter(risposta -> risposta.getIndiceSelezione() == 0).map(Risposta::getDomanda)
+              .collect(Collectors.toSet());
+
+      List<MetaInfo> metaInfoLivello =
+          metaInfoRepository.findByLivello(utente.getLivello(), Sort.by("keyword"));
+      metaInfoDaVedere = new ArrayList<>();
+      for (MetaInfo metaInfo : metaInfoLivello) {
+        Set<Domanda> domandeMetaInfo = new HashSet<>(domandaRepository.findByMetaInfo(metaInfo));
+        if (domandeMetaInfo.isEmpty()) {
+          metaInfoDaVedere.add(metaInfo);
+          continue;
+        }
+        domandeMetaInfo.removeAll(domandeEsatte);
+        if (!domandeMetaInfo.isEmpty()) {
+          metaInfoDaVedere.add(metaInfo);
+        }
+      }
+    } else {
+      metaInfoDaVedere = getAllMetaInfoSortedByLivelloKeyword();
+    }
+
+    List<Map.Entry<MetaInfo, List<Lezione>>> lezioniPerMetaInfo = new ArrayList<>();
+    for (MetaInfo metaInfo : metaInfoDaVedere) {
+      List<Lezione> lezioni = lezioneRepository.findByMetaInfo(metaInfo, Sort.by("titolo"));
+      if (!lezioni.isEmpty()) {
+        lezioniPerMetaInfo.add(new AbstractMap.SimpleEntry<>(metaInfo, lezioni));
+      }
+    }
+
+    return lezioniPerMetaInfo;
   }
 }
