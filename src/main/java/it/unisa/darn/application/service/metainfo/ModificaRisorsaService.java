@@ -9,6 +9,7 @@ import it.unisa.darn.storage.repository.ArgomentoRepository;
 import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
+import it.unisa.darn.storage.repository.RispostaRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,9 @@ public class ModificaRisorsaService {
 
   @Autowired
   private GiocoRepository giocoRepository;
+
+  @Autowired
+  private RispostaRepository rispostaRepository;
 
   public boolean modificaArgomento(Long id, String titolo, String corpo, byte[] copertina,
                                    Long metaInfoId) {
@@ -80,7 +84,10 @@ public class ModificaRisorsaService {
     }
 
     if (livello != null) {
-      metaInfo.setLivello(livello);
+      if (livello != metaInfo.getLivello()) {
+        rispostaRepository.deleteByDomandaMetaInfo(metaInfo);
+        metaInfo.setLivello(livello);
+      }
     }
 
     return true;
