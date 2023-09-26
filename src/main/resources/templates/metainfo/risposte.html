@@ -7,40 +7,41 @@
 </head>
 <th:block th:include="fragments/header"></th:block>
 <body>
-<h1 class="livello">Recap delle tue risposte</h1>
-<div class="box" id="boxCorrette">
-    <h2>Rsposte corrette</h2>
-    <table>
-        <tr class="notspecial">
-            <th>Testo</th>
-            <th>Meta-info</th>
-        </tr>
-        <th:block th:each="risposta : ${risposte}">
-            <tr class="special" th:if="${risposta.indiceSelezione.equals(0)}">
-                <td th:text="${risposta.domanda.testo}"></td>
-                <td th:text="${risposta.domanda.metaInfo.keyword}"></td>
+<div class="risorse">
+    <h1 class="livello">Recap delle tue risposte</h1>
+    <div class="box" id="boxCorrette">
+        <h2>Rsposte corrette</h2>
+        <table>
+            <tr class="notspecial">
+                <th>Testo</th>
+                <th>Meta-info</th>
             </tr>
-        </th:block>
+            <th:block th:each="risposta : ${risposte}">
+                <tr class="special" th:if="${risposta.indiceSelezione.equals(0)}">
+                    <td th:text="${risposta.domanda.testo}"></td>
+                    <td th:text="${risposta.domanda.metaInfo.keyword}"></td>
+                </tr>
+            </th:block>
 
-    </table>
-</div>
+        </table>
+    </div>
 
-<div class="box" id="boxSbagliate">
-    <h2>Rsposte sbagliate</h2>
-    <table>
-        <tr class="notspecial">
-            <th>Testo</th>
-            <th>Meta-info</th>
-        </tr>
-        <th:block th:each="risposta : ${risposte}">
-            <tr class="special" th:if="${!risposta.indiceSelezione.equals(0)}">
-                <td th:text="risposta.domanda.testo"></td>
-                <td th:text="risposta.domanda.metaInfo.keyword"></td>
+    <div class="box" id="boxSbagliate">
+        <h2>Rsposte sbagliate</h2>
+        <table>
+            <tr class="notspecial">
+                <th>Testo</th>
+                <th>Meta-info</th>
             </tr>
-        </th:block>
-    </table>
+            <th:block th:each="risposta : ${risposte}">
+                <tr class="special" th:if="${!risposta.indiceSelezione.equals(0)}">
+                    <td th:text="risposta.domanda.testo"></td>
+                    <td th:text="risposta.domanda.metaInfo.keyword"></td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
 </div>
-
 </body>
 <th:block th:include="fragments/footer"></th:block>
 </html>
