@@ -43,7 +43,7 @@ function hideConfermaMeta() {
     meta.style.display = "none";
 }
 
-function showConfermaGioco() {
+function showConfermaGioco(key) {
     console.log("è stata chiamata il gioco con id: " + key.id);
     document.getElementById('id_gioco').value = key.id;
     document.getElementById('gioco').value = "gioco";
