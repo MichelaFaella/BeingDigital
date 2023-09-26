@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="areabtn">
-                <a class="btnUtente" href="/utente/listaLezioni">lezioni</a>
+                <a class="btnUtente" href="/utente/lezioni">lezioni</a>
                 <a class="btnUtente" href="">giochi</a>
             </div>
 
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="areabtn">
-                <a class="btnUtente" href="" th:if="${utente.livello.name()!='MASTER'}">Test</a>
+                <a class="btnUtente" href="/utente/test" th:if="${utente.livello.name()!='MASTER'}">Test</a>
             </div>
 
         </div>

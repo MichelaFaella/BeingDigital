@@ -75,7 +75,7 @@ public class ModificaRisorsaController {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
-    return "redirect:/admin/visualizzazioneRisorse";
+    return "redirect:/admin/risorse";
   }
 
   @GetMapping("/admin/modificaMetaInfo")
@@ -106,7 +106,7 @@ public class ModificaRisorsaController {
       return "metainfo/modificaMetaInfo";
     }
 
-    return "redirect:/admin/visualizzazioneRisorse";
+    return "redirect:/admin/risorse";
   }
 
   @GetMapping("/admin/modificaDomanda")
@@ -146,7 +146,7 @@ public class ModificaRisorsaController {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
-    return "redirect:/admin/visualizzazioneRisorse";
+    return "redirect:/admin/risorse";
   }
 
   @GetMapping("/admin/modificaGioco")
@@ -184,6 +184,6 @@ public class ModificaRisorsaController {
       return "metainfo/modificaGioco";
     }
 
-    return "redirect:/admin/visualizzazioneRisorse";
+    return "redirect:/admin/risorse";
   }
 }

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/visualizzazioneRisorse")
-public class VisualizzazioneRisorseController {
+@RequestMapping("/admin/risorse")
+public class RisorseController {
 
   @Autowired
   private VisualizzazioneRisorseService visualizzazioneRisorseService;

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 @Controller
-@RequestMapping("/auth/visualizzazioneLezione")
-public class VisualizzazioneLezioneController {
+@RequestMapping("/auth/lezione")
+public class LezioneController {
 
   @Autowired
   private VisualizzazioneRisorsaService visualizzazioneRisorsaService;

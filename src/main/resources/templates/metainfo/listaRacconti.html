@@ -20,7 +20,7 @@
 
     <div class="racconto">
         <th:block th:each="racconto : ${racconti}">
-            <a th:href="@{/visualizzazioneRacconto(id=${racconto.id})}">
+            <a th:href="@{/racconto(id=${racconto.id})}">
                 <div class="cardracconto">
                     <input name="" type="checkbox">
                     <div class="toggleracconto">+</div>

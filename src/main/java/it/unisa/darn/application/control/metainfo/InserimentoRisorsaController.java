@@ -61,7 +61,7 @@ public class InserimentoRisorsaController {
     if (!result) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
-    return "redirect:/admin/visualizzazioneRisorse";
+    return "redirect:/admin/risorse";
   }
 
   @GetMapping("/admin/inserimentoMetaInfo")
@@ -82,7 +82,7 @@ public class InserimentoRisorsaController {
       return "metainfo/modificaMetaInfo";
     }
 
-    return "redirect:/admin/visualizzazioneRisorse";
+    return "redirect:/admin/risorse";
   }
 
   @GetMapping("/admin/inserimentoDomanda")
@@ -107,7 +107,7 @@ public class InserimentoRisorsaController {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
-    return "redirect:/admin/visualizzazioneRisorse";
+    return "redirect:/admin/risorse";
   }
 
   @GetMapping("/admin/inserimentoGioco")
@@ -131,6 +131,6 @@ public class InserimentoRisorsaController {
       return "metainfo/modificaGioco";
     }
 
-    return "redirect:/admin/visualizzazioneRisorse";
+    return "redirect:/admin/risorse";
   }
 }
