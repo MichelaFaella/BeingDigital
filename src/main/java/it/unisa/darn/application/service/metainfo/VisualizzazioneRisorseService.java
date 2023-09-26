@@ -128,11 +128,22 @@ public class VisualizzazioneRisorseService {
           .filter(metaInfo -> metaInfo.getLivello() != Livello.CITTADINANZA_DIGITALE).toList();
     }
 
+    return getLezioniPerMetaInfo(metaInfoDaVedere);
+  }
+
+  public List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniCittadinanzaDigitale() {
+    List<MetaInfo> metaInfo =
+        metaInfoRepository.findByLivello(Livello.CITTADINANZA_DIGITALE, Sort.by("keyword"));
+
+    return getLezioniPerMetaInfo(metaInfo);
+  }
+
+  private List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniPerMetaInfo(List<MetaInfo> metaInfo) {
     List<Map.Entry<MetaInfo, List<Lezione>>> lezioniPerMetaInfo = new ArrayList<>();
-    for (MetaInfo metaInfo : metaInfoDaVedere) {
-      List<Lezione> lezioni = lezioneRepository.findByMetaInfo(metaInfo, Sort.by("titolo"));
+    for (MetaInfo metaInfo1 : metaInfo) {
+      List<Lezione> lezioni = lezioneRepository.findByMetaInfo(metaInfo1, Sort.by("titolo"));
       if (!lezioni.isEmpty()) {
-        lezioniPerMetaInfo.add(new AbstractMap.SimpleEntry<>(metaInfo, lezioni));
+        lezioniPerMetaInfo.add(new AbstractMap.SimpleEntry<>(metaInfo1, lezioni));
       }
     }
 

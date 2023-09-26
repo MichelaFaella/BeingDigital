@@ -19,7 +19,7 @@
     <ul class="nav-menu">
         <li><a href="">Giochi</a></li>
         <li><a href="/listaRacconti">Racconti</a></li>
-        <li><a href="">Cittadinanza digitale</a></li>
+        <li><a href="/cittadinanzaDigitale">Cittadinanza digitale</a></li>
         <li th:with="accesso = ${@personaAutenticata.persona.isEmpty()}">
             <a href="/login" th:if="${accesso}">Accesso</a>
             <a href="/auth/areaPersonale" th:if="${!accesso}">Area personale</a>
