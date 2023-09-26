@@ -13,7 +13,7 @@
 
     <div class="daticard">
         <span class="etichetta"></span>
-        <form method="post"
+        <form enctype="multipart/form-data" method="post"
               th:action="${param.id==null ? '/admin/inserimentoArgomento':'/admin/modificaArgomento'}"
               th:object="${argomentoForm}">
             <label for="titolo">Titolo:</label>
