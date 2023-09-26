@@ -16,11 +16,16 @@ public class VisualizzazioneRisorseController {
 
   @GetMapping
   public String get(Model model) {
-    model.addAttribute("lezioni", visualizzazioneRisorseService.getAllLezioni());
-    model.addAttribute("racconti", visualizzazioneRisorseService.getAllRacconti());
-    model.addAttribute("metainfo", visualizzazioneRisorseService.getAllMetaInfo());
-    model.addAttribute("giochi", visualizzazioneRisorseService.getAllGiochi());
-    model.addAttribute("domande", visualizzazioneRisorseService.getAllDomande());
+    model.addAttribute("lezioni",
+        visualizzazioneRisorseService.getAllLezioniSortedByLivelloKeywordTitolo());
+    model.addAttribute("racconti",
+        visualizzazioneRisorseService.getAllRaccontiSortedByLivelloKeywordTitolo());
+    model.addAttribute("metainfo",
+        visualizzazioneRisorseService.getAllMetaInfoSortedByLivelloKeyword());
+    model.addAttribute("giochi",
+        visualizzazioneRisorseService.getAllGiochiSortedByLivelloKeyword());
+    model.addAttribute("domande",
+        visualizzazioneRisorseService.getAllDomandeSortedByLivelloKeywordTesto());
     return "metainfo/risorse";
   }
 }

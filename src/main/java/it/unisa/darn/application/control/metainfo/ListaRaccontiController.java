@@ -16,7 +16,7 @@ public class ListaRaccontiController {
 
   @GetMapping
   public String get(Model model) {
-    model.addAttribute("racconti", visualizzazioneRisorseService.getAllRacconti());
+    model.addAttribute("racconti", visualizzazioneRisorseService.getAllRaccontiSortedByTitolo());
     return "metainfo/listaRacconti";
   }
 }
