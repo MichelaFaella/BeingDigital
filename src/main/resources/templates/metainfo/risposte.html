@@ -15,10 +15,10 @@
             <th>Testo</th>
             <th>Meta-info</th>
         </tr>
-        <th:block th:each="meta: ${metainfo}">
-            <tr class="special">
-                <td th:text="${meta.keyword}"></td>
-                <td th:text="${meta.livello}"></td>
+        <th:block th:each="risposta: ${risposte}">
+            <tr class="special" th:if="${risposta.indiceSelezione.equals(0)}">
+                <td th:text="${risposta.domanda.testo}"></td>
+                <td th:text="${risposta.domanda.metaInfo.keyword}"></td>
             </tr>
         </th:block>
     </table>
@@ -31,10 +31,10 @@
             <th>Testo</th>
             <th>Meta-info</th>
         </tr>
-        <th:block th:each="meta: ${metainfo}">
-            <tr class="special">
-                <td th:text="${meta.keyword}"></td>
-                <td th:text="${meta.livello}"></td>
+        <th:block th:each="risposta: ${risposte}">
+            <tr class="special" th:if="${!risposta.indiceSelezione.equals(0)}">
+                <td th:text="${risposta.domanda.testo}"></td>
+                <td th:text="${risposta.domanda.metaInfo.keyword}"></td>
             </tr>
         </th:block>
     </table>

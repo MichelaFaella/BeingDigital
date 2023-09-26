@@ -23,7 +23,7 @@ public class RisposteController {
   public String get(Model model) {
     Utente utente = (Utente) personaAutenticata.getPersona().get();
 
-    model.addAttribute("risposte", risposteService.getRisposte(utente));
+    model.addAttribute("risposte", risposteService.getRisposteSortedByKeywordTesto(utente));
     return "metainfo/risposte";
   }
 }
