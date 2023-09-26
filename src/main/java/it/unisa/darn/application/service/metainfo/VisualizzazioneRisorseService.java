@@ -124,7 +124,8 @@ public class VisualizzazioneRisorseService {
         }
       }
     } else {
-      metaInfoDaVedere = getAllMetaInfoSortedByLivelloKeyword();
+      metaInfoDaVedere = getAllMetaInfoSortedByLivelloKeyword().stream()
+          .filter(metaInfo -> metaInfo.getLivello() != Livello.CITTADINANZA_DIGITALE).toList();
     }
 
     List<Map.Entry<MetaInfo, List<Lezione>>> lezioniPerMetaInfo = new ArrayList<>();
