@@ -43,6 +43,7 @@ public class TestController {
 
     model.addAttribute("domande",
         visualizzazioneRisorseService.getDomandeRandom(utente.getLivello()));
+    model.addAttribute("livello", utente.getLivello());
     return "metainfo/test";
   }
 
