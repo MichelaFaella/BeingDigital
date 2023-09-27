@@ -16,6 +16,7 @@ import it.unisa.darn.storage.repository.RaccontoRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -148,5 +149,11 @@ public class VisualizzazioneRisorseService {
     }
 
     return lezioniPerMetaInfo;
+  }
+
+  public List<Domanda> getDomandeRandom(Livello livello) {
+    List<Domanda> domande = new ArrayList<>(domandaRepository.findByMetaInfoLivello(livello));
+    Collections.shuffle(domande);
+    return domande;
   }
 }
