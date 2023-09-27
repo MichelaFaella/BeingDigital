@@ -15,7 +15,7 @@
         <h1 class="text-center" th:text="'Test di '+ ${livello}"></h1>
         <!-- Progress bar -->
         <th:block
-                th:with="sequenza = ${domande.size()%2==0} ? ${#numbers.sequence(1, domande.size()/2)} : ${#numbers.sequence(0, domande.size()/2)}">
+                th:with="sequenza = ${domande.size()%2==0} ? ${#numbers.sequence(0, domande.size() / 2 - 1)} : ${#numbers.sequence(0, domande.size()/2)}">
             <div class="progressbar">
                 <div class="progress" id="progress"></div>
                 <div class="progress-step progress-step-active" data-title=""></div>
