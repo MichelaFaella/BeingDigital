@@ -1,6 +1,6 @@
 package it.unisa.darn.control.metainfo;
 
-import it.unisa.darn.control.metainfo.form.RispostaForm;
+import it.unisa.darn.control.metainfo.form.RispostaFormsWrapper;
 import it.unisa.darn.service.autenticazione.util.PersonaAutenticata;
 import it.unisa.darn.service.metainfo.TestService;
 import it.unisa.darn.service.metainfo.VisualizzazioneRisorseService;
@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 @Controller
@@ -48,18 +47,19 @@ public class TestController {
   }
 
   @PostMapping
-  public String post(@RequestParam List<@Valid RispostaForm> rispostaFormList) {
+  public String post(@Valid RispostaFormsWrapper rispostaFormsWrapper) {
     Utente utente = (Utente) personaAutenticata.getPersona().get();
 
     if (utente.getLivello().equals(Livello.MASTER)) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
-    List<Map.Entry<Long, String>> risposte = rispostaFormList.stream().map(
-            rispostaForm -> (Map.Entry<Long, String>) new AbstractMap.SimpleEntry<>(
-                rispostaForm.getIdDomanda(),
-                rispostaForm.getRisposta()))
-        .toList();
+    List<Map.Entry<Long, String>> risposte =
+        rispostaFormsWrapper.getRispostaFormList().stream().map(
+                rispostaForm -> (Map.Entry<Long, String>) new AbstractMap.SimpleEntry<>(
+                    rispostaForm.getIdDomanda(),
+                    rispostaForm.getRisposta()))
+            .toList();
 
     try {
       if (testService.test(risposte, utente)) {
