@@ -18,6 +18,6 @@ public class CittadinanzaDigitaleController {
   public String get(Model model) {
     model.addAttribute("lezioniPerMetaInfo",
         visualizzazioneRisorseService.getLezioniCittadinanzaDigitale());
-    return "metainfo/listaLezioni";
+    return "metainfo/listaLezioniCittadinanza";
   }
 }
