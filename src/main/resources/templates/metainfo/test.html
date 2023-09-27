@@ -11,81 +11,84 @@
 <body>
 
 <div class="test">
-    <form action="#" class="form">
-        <h1 class="text-center">Test di BASE</h1>
+    <form action="/utente/test" class="form" method="post">
+        <h1 class="text-center" th:text="'Test di '+ ${livello}"></h1>
         <!-- Progress bar -->
-        <div class="progressbar">
-            <div class="progress" id="progress"></div>
-            <div class="progress-step progress-step-active" data-title=""></div>
-            <div class="progress-step" data-title=""></div><!--da ripetere-->
-            <div class="progress-step" data-title=""></div>
-        </div>
+        <th:block
+                th:with="sequenza = ${domande.size()%2==0} ? ${#numbers.sequence(1, domande.size()/2)} : ${#numbers.sequence(0, domande.size()/2)}">
+            <div class="progressbar">
+                <div class="progress" id="progress"></div>
+                <div class="progress-step progress-step-active" data-title=""></div>
+                <th:block th:each="i: ${sequenza}">
+                    <div class="progress-step" data-title=""></div><!--da ripetere-->
+                </th:block>
+                <div class="progress-step" data-title=""></div>
+            </div>
 
-        <!-- Steps -->
-        <div class="form-step form-step-active">
-            <p>Ciao nome. Stai per sostenere il test LIVELLO, su argomenti visti a lezione nella tua area personale.
-                <br>
-                Se sei pronto premi pure su avanti. </p>
-            <div class="plus">
-                <a class="btn btn-next width-50 ml-auto" href="#">Avanti</a>
+            <!-- Steps -->
+            <div class="form-step form-step-active">
+                <p class="primo"
+                   th:utext="'Ciao nome. Stai per sostenere il test '+ ${livello} +', su argomenti visti a lezione nella tua area personale.<br>Se sei pronto premi pure su avanti.'"></p>
+                <div class="plus">
+                    <a class="btn btn-next width-50 ml-auto" href="#">Avanti</a>
+                </div>
             </div>
-        </div>
-        <div class="form-step"> <!--da qui-->
-            <div class="input-group">
-                <p>dhakjhdkashdlka</p>
-                <label class="container">Two
-                    <input name="3" type="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">Two
-                    <input name="3" type="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">Three
-                    <input name="3" type="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">Four
-                    <input name="3" type="radio">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div class="input-group">
-                <p>dhakjhdkashdlka</p>
-                <label class="container">Two
-                    <input name="4" type="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">Two
-                    <input name="4" type="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">Three
-                    <input name="4" type="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">Four
-                    <input name="4" type="radio">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div class="btns-group">
-                <a class="btn btn-prev" href="#">Indietro</a>
-                <a class="btn btn-next" href="#">Avanti</a>
-            </div>
-        </div><!--a qui-->
 
+            <div class="form-step" th:each="i: ${sequenza}"> <!--da qui-->
+                <th:block th:each="j: ${#numbers.sequence(i*2,i*2+1)}">
+                    <div class="input-group" th:if="${domande.size()-1>=j}">
+                        <th:block th:with="domanda = ${domande.get(j)}">
+                            <p class="domanda" th:text="${domanda.testo}"></p>
+                            <input th:name="'rispostaFormList['+ ${j} +'].idDomanda'" th:value="${domanda.id}"
+                                   type="hidden">
+                            <th:block
+                                    th:with="risposte = ${@arrays.shuffle(domanda.corretta, domanda.sbagliata1, domanda.sbagliata2, domanda.sbagliata3)}">
+                                <label class="container"><p class="risposta" th:text="${risposte.get(0)}"></p>
+                                    <input th:name="'rispostaFormList['+ ${j} +'].risposta'"
+                                           th:value="${risposte.get(0)}"
+                                           type="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container"><p class="risposta" th:text="${risposte.get(1)}"></p>
+                                    <input th:name="'rispostaFormList['+ ${j} +'].risposta'"
+                                           th:value="${risposte.get(1)}"
+                                           type="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container"><p class="risposta" th:text="${risposte.get(2)}"></p>
+                                    <input th:name="'rispostaFormList['+ ${j} +'].risposta'"
+                                           th:value="${risposte.get(2)}"
+                                           type="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container"><p class="risposta" th:text="${risposte.get(3)}"></p>
+                                    <input th:name="'rispostaFormList['+ ${j} +'].risposta'"
+                                           th:value="${risposte.get(3)}"
+                                           type="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </th:block>
+                        </th:block>
+                        <div class="btns-group">
+                            <a class="btn btn-prev" href="#">Indietro</a>
+                            <a class="btn btn-next" href="#">Avanti</a>
+                        </div>
+                    </div>
+                </th:block>
 
-        <div class="form-step">
-            <p style="margin-bottom: 100px">Hai completato il test.
-                <br>
-                Sicuro di volerlo inviare? </p>
-
-            <div class="btns-group">
-                <a class="btn btn-prev" href="#">Indietro</a>
-                <input class="btn" type="submit" value="Invia"/>
             </div>
-        </div>
+            <div class="form-step">
+                <p class="primo" style="margin-bottom: 100px">Hai completato il test.
+                    <br>
+                    Sicuro di volerlo inviare? </p>
+
+                <div class="btns-group">
+                    <a class="btn btn-prev" href="#">Indietro</a>
+                    <input class="btn" type="submit" value="Invia"/>
+                </div>
+            </div>
+
+        </th:block>
     </form>
 </div>
 <script th:src="@{/js/test.js}"></script>

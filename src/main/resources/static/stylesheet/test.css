@@ -14,6 +14,12 @@
     --white-color: white;
 }
 
+.risposta {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+
 .test {
     margin: 0;
     display: grid;
@@ -55,7 +61,7 @@
     display: flex;
     justify-content: space-between;
     counter-reset: step;
-    margin: 2rem 0 4rem;
+    margin: 2rem 0 2rem;
 }
 
 .progressbar::before,
@@ -133,6 +139,7 @@
 
 .input-group {
     margin: 2rem 0;
+    padding: 0 25px;
 }
 
 @keyframes animate {
@@ -154,6 +161,7 @@
     justify-content: center;
     align-items: center;
     justify-items: center;
+    margin-top: 40px;
 }
 
 .plus {
@@ -198,7 +206,15 @@
     user-select: none;
 }
 
-.test p {
+.domanda {
+    font-size: 20px;
+    text-align: left;
+    width: 500px;
+    color: var(--bg-color);
+    font-weight: 400;
+}
+
+.primo {
     font-size: 20px;
     text-align: center;
     width: 500px;
