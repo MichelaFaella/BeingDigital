@@ -9,7 +9,7 @@
     <title>Registraion Form</title>
 </head>
 <body>
-
+<th:block th:include="fragments/header"></th:block>
 <div class="test">
     <form action="/utente/test" class="form" method="post">
         <h1 class="text-center" th:text="'Test di '+ ${livello}"></h1>
@@ -93,4 +93,5 @@
 </div>
 <script th:src="@{/js/test.js}"></script>
 </body>
+<th:block th:include="fragments/footer"></th:block>
 </html>
