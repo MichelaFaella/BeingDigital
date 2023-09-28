@@ -11,6 +11,9 @@
     --second-color: #273a73;
     --notify-color: #5b6ed9;
     --white-color: white;
+    --aggiuntivo1: #3cff46;
+    --aggiuntivo2: #ffa900;
+    --aggiuntivo3: red;
 }
 
 .all-headerbody {
@@ -93,6 +96,17 @@ header .nav-menu li a {
     transition: 0.5s;
 }
 
+.boh {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    background-color: #3cff46;
+    display: none;
+}
+
+header .nav-menu li:hover .boh {
+    display: block;
+}
 
 header .nav-menu li a:hover {
     color: var(--second-color);

@@ -11,6 +11,10 @@
     --second-color: #273a73;
     --notify-color: #5b6ed9;
     --white-color: white;
+    --aggiuntivo1: #28c02f;
+    --aggiuntivo2: #ffa900;
+    --aggiuntivo3: red;
+    --aggiuntivo4: #b700ff;
 }
 
 .utente {
@@ -53,7 +57,7 @@
     position: absolute;
     width: 150%;
     height: 40px;
-    background-color: var(--notify-color);
+    background-color: var(--aggiuntivo1);
     transform: rotate(-45deg) translateY(-20px);
     display: flex;
     justify-content: center;
@@ -101,7 +105,7 @@
     position: absolute;
     width: 150%;
     height: 40px;
-    background-color: var(--notify-color);
+    background-color: var(--aggiuntivo2);
     transform: rotate(-45deg) translateY(-20px);
     display: flex;
     justify-content: center;
@@ -142,7 +146,7 @@
     position: absolute;
     width: 150%;
     height: 40px;
-    background-color: var(--notify-color);
+    background-color: var(--aggiuntivo4);
     transform: rotate(-45deg) translateY(-20px);
     display: flex;
     justify-content: center;

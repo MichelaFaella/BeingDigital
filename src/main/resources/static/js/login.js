@@ -134,8 +134,8 @@ function validate(obj) {
         return true;
     } else {
         console.log("entra2");
-        txt_em.style.color = "#c80e00";
-        txt_p.style.color = "#c80e00";
+        txt_em.style.color = "#FF0000FF";
+        txt_p.style.color = "#FF0000FF";
 
         return false;
     }
@@ -162,13 +162,13 @@ function validateAll(obj) {
     } else {
         console.log("entra2");
         if (!validation_email(email))
-            txt_em.style.color = "#c80e00";
+            txt_em.style.color = "#FF0000FF";
         if (!validation_password(password))
-            txt_p.style.color = "#c80e00";
+            txt_p.style.color = "#FF0000FF";
         if (!validation_name(nome))
-            txt_n.style.color = "#c80e00";
+            txt_n.style.color = "#FF0000FF";
         if (!validation_surname(cognome))
-            txt_c.style.color = "#c80e00";
+            txt_c.style.color = "#FF0000FF";
 
         return false;
     }
@@ -189,11 +189,11 @@ $('#RegEmail').on("change", function () {
     $.post('/existsEmail', {email: this.value}, function (data) {
         var txt_em = document.getElementById("RegEmail");
         if (data.result == true) {
-            txt_em.style.color = "#c80e00";
+            txt_em.style.color = "#FF0000FF";
             toast("Email già esistente.")
         } else {
             validEmail = true;
-            txt_em.style.color = "#78c800";
+            txt_em.style.color = "#3cff46";
             toast("Email valida.")
         }
 

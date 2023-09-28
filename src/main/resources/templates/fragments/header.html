@@ -16,15 +16,25 @@
 <header class="all-headerbody">
     <a href="/"><img alt="" class="logo" src="/img/Logo.png"></a>
 
-    <ul class="nav-menu">
-        <li><a href="">Giochi</a></li>
-        <li><a href="/racconti">Racconti</a></li>
-        <li><a href="/cittadinanzaDigitale">Cittadinanza digitale</a></li>
-        <li th:with="accesso = ${@personaAutenticata.persona.isEmpty()}">
+    <ul class="nav-menu" th:with="accesso = ${@personaAutenticata.persona.isEmpty()}">
+        <li><a href="/cittadinanzaDigitale" th:if="${!accesso}">Privacy</a>
+
+        </li>
+        <li><a href="/cittadinanzaDigitale" th:if="${!accesso}">Cittadinanza digitale</a></li>
+        <li>
             <a href="/login" th:if="${accesso}">Accesso</a>
             <a href="/auth/areaPersonale" th:if="${!accesso}">Area personale</a>
         </li>
     </ul>
+
+    <div class="boh">
+        <ul>
+            <li><a>Racconti</a></li>
+            <li><a>Lezioni</a></li>
+            <li><a>Giochi</a></li>
+        </ul>
+    </div>
+
     <div class="hamburger">
         <span class="bar"></span>
         <span class="bar"></span>

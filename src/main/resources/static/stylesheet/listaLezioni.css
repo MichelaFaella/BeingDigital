@@ -79,18 +79,17 @@
 }
 
 
-.lezioni .box ul li span {
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-    margin: 0 15px;
-    display: inline-block;
-    background-color: var(--second-color);
-    border-radius: 50%;
-    padding: 5px;
-    color: var(--white-color);
-    font-weight: 500;
+:root {
+    --bg-color: #121b37;
+    --text-color: #f2f2f2;
+    --main-color: #30478c;
+    --second-color: #273a73;
+    --notify-color: #5b6ed9;
+    --white-color: white;
+    --aggiuntivo1: #3cff46;
+    --aggiuntivo2: #ffa900;
+    --aggiuntivo3: red;
+    --aggiuntivo4: #b700ff;
 }
 
 .lezioni .box ul li a {

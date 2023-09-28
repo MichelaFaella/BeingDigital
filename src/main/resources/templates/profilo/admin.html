@@ -59,25 +59,25 @@
 
     <div class="percentuali">
         <div th:class="${percentualeBase<=50}? 'progress less': 'progress'"
-             th:style="'--i: '+${percentualeBase}+'; --clr:#121b37'">
+             th:style="'--i: '+${percentualeBase}+'; --clr:#FF0000FF'">
             <h3><span th:text="${percentualeBase}"></span>%</h3>
             <h4>BASE</h4>
         </div>
 
         <div th:class="${percentualeIntermedio<=50}? 'progress less': 'progress'"
-             th:style="'--i: '+${percentualeIntermedio}+'; --clr:#121b37'">
+             th:style="'--i: '+${percentualeIntermedio}+'; --clr:#3cff46'">
             <h3><span th:text="${percentualeIntermedio}"></span>%</h3>
             <h4>INTERMEDIO</h4>
         </div>
 
         <div th:class="${percentualeAvanzato<=50}? 'progress less': 'progress'"
-             th:style="'--i: '+${percentualeAvanzato}+'; --clr:#121b37'">
+             th:style="'--i: '+${percentualeAvanzato}+'; --clr:#ffa900'">
             <h3><span th:text="${percentualeAvanzato}"></span>%</h3>
             <h4>AVANZATO</h4>
         </div>
 
         <div th:class="${percentualeMaster<=50}? 'progress less': 'progress'"
-             th:style="'--i: '+${percentualeMaster}+'; --clr:#121b37'">
+             th:style="'--i: '+${percentualeMaster}+'; --clr:#b700ff'">
             <h3><span th:text="${percentualeMaster}"></span>%</h3>
             <h4>MASTER</h4>
         </div>
