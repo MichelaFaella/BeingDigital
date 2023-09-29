@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Risposte</title>
-    <link rel="stylesheet" th:href="@{/stylesheet/risorse.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/stylesheet/risposte.css}" type="text/css"/>
 </head>
 <th:block th:include="fragments/header"></th:block>
 <body>
-<div class="risorse">
+<div class="risposte">
     <h1 class="livello">Recap delle tue risposte</h1>
     <div class="box" id="boxCorrette">
-        <h2>Rsposte corrette</h2>
+        <h2 class="corrette">Risposte corrette</h2>
         <table>
             <tr class="notspecial">
                 <th>Testo</th>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="box" id="boxSbagliate">
-        <h2>Rsposte sbagliate</h2>
+        <h2 class="sbagliate">Risposte sbagliate</h2>
         <table>
             <tr class="notspecial">
                 <th>Testo</th>

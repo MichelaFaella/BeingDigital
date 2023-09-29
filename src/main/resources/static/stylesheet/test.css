@@ -146,13 +146,25 @@
     flex-direction: column;
 }
 
+.form-step-active::-webkit-scrollbar-track {
+    background: white;
+    border: 1px solid;
+
+}
+
+
+.form-step-active::-webkit-scrollbar {
+    width: 10px;
+}
+
+.form-step-active::-webkit-scrollbar-thumb {
+    background: var(--second-color);
+}
+
 .input-group {
     margin: 2rem 0;
     padding: 0 25px;
     width: 80%;
-    /* text-align: center; */
-    /* display: flex; */
-    /* flex-direction: column; */
 }
 
 @keyframes animate {
@@ -225,6 +237,7 @@
     width: 500px;
     color: var(--bg-color);
     font-weight: 400;
+    margin-top: 60px;
 }
 
 .primo {
