@@ -18,18 +18,11 @@ public class ModificaProfiloService {
   @Autowired
   private PasswordEncryptor passwordEncryptor;
 
-  public boolean modificaProfilo(Long id, String nome, String cognome, String email,
+  public boolean modificaProfilo(Persona persona, String nome, String cognome, String email,
                                  String password) {
-    Optional<Persona> optional = personaRepository.findById(id);
-    if (optional.isEmpty()) {
-      return false;
-    }
-
-    Persona persona = optional.get();
-
     if (email != null) {
       Optional<Persona> optionalAltro = personaRepository.findByEmail(email);
-      if (optionalAltro.isPresent() && !optionalAltro.get().equals(persona)) {
+      if (optionalAltro.isPresent() && !optionalAltro.get().getId().equals(persona.getId())) {
         return false;
       }
       persona.setEmail(email);
@@ -47,6 +40,7 @@ public class ModificaProfiloService {
       persona.setPassword(passwordEncryptor.encryptPassword(password));
     }
 
+    personaRepository.save(persona);
     return true;
   }
 }

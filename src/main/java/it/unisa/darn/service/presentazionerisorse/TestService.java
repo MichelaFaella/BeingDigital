@@ -7,6 +7,7 @@ import it.unisa.darn.storage.entity.Utente;
 import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
+import it.unisa.darn.storage.repository.UtenteRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,9 @@ public class TestService {
 
   @Autowired
   private AreaUtenteService areaUtenteService;
+
+  @Autowired
+  private UtenteRepository utenteRepository;
 
   private void replaceRisposte(List<Map.Entry<Long, String>> risposte, Utente utente) {
     rispostaRepository.deleteByUtente(utente);
@@ -66,6 +70,7 @@ public class TestService {
         default -> throw new IllegalArgumentException();
       }
       rispostaRepository.deleteByUtente(utente);
+      utenteRepository.save(utente);
       return true;
     }
     return false;

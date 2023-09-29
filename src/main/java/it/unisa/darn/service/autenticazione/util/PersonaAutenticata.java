@@ -1,26 +1,19 @@
 package it.unisa.darn.service.autenticazione.util;
 
 import it.unisa.darn.storage.entity.Persona;
-import it.unisa.darn.storage.repository.PersonaRepository;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
 @Component
 @SessionScope
+@Setter
 public class PersonaAutenticata {
 
-  private Long id;
-
-  @Autowired
-  private PersonaRepository personaRepository;
+  private Persona persona;
 
   public Optional<Persona> getPersona() {
-    return id != null ? personaRepository.findById(id) : Optional.empty();
-  }
-
-  public void setPersona(Persona persona) {
-    id = persona == null ? null : persona.getId();
+    return Optional.ofNullable(persona);
   }
 }

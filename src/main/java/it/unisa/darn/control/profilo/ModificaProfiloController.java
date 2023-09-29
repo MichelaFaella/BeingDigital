@@ -60,7 +60,7 @@ public class ModificaProfiloController {
       }
     }
 
-    if (!modificaProfiloService.modificaProfilo(persona.getId(), modificaProfiloForm.getNome(),
+    if (!modificaProfiloService.modificaProfilo(persona, modificaProfiloForm.getNome(),
         modificaProfiloForm.getCognome(), modificaProfiloForm.getEmail(), passwordNuova)) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
