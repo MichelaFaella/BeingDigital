@@ -12,6 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta una risposta.
+ * Una risposta ha una domanda di appartenenza e viene selezionata da un utente.
+ */
+
 @Entity
 @IdClass(RispostaId.class)
 @NoArgsConstructor

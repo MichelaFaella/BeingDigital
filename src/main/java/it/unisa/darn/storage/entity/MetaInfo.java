@@ -13,6 +13,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta un meta-info.
+ * Una è una macro categoria che indica un preciso argomento.
+ */
+
 @Entity
 @NoArgsConstructor
 @Getter

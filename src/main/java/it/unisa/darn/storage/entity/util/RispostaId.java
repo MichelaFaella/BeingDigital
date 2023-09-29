@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta l'id di una risposta.
+ * Crea un id composto da quello dell'utente, che l'ha selezionata, e della domanda di appartenenza della risposta.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

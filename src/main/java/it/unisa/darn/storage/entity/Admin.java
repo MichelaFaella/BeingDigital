@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta un admin.
+ * Un admin può modificare le risorse del sito e promuovere un utente.
+ */
 @Entity
 @NoArgsConstructor
 @ToString(callSuper = true)
