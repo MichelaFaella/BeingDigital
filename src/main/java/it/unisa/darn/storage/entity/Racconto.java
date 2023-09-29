@@ -4,6 +4,11 @@ import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta un racconto.
+ * Un racconto è un tipo di argomento che può essere letto da un utente.
+ */
+
 @Entity
 @NoArgsConstructor
 @ToString(callSuper = true)

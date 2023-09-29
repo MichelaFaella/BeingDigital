@@ -9,6 +9,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta un utente.
+ * Un utente può usufruire di tutte le risorse del sito.
+ */
+
 @Entity
 @NoArgsConstructor
 @Getter

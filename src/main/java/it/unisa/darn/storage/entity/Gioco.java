@@ -12,6 +12,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta un gioco.
+ * Ogni gioco ha una meta-info associata e può essere giocato da ogni utente di equal livello della sua meta-info.
+ */
 @Entity
 @NoArgsConstructor
 @Getter

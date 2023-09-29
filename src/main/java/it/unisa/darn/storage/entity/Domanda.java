@@ -12,6 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta una domanda.
+ * Ogni domanda fa parte di un test che l'utente può sostenere in base al suo livello.
+ */
+
 @Entity
 @NoArgsConstructor
 @Getter
