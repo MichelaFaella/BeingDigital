@@ -1,6 +1,6 @@
 package it.unisa.darn.control.presentazionerisorse;
 
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorsaService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoArgomentoService;
 import it.unisa.darn.storage.entity.Lezione;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ import org.springframework.web.server.ResponseStatusException;
 public class LezioneController {
 
   @Autowired
-  private VisualizzazioneRisorsaService visualizzazioneRisorsaService;
+  private PrelievoArgomentoService prelievoArgomentoService;
 
   @GetMapping
   public String get(@RequestParam Long id, Model model) {
-    Optional<Lezione> optional = visualizzazioneRisorsaService.getLezione(id);
+    Optional<Lezione> optional = prelievoArgomentoService.getLezione(id);
     if (optional.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }

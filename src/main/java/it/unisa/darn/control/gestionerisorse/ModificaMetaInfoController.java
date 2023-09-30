@@ -2,7 +2,7 @@ package it.unisa.darn.control.gestionerisorse;
 
 import it.unisa.darn.control.gestionerisorse.form.MetaInfoForm;
 import it.unisa.darn.service.gestionerisorse.ModificaRisorsaService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorsaService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoMetaInfoService;
 import it.unisa.darn.storage.entity.MetaInfo;
 import jakarta.validation.Valid;
 import java.util.Optional;
@@ -26,12 +26,12 @@ public class ModificaMetaInfoController {
   private ModificaRisorsaService modificaRisorsaService;
 
   @Autowired
-  private VisualizzazioneRisorsaService visualizzazioneRisorsaService;
+  private PrelievoMetaInfoService prelievoMetaInfoService;
 
   @GetMapping
   public String get(@RequestParam Long id,
                     @ModelAttribute MetaInfoForm metaInfoForm) {
-    Optional<MetaInfo> optional = visualizzazioneRisorsaService.getMetaInfo(id);
+    Optional<MetaInfo> optional = prelievoMetaInfoService.getMetaInfo(id);
     if (optional.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }

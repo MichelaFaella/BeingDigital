@@ -2,8 +2,8 @@ package it.unisa.darn.control.gestionerisorse;
 
 import it.unisa.darn.control.gestionerisorse.form.DomandaForm;
 import it.unisa.darn.service.gestionerisorse.ModificaRisorsaService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorsaService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorseService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoDomandaService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoMetaInfoService;
 import it.unisa.darn.storage.entity.Domanda;
 import jakarta.validation.Valid;
 import java.util.Optional;
@@ -27,15 +27,15 @@ public class ModificaDomandaController {
   private ModificaRisorsaService modificaRisorsaService;
 
   @Autowired
-  private VisualizzazioneRisorsaService visualizzazioneRisorsaService;
+  private PrelievoDomandaService prelievoDomandaService;
 
   @Autowired
-  private VisualizzazioneRisorseService visualizzazioneRisorseService;
+  private PrelievoMetaInfoService prelievoMetaInfoService;
 
   @GetMapping
   public String get(@RequestParam Long id, @ModelAttribute DomandaForm domandaForm,
                     Model model) {
-    Optional<Domanda> optional = visualizzazioneRisorsaService.getDomanda(id);
+    Optional<Domanda> optional = prelievoDomandaService.getDomanda(id);
     if (optional.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
@@ -49,7 +49,7 @@ public class ModificaDomandaController {
     domandaForm.setMetaInfoId(domanda.getMetaInfo().getId());
 
     model.addAttribute("metaInfo",
-        visualizzazioneRisorseService.getAllMetaInfoSortedByLivelloKeyword());
+        prelievoMetaInfoService.getAllMetaInfoSortedByLivelloKeyword());
 
     return "gestionerisorse/modificaDomanda";
   }

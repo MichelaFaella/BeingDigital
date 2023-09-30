@@ -2,7 +2,7 @@ package it.unisa.darn.control.gestionerisorse;
 
 import it.unisa.darn.control.gestionerisorse.form.DomandaForm;
 import it.unisa.darn.service.gestionerisorse.InserimentoRisorsaService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorseService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoMetaInfoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,12 +23,12 @@ public class InserimentoDomandaController {
   private InserimentoRisorsaService inserimentoRisorsaService;
 
   @Autowired
-  private VisualizzazioneRisorseService visualizzazioneRisorseService;
+  private PrelievoMetaInfoService prelievoMetaInfoService;
 
   @GetMapping
   public String get(@ModelAttribute DomandaForm domandaForm, Model model) {
     model.addAttribute("metaInfo",
-        visualizzazioneRisorseService.getAllMetaInfoSortedByLivelloKeyword());
+        prelievoMetaInfoService.getAllMetaInfoSortedByLivelloKeyword());
 
     return "gestionerisorse/modificaDomanda";
   }

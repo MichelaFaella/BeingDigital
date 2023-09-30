@@ -1,6 +1,9 @@
 package it.unisa.darn.control.presentazionerisorse;
 
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorseService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoArgomentoService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoDomandaService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoGiocoService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoMetaInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,20 +15,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RisorseController {
 
   @Autowired
-  private VisualizzazioneRisorseService visualizzazioneRisorseService;
+  private PrelievoArgomentoService prelievoArgomentoService;
+
+  @Autowired
+  private PrelievoMetaInfoService prelievoMetaInfoService;
+
+  @Autowired
+  private PrelievoGiocoService prelievoGiocoService;
+
+  @Autowired
+  private PrelievoDomandaService prelievoDomandaService;
 
   @GetMapping
   public String get(Model model) {
     model.addAttribute("lezioni",
-        visualizzazioneRisorseService.getAllLezioniSortedByLivelloKeywordTitolo());
+        prelievoArgomentoService.getAllLezioniSortedByLivelloKeywordTitolo());
     model.addAttribute("racconti",
-        visualizzazioneRisorseService.getAllRaccontiSortedByLivelloKeywordTitolo());
+        prelievoArgomentoService.getAllRaccontiSortedByLivelloKeywordTitolo());
     model.addAttribute("metainfo",
-        visualizzazioneRisorseService.getAllMetaInfoSortedByLivelloKeyword());
+        prelievoMetaInfoService.getAllMetaInfoSortedByLivelloKeyword());
     model.addAttribute("giochi",
-        visualizzazioneRisorseService.getAllGiochiSortedByLivelloKeyword());
+        prelievoGiocoService.getAllGiochiSortedByLivelloKeyword());
     model.addAttribute("domande",
-        visualizzazioneRisorseService.getAllDomandeSortedByLivelloKeywordTesto());
+        prelievoDomandaService.getAllDomandeSortedByLivelloKeywordTesto());
     return "presentazionerisorse/risorse";
   }
 }

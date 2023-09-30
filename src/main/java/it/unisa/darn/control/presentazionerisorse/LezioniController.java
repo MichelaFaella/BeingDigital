@@ -1,7 +1,7 @@
 package it.unisa.darn.control.presentazionerisorse;
 
 import it.unisa.darn.service.autenticazione.util.PersonaAutenticata;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorseService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoArgomentoService;
 import it.unisa.darn.storage.entity.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LezioniController {
 
   @Autowired
-  private VisualizzazioneRisorseService visualizzazioneRisorseService;
+  private PrelievoArgomentoService prelievoArgomentoService;
 
   @Autowired
   private PersonaAutenticata personaAutenticata;
@@ -24,7 +24,7 @@ public class LezioniController {
     Utente utente = (Utente) personaAutenticata.getPersona().get();
 
     model.addAttribute("lezioniPerMetaInfo",
-        visualizzazioneRisorseService.getLezioniDaStudiare(utente));
+        prelievoArgomentoService.getLezioniDaStudiare(utente));
     return "presentazionerisorse/listaLezioni";
   }
 }

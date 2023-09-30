@@ -2,7 +2,7 @@ package it.unisa.darn.control.gestionerisorse;
 
 import it.unisa.darn.control.gestionerisorse.form.GiocoForm;
 import it.unisa.darn.service.gestionerisorse.InserimentoRisorsaService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorseService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoMetaInfoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,11 +23,11 @@ public class InserimentoGiocoController {
   private InserimentoRisorsaService inserimentoRisorsaService;
 
   @Autowired
-  private VisualizzazioneRisorseService visualizzazioneRisorseService;
+  private PrelievoMetaInfoService prelievoMetaInfoService;
 
   @GetMapping
   public String get(@ModelAttribute GiocoForm giocoForm, Model model) {
-    model.addAttribute("metaInfo", visualizzazioneRisorseService.getMetaInfoSenzaGioco(null));
+    model.addAttribute("metaInfo", prelievoMetaInfoService.getMetaInfoSenzaGioco(null));
 
     return "gestionerisorse/modificaGioco";
   }
@@ -42,7 +42,7 @@ public class InserimentoGiocoController {
     if (!inserimentoRisorsaService.inserimentoGioco(giocoForm.getNome(), giocoForm.getPath(),
         giocoForm.getMetaInfoId())) {
       model.addAttribute("nomeEsistente", true);
-      model.addAttribute("metaInfo", visualizzazioneRisorseService.getMetaInfoSenzaGioco(null));
+      model.addAttribute("metaInfo", prelievoMetaInfoService.getMetaInfoSenzaGioco(null));
       return "gestionerisorse/modificaGioco";
     }
 

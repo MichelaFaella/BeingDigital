@@ -1,8 +1,7 @@
 package it.unisa.darn.control.profilo;
 
 import it.unisa.darn.service.autenticazione.util.PersonaAutenticata;
-import it.unisa.darn.service.profilo.AreaAdminService;
-import it.unisa.darn.service.profilo.AreaUtenteService;
+import it.unisa.darn.service.profilo.DatiUtentiService;
 import it.unisa.darn.storage.entity.Admin;
 import it.unisa.darn.storage.entity.Persona;
 import it.unisa.darn.storage.entity.Utente;
@@ -21,10 +20,7 @@ public class AreaPersonaleController {
   private PersonaAutenticata personaAutenticata;
 
   @Autowired
-  private AreaUtenteService areaUtenteService;
-
-  @Autowired
-  private AreaAdminService areaAdminService;
+  private DatiUtentiService datiUtentiService;
 
   @GetMapping
   public String get(Model model) {
@@ -32,19 +28,19 @@ public class AreaPersonaleController {
 
     if (persona instanceof Admin) {
       model.addAttribute("admin", persona);
-      model.addAttribute("listaUtenti", areaAdminService.getAllUtenti());
+      model.addAttribute("listaUtenti", datiUtentiService.getAllUtenti());
       model.addAttribute("percentualeBase",
-          areaAdminService.getPercentualePerLivello(Livello.BASE));
+          datiUtentiService.getPercentualePerLivello(Livello.BASE));
       model.addAttribute("percentualeIntermedio",
-          areaAdminService.getPercentualePerLivello(Livello.INTERMEDIO));
+          datiUtentiService.getPercentualePerLivello(Livello.INTERMEDIO));
       model.addAttribute("percentualeAvanzato",
-          areaAdminService.getPercentualePerLivello(Livello.AVANZATO));
+          datiUtentiService.getPercentualePerLivello(Livello.AVANZATO));
       model.addAttribute("percentualeMaster",
-          areaAdminService.getPercentualePerLivello(Livello.MASTER));
+          datiUtentiService.getPercentualePerLivello(Livello.MASTER));
       return "profilo/admin";
     } else {
       model.addAttribute("utente", persona);
-      model.addAttribute("percentuale", areaUtenteService.getPercentualeCompletamento(
+      model.addAttribute("percentuale", datiUtentiService.getPercentualeCompletamento(
           (Utente) persona));
       return "profilo/utente";
     }

@@ -1,12 +1,13 @@
 package it.unisa.darn.service.presentazionerisorse;
 
-import it.unisa.darn.service.profilo.AreaUtenteService;
+import it.unisa.darn.service.profilo.DatiUtentiService;
 import it.unisa.darn.storage.entity.Domanda;
 import it.unisa.darn.storage.entity.Risposta;
 import it.unisa.darn.storage.entity.Utente;
 import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
+import it.unisa.darn.storage.repository.UtenteRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +26,10 @@ public class TestService {
   private DomandaRepository domandaRepository;
 
   @Autowired
-  private AreaUtenteService areaUtenteService;
+  private DatiUtentiService datiUtentiService;
+
+  @Autowired
+  private UtenteRepository utenteRepository;
 
   private void replaceRisposte(List<Map.Entry<Long, String>> risposte, Utente utente) {
     rispostaRepository.deleteByUtente(utente);
@@ -58,7 +62,7 @@ public class TestService {
   }
 
   private boolean aumentaLivello(Utente utente) {
-    if (areaUtenteService.getPercentualeCompletamento(utente) >= 100) {
+    if (datiUtentiService.getPercentualeCompletamento(utente) >= 100) {
       switch (utente.getLivello()) {
         case BASE -> utente.setLivello(Livello.INTERMEDIO);
         case INTERMEDIO -> utente.setLivello(Livello.AVANZATO);
@@ -66,6 +70,7 @@ public class TestService {
         default -> throw new IllegalArgumentException();
       }
       rispostaRepository.deleteByUtente(utente);
+      utenteRepository.save(utente);
       return true;
     }
     return false;
