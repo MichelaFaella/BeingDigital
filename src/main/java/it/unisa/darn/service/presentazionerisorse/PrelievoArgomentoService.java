@@ -1,26 +1,26 @@
 package it.unisa.darn.service.presentazionerisorse;
 
+import it.unisa.darn.storage.entity.Argomento;
 import it.unisa.darn.storage.entity.Domanda;
-import it.unisa.darn.storage.entity.Gioco;
 import it.unisa.darn.storage.entity.Lezione;
 import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.entity.Racconto;
 import it.unisa.darn.storage.entity.Risposta;
 import it.unisa.darn.storage.entity.Utente;
 import it.unisa.darn.storage.entity.util.Livello;
+import it.unisa.darn.storage.repository.ArgomentoRepository;
 import it.unisa.darn.storage.repository.DomandaRepository;
-import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.LezioneRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import it.unisa.darn.storage.repository.RaccontoRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
 import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class VisualizzazioneRisorseService {
-
-  @Autowired
-  private MetaInfoRepository metaInfoRepository;
+public class PrelievoArgomentoService {
 
   @Autowired
   private LezioneRepository lezioneRepository;
@@ -42,18 +39,30 @@ public class VisualizzazioneRisorseService {
   private RaccontoRepository raccontoRepository;
 
   @Autowired
-  private GiocoRepository giocoRepository;
+  private ArgomentoRepository argomentoRepository;
+
+  @Autowired
+  private RispostaRepository rispostaRepository;
 
   @Autowired
   private DomandaRepository domandaRepository;
 
   @Autowired
-  private RispostaRepository rispostaRepository;
+  private MetaInfoRepository metaInfoRepository;
 
-  public List<MetaInfo> getAllMetaInfoSortedByLivelloKeyword() {
-    return metaInfoRepository.findAll().stream()
-        .sorted(Comparator.comparing(MetaInfo::getLivello).thenComparing(MetaInfo::getKeyword))
-        .toList();
+  @Autowired
+  private PrelievoMetaInfoService prelievoMetaInfoService;
+
+  public Optional<Lezione> getLezione(Long id) {
+    return lezioneRepository.findById(id);
+  }
+
+  public Optional<Racconto> getRacconto(Long id) {
+    return raccontoRepository.findById(id);
+  }
+
+  public Optional<Argomento> getArgomento(Long id) {
+    return argomentoRepository.findById(id);
   }
 
   public List<Lezione> getAllLezioniSortedByLivelloKeywordTitolo() {
@@ -72,33 +81,6 @@ public class VisualizzazioneRisorseService {
         .sorted(Comparator.comparing((Racconto racconto) -> racconto.getMetaInfo().getLivello())
             .thenComparing(racconto -> racconto.getMetaInfo().getKeyword())
             .thenComparing(Racconto::getTitolo)).toList();
-  }
-
-  public List<Gioco> getAllGiochiSortedByLivelloKeyword() {
-    return giocoRepository.findAll().stream()
-        .sorted(Comparator.comparing((Gioco gioco) -> gioco.getMetaInfo().getLivello())
-            .thenComparing(gioco -> gioco.getMetaInfo().getKeyword())).toList();
-  }
-
-  public List<Domanda> getAllDomandeSortedByLivelloKeywordTesto() {
-    return domandaRepository.findAll().stream()
-        .sorted(Comparator.comparing((Domanda domanda) -> domanda.getMetaInfo().getLivello())
-            .thenComparing(domanda -> domanda.getMetaInfo().getKeyword())
-            .thenComparing(Domanda::getTesto)).toList();
-  }
-
-  public List<MetaInfo> getMetaInfoSenzaGioco(Long includeMetaInfoId) {
-    Set<MetaInfo> metaInfoConGioco =
-        giocoRepository.findAll().stream().map(Gioco::getMetaInfo)
-            .filter(metaInfo -> !metaInfo.getId().equals(includeMetaInfoId))
-            .collect(Collectors.toSet());
-
-    Set<MetaInfo> metaInfo = new HashSet<>(metaInfoRepository.findAll());
-    metaInfo.removeAll(metaInfoConGioco);
-
-    return metaInfo.stream()
-        .sorted(Comparator.comparing(MetaInfo::getLivello).thenComparing(MetaInfo::getKeyword))
-        .toList();
   }
 
   public List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniDaStudiare(Utente utente) {
@@ -125,7 +107,7 @@ public class VisualizzazioneRisorseService {
         }
       }
     } else {
-      metaInfoDaVedere = getAllMetaInfoSortedByLivelloKeyword().stream()
+      metaInfoDaVedere = prelievoMetaInfoService.getAllMetaInfoSortedByLivelloKeyword().stream()
           .filter(metaInfo -> metaInfo.getLivello() != Livello.CITTADINANZA_DIGITALE).toList();
     }
 
@@ -149,11 +131,5 @@ public class VisualizzazioneRisorseService {
     }
 
     return lezioniPerMetaInfo;
-  }
-
-  public List<Domanda> getDomandeRandom(Livello livello) {
-    List<Domanda> domande = new ArrayList<>(domandaRepository.findByMetaInfoLivello(livello));
-    Collections.shuffle(domande);
-    return domande;
   }
 }

@@ -1,6 +1,6 @@
 package it.unisa.darn.control.presentazionerisorse;
 
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorsaService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoArgomentoService;
 import it.unisa.darn.storage.entity.Argomento;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -18,11 +18,11 @@ import org.springframework.web.server.ResponseStatusException;
 public class CopertinaController {
 
   @Autowired
-  private VisualizzazioneRisorsaService visualizzazioneRisorsaService;
+  private PrelievoArgomentoService prelievoArgomentoService;
 
   @GetMapping
   public void get(@RequestParam Long idArgomento, HttpServletResponse response) throws IOException {
-    Optional<Argomento> optional = visualizzazioneRisorsaService.getArgomento(idArgomento);
+    Optional<Argomento> optional = prelievoArgomentoService.getArgomento(idArgomento);
     if (optional.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }

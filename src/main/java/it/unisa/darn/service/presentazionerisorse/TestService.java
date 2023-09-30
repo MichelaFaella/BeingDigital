@@ -1,6 +1,6 @@
 package it.unisa.darn.service.presentazionerisorse;
 
-import it.unisa.darn.service.profilo.AreaUtenteService;
+import it.unisa.darn.service.profilo.DatiUtentiService;
 import it.unisa.darn.storage.entity.Domanda;
 import it.unisa.darn.storage.entity.Risposta;
 import it.unisa.darn.storage.entity.Utente;
@@ -26,7 +26,7 @@ public class TestService {
   private DomandaRepository domandaRepository;
 
   @Autowired
-  private AreaUtenteService areaUtenteService;
+  private DatiUtentiService datiUtentiService;
 
   @Autowired
   private UtenteRepository utenteRepository;
@@ -62,7 +62,7 @@ public class TestService {
   }
 
   private boolean aumentaLivello(Utente utente) {
-    if (areaUtenteService.getPercentualeCompletamento(utente) >= 100) {
+    if (datiUtentiService.getPercentualeCompletamento(utente) >= 100) {
       switch (utente.getLivello()) {
         case BASE -> utente.setLivello(Livello.INTERMEDIO);
         case INTERMEDIO -> utente.setLivello(Livello.AVANZATO);

@@ -2,8 +2,8 @@ package it.unisa.darn.control.gestionerisorse;
 
 import it.unisa.darn.control.gestionerisorse.form.ArgomentoForm;
 import it.unisa.darn.service.gestionerisorse.ModificaRisorsaService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorsaService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorseService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoArgomentoService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoMetaInfoService;
 import it.unisa.darn.storage.entity.Argomento;
 import jakarta.validation.Valid;
 import java.io.IOException;
@@ -28,15 +28,15 @@ public class ModificaArgomentoController {
   private ModificaRisorsaService modificaRisorsaService;
 
   @Autowired
-  private VisualizzazioneRisorsaService visualizzazioneRisorsaService;
+  private PrelievoMetaInfoService prelievoMetaInfoService;
 
   @Autowired
-  private VisualizzazioneRisorseService visualizzazioneRisorseService;
+  private PrelievoArgomentoService prelievoArgomentoService;
 
   @GetMapping
   public String get(@RequestParam Long id,
                     @ModelAttribute ArgomentoForm argomentoForm, Model model) {
-    Optional<Argomento> optional = visualizzazioneRisorsaService.getArgomento(id);
+    Optional<Argomento> optional = prelievoArgomentoService.getArgomento(id);
     if (optional.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
@@ -47,7 +47,7 @@ public class ModificaArgomentoController {
     argomentoForm.setMetaInfoId(argomento.getMetaInfo().getId());
 
     model.addAttribute("metaInfo",
-        visualizzazioneRisorseService.getAllMetaInfoSortedByLivelloKeyword());
+        prelievoMetaInfoService.getAllMetaInfoSortedByLivelloKeyword());
 
     return "gestionerisorse/modificaArgomento";
   }

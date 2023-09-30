@@ -2,8 +2,8 @@ package it.unisa.darn.control.gestionerisorse;
 
 import it.unisa.darn.control.gestionerisorse.form.GiocoForm;
 import it.unisa.darn.service.gestionerisorse.ModificaRisorsaService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorsaService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorseService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoGiocoService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoMetaInfoService;
 import it.unisa.darn.storage.entity.Gioco;
 import jakarta.validation.Valid;
 import java.util.Optional;
@@ -27,15 +27,15 @@ public class ModificaGiocoController {
   private ModificaRisorsaService modificaRisorsaService;
 
   @Autowired
-  private VisualizzazioneRisorsaService visualizzazioneRisorsaService;
+  private PrelievoMetaInfoService prelievoMetaInfoService;
 
   @Autowired
-  private VisualizzazioneRisorseService visualizzazioneRisorseService;
+  private PrelievoGiocoService prelievoGiocoService;
 
   @GetMapping
   public String get(@RequestParam Long id, @ModelAttribute GiocoForm giocoForm,
                     Model model) {
-    Optional<Gioco> optional = visualizzazioneRisorsaService.getGioco(id);
+    Optional<Gioco> optional = prelievoGiocoService.getGioco(id);
     if (optional.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
@@ -45,7 +45,7 @@ public class ModificaGiocoController {
     giocoForm.setPath(gioco.getPath());
     giocoForm.setMetaInfoId(gioco.getMetaInfo().getId());
 
-    model.addAttribute("metaInfo", visualizzazioneRisorseService.getMetaInfoSenzaGioco(
+    model.addAttribute("metaInfo", prelievoMetaInfoService.getMetaInfoSenzaGioco(
         giocoForm.getMetaInfoId()));
 
     return "gestionerisorse/modificaGioco";
@@ -62,7 +62,7 @@ public class ModificaGiocoController {
     if (!modificaRisorsaService.modificaGioco(id, giocoForm.getNome(), giocoForm.getPath(),
         giocoForm.getMetaInfoId())) {
       model.addAttribute("nomeEsistente", true);
-      model.addAttribute("metaInfo", visualizzazioneRisorseService.getMetaInfoSenzaGioco(
+      model.addAttribute("metaInfo", prelievoMetaInfoService.getMetaInfoSenzaGioco(
           giocoForm.getMetaInfoId()));
       return "gestionerisorse/modificaGioco";
     }

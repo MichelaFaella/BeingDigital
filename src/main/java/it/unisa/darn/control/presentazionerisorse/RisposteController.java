@@ -1,7 +1,7 @@
 package it.unisa.darn.control.presentazionerisorse;
 
 import it.unisa.darn.service.autenticazione.util.PersonaAutenticata;
-import it.unisa.darn.service.presentazionerisorse.RisposteService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoRispostaService;
 import it.unisa.darn.storage.entity.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RisposteController {
 
   @Autowired
-  private RisposteService risposteService;
+  private PrelievoRispostaService prelievoRispostaService;
 
   @Autowired
   private PersonaAutenticata personaAutenticata;
@@ -23,7 +23,7 @@ public class RisposteController {
   public String get(Model model) {
     Utente utente = (Utente) personaAutenticata.getPersona().get();
 
-    model.addAttribute("risposte", risposteService.getRisposteSortedByKeywordTesto(utente));
+    model.addAttribute("risposte", prelievoRispostaService.getRisposteSortedByKeywordTesto(utente));
     return "presentazionerisorse/risposte";
   }
 }

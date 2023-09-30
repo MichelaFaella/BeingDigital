@@ -2,8 +2,8 @@ package it.unisa.darn.control.presentazionerisorse;
 
 import it.unisa.darn.control.presentazionerisorse.form.RispostaFormsWrapper;
 import it.unisa.darn.service.autenticazione.util.PersonaAutenticata;
+import it.unisa.darn.service.presentazionerisorse.PrelievoDomandaService;
 import it.unisa.darn.service.presentazionerisorse.TestService;
-import it.unisa.darn.service.presentazionerisorse.VisualizzazioneRisorseService;
 import it.unisa.darn.storage.entity.Utente;
 import it.unisa.darn.storage.entity.util.Livello;
 import jakarta.validation.Valid;
@@ -24,7 +24,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class TestController {
 
   @Autowired
-  private VisualizzazioneRisorseService visualizzazioneRisorseService;
+  private PrelievoDomandaService prelievoDomandaService;
 
   @Autowired
   private PersonaAutenticata personaAutenticata;
@@ -41,7 +41,7 @@ public class TestController {
     }
 
     model.addAttribute("domande",
-        visualizzazioneRisorseService.getDomandeRandom(utente.getLivello()));
+        prelievoDomandaService.getDomandeRandom(utente.getLivello()));
     model.addAttribute("livello", utente.getLivello());
     return "presentazionerisorse/test";
   }
