@@ -201,7 +201,6 @@
     border: 3px solid var(--notify-color);
     color: var(--white-color);
     text-align: center;
-    border-radius: 0.25rem;
     cursor: pointer;
     transition: 0.5s;
     width: 150px;
