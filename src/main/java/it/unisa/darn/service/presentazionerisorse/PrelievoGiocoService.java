@@ -2,21 +2,24 @@ package it.unisa.darn.service.presentazionerisorse;
 
 import it.unisa.darn.storage.entity.Gioco;
 import it.unisa.darn.storage.repository.GiocoRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional(readOnly = true)
+@Validated
 public class PrelievoGiocoService {
 
   @Autowired
   private GiocoRepository giocoRepository;
 
-  public Optional<Gioco> getGioco(Long id) {
+  public Optional<Gioco> getGioco(@NotNull Long id) {
     return giocoRepository.findById(id);
   }
 

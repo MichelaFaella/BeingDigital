@@ -10,13 +10,16 @@ import it.unisa.darn.storage.repository.ArgomentoRepository;
 import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional
+@Validated
 public class InserimentoRisorsaService {
 
   @Autowired
@@ -31,8 +34,8 @@ public class InserimentoRisorsaService {
   @Autowired
   private GiocoRepository giocoRepository;
 
-  public boolean inserimentoLezione(String titolo, String corpo, byte[] copertina,
-                                    Long metaInfoId) {
+  public boolean inserimentoLezione(@NotNull String titolo, @NotNull String corpo,
+                                    @NotNull byte[] copertina, @NotNull Long metaInfoId) {
     Optional<MetaInfo> optional = metaInfoRepository.findById(metaInfoId);
     if (optional.isEmpty()) {
       return false;
@@ -43,8 +46,8 @@ public class InserimentoRisorsaService {
     return true;
   }
 
-  public boolean inserimentoRacconto(String titolo, String corpo, byte[] copertina,
-                                     Long metaInfoId) {
+  public boolean inserimentoRacconto(@NotNull String titolo, @NotNull String corpo,
+                                     @NotNull byte[] copertina, @NotNull Long metaInfoId) {
     Optional<MetaInfo> optional = metaInfoRepository.findById(metaInfoId);
     if (optional.isEmpty()) {
       return false;
@@ -55,7 +58,7 @@ public class InserimentoRisorsaService {
     return true;
   }
 
-  public boolean inserimentoMetaInfo(String keyword, Livello livello) {
+  public boolean inserimentoMetaInfo(@NotNull String keyword, @NotNull Livello livello) {
     if (metaInfoRepository.existsByKeyword(keyword)) {
       return false;
     }
@@ -65,8 +68,9 @@ public class InserimentoRisorsaService {
     return true;
   }
 
-  public boolean inserimentoDomanda(String testo, String corretta, String sbagliata1,
-                                    String sbagliata2, String sbagliata3, Long metaInfoId) {
+  public boolean inserimentoDomanda(@NotNull String testo, @NotNull String corretta,
+                                    @NotNull String sbagliata1, @NotNull String sbagliata2,
+                                    @NotNull String sbagliata3, @NotNull Long metaInfoId) {
     Optional<MetaInfo> optional = metaInfoRepository.findById(metaInfoId);
     if (optional.isEmpty()) {
       return false;
@@ -78,7 +82,8 @@ public class InserimentoRisorsaService {
     return true;
   }
 
-  public boolean inserimentoGioco(String nome, String path, Long metaInfoId) {
+  public boolean inserimentoGioco(@NotNull String nome, @NotNull String path,
+                                  @NotNull Long metaInfoId) {
     Optional<MetaInfo> optional = metaInfoRepository.findById(metaInfoId);
     if (optional.isEmpty()) {
       return false;

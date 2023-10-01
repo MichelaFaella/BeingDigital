@@ -4,13 +4,16 @@ import it.unisa.darn.storage.entity.Utente;
 import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.PersonaRepository;
 import it.unisa.darn.storage.repository.UtenteRepository;
+import jakarta.validation.constraints.NotNull;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional
+@Validated
 public class RegistrazioneService {
 
   @Autowired
@@ -22,7 +25,8 @@ public class RegistrazioneService {
   @Autowired
   private PasswordEncryptor passwordEncryptor;
 
-  public boolean registrazione(String nome, String cognome, String email, String password) {
+  public boolean registrazione(@NotNull String nome, @NotNull String cognome, @NotNull String email,
+                               @NotNull String password) {
     if (personaRepository.existsByEmail(email)) {
       return false;
     }

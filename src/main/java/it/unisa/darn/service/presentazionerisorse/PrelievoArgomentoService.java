@@ -14,6 +14,7 @@ import it.unisa.darn.storage.repository.LezioneRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import it.unisa.darn.storage.repository.RaccontoRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -27,9 +28,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional(readOnly = true)
+@Validated
 public class PrelievoArgomentoService {
 
   @Autowired
@@ -53,15 +56,15 @@ public class PrelievoArgomentoService {
   @Autowired
   private PrelievoMetaInfoService prelievoMetaInfoService;
 
-  public Optional<Lezione> getLezione(Long id) {
+  public Optional<Lezione> getLezione(@NotNull Long id) {
     return lezioneRepository.findById(id);
   }
 
-  public Optional<Racconto> getRacconto(Long id) {
+  public Optional<Racconto> getRacconto(@NotNull Long id) {
     return raccontoRepository.findById(id);
   }
 
-  public Optional<Argomento> getArgomento(Long id) {
+  public Optional<Argomento> getArgomento(@NotNull Long id) {
     return argomentoRepository.findById(id);
   }
 
@@ -83,7 +86,7 @@ public class PrelievoArgomentoService {
             .thenComparing(Racconto::getTitolo)).toList();
   }
 
-  public List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniDaStudiare(Utente utente) {
+  public List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniDaStudiare(@NotNull Utente utente) {
     List<MetaInfo> metaInfoDaVedere;
 
     if (utente.getLivello() != Livello.MASTER) {
@@ -121,7 +124,8 @@ public class PrelievoArgomentoService {
     return getLezioniPerMetaInfo(metaInfo);
   }
 
-  private List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniPerMetaInfo(List<MetaInfo> metaInfo) {
+  private List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniPerMetaInfo(
+      @NotNull List<MetaInfo> metaInfo) {
     List<Map.Entry<MetaInfo, List<Lezione>>> lezioniPerMetaInfo = new ArrayList<>();
     for (MetaInfo metaInfo1 : metaInfo) {
       List<Lezione> lezioni = lezioneRepository.findByMetaInfo(metaInfo1, Sort.by("titolo"));

@@ -7,13 +7,16 @@ import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional
+@Validated
 public class CancellazioneRisorsaService {
 
   @Autowired
@@ -31,7 +34,7 @@ public class CancellazioneRisorsaService {
   @Autowired
   private RispostaRepository rispostaRepository;
 
-  public boolean cancellazioneMetaInfo(Long id) {
+  public boolean cancellazioneMetaInfo(@NotNull Long id) {
     Optional<MetaInfo> optional = metaInfoRepository.findById(id);
     if (optional.isEmpty()) {
       return false;
@@ -46,7 +49,7 @@ public class CancellazioneRisorsaService {
     return true;
   }
 
-  public boolean cancellazioneArgomento(Long id) {
+  public boolean cancellazioneArgomento(@NotNull Long id) {
     if (!argomentoRepository.existsById(id)) {
       return false;
     }
@@ -55,7 +58,7 @@ public class CancellazioneRisorsaService {
     return true;
   }
 
-  public boolean cancellazioneGioco(Long id) {
+  public boolean cancellazioneGioco(@NotNull Long id) {
     if (!giocoRepository.existsById(id)) {
       return false;
     }
@@ -64,7 +67,7 @@ public class CancellazioneRisorsaService {
     return true;
   }
 
-  public boolean cancellazioneDomanda(Long id) {
+  public boolean cancellazioneDomanda(@NotNull Long id) {
     Optional<Domanda> optional = domandaRepository.findById(id);
     if (optional.isEmpty()) {
       return false;
