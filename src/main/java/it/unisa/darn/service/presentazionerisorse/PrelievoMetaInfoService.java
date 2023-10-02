@@ -2,6 +2,7 @@ package it.unisa.darn.service.presentazionerisorse;
 
 import it.unisa.darn.storage.entity.Gioco;
 import it.unisa.darn.storage.entity.MetaInfo;
+import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import jakarta.validation.constraints.NotNull;
@@ -37,7 +38,12 @@ public class PrelievoMetaInfoService {
         .toList();
   }
 
-  public List<MetaInfo> getMetaInfoSenzaGioco(Long includeMetaInfoId) {
+  public List<MetaInfo> getMetaInfoSortedByLivelloKeywordWithoutCittadinanza() {
+    return getAllMetaInfoSortedByLivelloKeyword().stream()
+        .filter(metaInfo -> metaInfo.getLivello() != Livello.CITTADINANZA_DIGITALE).toList();
+  }
+
+  public List<MetaInfo> getMetaInfoSenzaGiocoSortedByLivelloKeyword(Long includeMetaInfoId) {
     Set<MetaInfo> metaInfoConGioco =
         giocoRepository.findAll().stream().map(Gioco::getMetaInfo)
             .filter(metaInfo -> !metaInfo.getId().equals(includeMetaInfoId))

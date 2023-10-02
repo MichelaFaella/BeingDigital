@@ -27,7 +27,8 @@ public class InserimentoGiocoController {
 
   @GetMapping
   public String get(@ModelAttribute GiocoForm giocoForm, Model model) {
-    model.addAttribute("metaInfo", prelievoMetaInfoService.getMetaInfoSenzaGioco(null));
+    model.addAttribute("metaInfo",
+        prelievoMetaInfoService.getMetaInfoSenzaGiocoSortedByLivelloKeyword(null));
 
     return "gestionerisorse/modificaGioco";
   }
@@ -42,7 +43,8 @@ public class InserimentoGiocoController {
     if (!inserimentoRisorsaService.inserimentoGioco(giocoForm.getNome(), giocoForm.getPath(),
         giocoForm.getMetaInfoId())) {
       model.addAttribute("nomeEsistente", true);
-      model.addAttribute("metaInfo", prelievoMetaInfoService.getMetaInfoSenzaGioco(null));
+      model.addAttribute("metaInfo",
+          prelievoMetaInfoService.getMetaInfoSenzaGiocoSortedByLivelloKeyword(null));
       return "gestionerisorse/modificaGioco";
     }
 

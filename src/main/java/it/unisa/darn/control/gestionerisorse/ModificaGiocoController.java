@@ -45,8 +45,9 @@ public class ModificaGiocoController {
     giocoForm.setPath(gioco.getPath());
     giocoForm.setMetaInfoId(gioco.getMetaInfo().getId());
 
-    model.addAttribute("metaInfo", prelievoMetaInfoService.getMetaInfoSenzaGioco(
-        giocoForm.getMetaInfoId()));
+    model.addAttribute("metaInfo",
+        prelievoMetaInfoService.getMetaInfoSenzaGiocoSortedByLivelloKeyword(
+            giocoForm.getMetaInfoId()));
 
     return "gestionerisorse/modificaGioco";
   }
@@ -62,8 +63,9 @@ public class ModificaGiocoController {
     if (!modificaRisorsaService.modificaGioco(id, giocoForm.getNome(), giocoForm.getPath(),
         giocoForm.getMetaInfoId())) {
       model.addAttribute("nomeEsistente", true);
-      model.addAttribute("metaInfo", prelievoMetaInfoService.getMetaInfoSenzaGioco(
-          giocoForm.getMetaInfoId()));
+      model.addAttribute("metaInfo",
+          prelievoMetaInfoService.getMetaInfoSenzaGiocoSortedByLivelloKeyword(
+              giocoForm.getMetaInfoId()));
       return "gestionerisorse/modificaGioco";
     }
 

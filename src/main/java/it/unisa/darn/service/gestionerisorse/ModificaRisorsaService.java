@@ -71,6 +71,10 @@ public class ModificaRisorsaService {
   }
 
   public boolean modificaMetaInfo(@NotNull Long id, String keyword, Livello livello) {
+    if (livello == Livello.MASTER) {
+      return false;
+    }
+
     Optional<MetaInfo> optional = metaInfoRepository.findById(id);
     if (optional.isEmpty()) {
       return false;
@@ -107,7 +111,8 @@ public class ModificaRisorsaService {
 
     if (metaInfoId != null) {
       Optional<MetaInfo> optionalMetaInfo = metaInfoRepository.findById(metaInfoId);
-      if (optionalMetaInfo.isEmpty()) {
+      if (optionalMetaInfo.isEmpty()
+          || optionalMetaInfo.get().getLivello() == Livello.CITTADINANZA_DIGITALE) {
         return false;
       }
 
