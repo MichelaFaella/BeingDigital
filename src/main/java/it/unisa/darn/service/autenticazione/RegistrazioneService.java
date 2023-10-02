@@ -30,7 +30,7 @@ public class RegistrazioneService {
   private PasswordEncryptor passwordEncryptor;
 
   /**
-   * Implementa la funzionalità di registrazione di un utente
+   * Implementa la funzionalità di registrazione di un utente.
    *
    * @param email    Email dell'utente.
    * @param password Password dell'utente.
