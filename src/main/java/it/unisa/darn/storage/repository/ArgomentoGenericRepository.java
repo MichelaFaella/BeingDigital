@@ -7,6 +7,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
+/**
+ * Questa interfaccia rappresenta la repository di un argomento di tipo generico.
+ */
+
 @NoRepositoryBean
 public interface ArgomentoGenericRepository<T extends Argomento> extends JpaRepository<T, Long> {
 
