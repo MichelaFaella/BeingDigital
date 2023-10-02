@@ -4,13 +4,16 @@ import it.unisa.darn.storage.entity.Utente;
 import it.unisa.darn.storage.repository.AdminRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
 import it.unisa.darn.storage.repository.UtenteRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional
+@Validated
 public class CancellazioneAccountService {
 
   @Autowired
@@ -22,7 +25,7 @@ public class CancellazioneAccountService {
   @Autowired
   private RispostaRepository rispostaRepository;
 
-  public boolean cancellazioneUtente(Long id) {
+  public boolean cancellazioneUtente(@NotNull Long id) {
     Optional<Utente> optional = utenteRepository.findById(id);
     if (optional.isEmpty()) {
       return false;
@@ -34,7 +37,7 @@ public class CancellazioneAccountService {
     return true;
   }
 
-  public boolean cancellazioneAdmin(Long id) {
+  public boolean cancellazioneAdmin(@NotNull Long id) {
     if (!adminRepository.existsById(id)) {
       return false;
     }

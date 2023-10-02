@@ -8,15 +8,18 @@ import it.unisa.darn.storage.entity.util.Livello;
 import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
 import it.unisa.darn.storage.repository.UtenteRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional
+@Validated
 public class TestService {
 
   @Autowired
@@ -31,7 +34,8 @@ public class TestService {
   @Autowired
   private UtenteRepository utenteRepository;
 
-  private void replaceRisposte(List<Map.Entry<Long, String>> risposte, Utente utente) {
+  private void replaceRisposte(@NotNull List<Map.Entry<Long, String>> risposte,
+                               @NotNull Utente utente) {
     rispostaRepository.deleteByUtente(utente);
     rispostaRepository.flush();
 
@@ -61,7 +65,7 @@ public class TestService {
     rispostaRepository.saveAll(rispostaEntities);
   }
 
-  private boolean aumentaLivello(Utente utente) {
+  private boolean aumentaLivello(@NotNull Utente utente) {
     if (datiUtentiService.getPercentualeCompletamento(utente) >= 100) {
       switch (utente.getLivello()) {
         case BASE -> utente.setLivello(Livello.INTERMEDIO);
@@ -76,7 +80,7 @@ public class TestService {
     return false;
   }
 
-  public boolean test(List<Map.Entry<Long, String>> risposte, Utente utente) {
+  public boolean test(@NotNull List<Map.Entry<Long, String>> risposte, @NotNull Utente utente) {
     replaceRisposte(risposte, utente);
     return aumentaLivello(utente);
   }

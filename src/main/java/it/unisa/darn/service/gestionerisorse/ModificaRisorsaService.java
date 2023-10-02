@@ -10,13 +10,16 @@ import it.unisa.darn.storage.repository.DomandaRepository;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
 import it.unisa.darn.storage.repository.RispostaRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional
+@Validated
 public class ModificaRisorsaService {
 
   @Autowired
@@ -34,7 +37,7 @@ public class ModificaRisorsaService {
   @Autowired
   private RispostaRepository rispostaRepository;
 
-  public boolean modificaArgomento(Long id, String titolo, String corpo, byte[] copertina,
+  public boolean modificaArgomento(@NotNull Long id, String titolo, String corpo, byte[] copertina,
                                    Long metaInfoId) {
     Optional<Argomento> optionalArgomento = argomentoRepository.findById(id);
     if (optionalArgomento.isEmpty()) {
@@ -67,7 +70,7 @@ public class ModificaRisorsaService {
     return true;
   }
 
-  public boolean modificaMetaInfo(Long id, String keyword, Livello livello) {
+  public boolean modificaMetaInfo(@NotNull Long id, String keyword, Livello livello) {
     Optional<MetaInfo> optional = metaInfoRepository.findById(id);
     if (optional.isEmpty()) {
       return false;
@@ -93,7 +96,7 @@ public class ModificaRisorsaService {
     return true;
   }
 
-  public boolean modificaDomanda(Long id, String testo, String corretta, String sbagliata1,
+  public boolean modificaDomanda(@NotNull Long id, String testo, String corretta, String sbagliata1,
                                  String sbagliata2, String sbagliata3, Long metaInfoId) {
     Optional<Domanda> optional = domandaRepository.findById(id);
     if (optional.isEmpty()) {
@@ -134,7 +137,7 @@ public class ModificaRisorsaService {
     return true;
   }
 
-  public boolean modificaGioco(Long id, String nome, String path, Long metaInfoId) {
+  public boolean modificaGioco(@NotNull Long id, String nome, String path, Long metaInfoId) {
     Optional<Gioco> optional = giocoRepository.findById(id);
     if (optional.isEmpty()) {
       return false;

@@ -4,6 +4,7 @@ import it.unisa.darn.storage.entity.Gioco;
 import it.unisa.darn.storage.entity.MetaInfo;
 import it.unisa.darn.storage.repository.GiocoRepository;
 import it.unisa.darn.storage.repository.MetaInfoRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -13,9 +14,11 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional(readOnly = true)
+@Validated
 public class PrelievoMetaInfoService {
 
   @Autowired
@@ -24,7 +27,7 @@ public class PrelievoMetaInfoService {
   @Autowired
   private GiocoRepository giocoRepository;
 
-  public Optional<MetaInfo> getMetaInfo(Long id) {
+  public Optional<MetaInfo> getMetaInfo(@NotNull Long id) {
     return metaInfoRepository.findById(id);
   }
 

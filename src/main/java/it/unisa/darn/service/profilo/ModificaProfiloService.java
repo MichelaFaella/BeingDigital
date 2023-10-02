@@ -2,14 +2,17 @@ package it.unisa.darn.service.profilo;
 
 import it.unisa.darn.storage.entity.Persona;
 import it.unisa.darn.storage.repository.PersonaRepository;
+import jakarta.validation.constraints.NotNull;
 import java.util.Optional;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @Transactional
+@Validated
 public class ModificaProfiloService {
 
   @Autowired
@@ -18,8 +21,8 @@ public class ModificaProfiloService {
   @Autowired
   private PasswordEncryptor passwordEncryptor;
 
-  public boolean modificaProfilo(Persona persona, String nome, String cognome, String email,
-                                 String password) {
+  public boolean modificaProfilo(@NotNull Persona persona, String nome, String cognome,
+                                 String email, String password) {
     if (email != null) {
       Optional<Persona> optionalAltro = personaRepository.findByEmail(email);
       if (optionalAltro.isPresent() && !optionalAltro.get().getId().equals(persona.getId())) {
