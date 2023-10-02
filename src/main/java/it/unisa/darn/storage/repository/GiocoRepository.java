@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Questa interfaccia rappresenta la repository di un gioco.
- * Viene implementata autonomamente da Spring in modo da consentire l'accesso a i dati dei giochi presenti nel DB.
+ * Viene implementata autonomamente da Spring in modo da consentire l'accesso a i
+ * dati dei giochi presenti nel DB.
  */
 
 public interface GiocoRepository extends JpaRepository<Gioco, Long> {

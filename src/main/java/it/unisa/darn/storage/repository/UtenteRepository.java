@@ -6,7 +6,8 @@ import java.util.List;
 
 /**
  * Questa interfaccia rappresenta la repository di un utente.
- * Viene implementata autonomamente da Spring in modo da consentire l'accesso a i dati degli utenti presenti nel DB.
+ * Viene implementata autonomamente da Spring in modo da consentire l'accesso a i dati degli
+ * utenti presenti nel DB.
  */
 
 public interface UtenteRepository extends PersonaGenericRepository<Utente> {

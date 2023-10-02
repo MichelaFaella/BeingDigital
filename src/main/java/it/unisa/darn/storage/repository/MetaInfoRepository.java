@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Questa interfaccia rappresenta la repository di un meta-info.
- * Viene implementata autonomamente da Spring in modo da consentire l'accesso a i dati delle meta-info presenti nel DB.
+ * Viene implementata autonomamente da Spring in modo da consentire l'accesso a i dati
+ * delle meta-info presenti nel DB.
  */
 
 public interface MetaInfoRepository extends JpaRepository<MetaInfo, Long> {
