@@ -5,6 +5,10 @@ import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Questa classe fornisce l'istanza del bean singleton PasswordEncryptor.
+ */
+
 @Configuration
 public class PasswordEncryptorConfiguration {
 

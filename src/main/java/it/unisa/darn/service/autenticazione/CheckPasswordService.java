@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+/**
+ * Questa classe rappresenta il service per la validazione della password.
+ */
+
 @Service
 @Validated
 public class CheckPasswordService {

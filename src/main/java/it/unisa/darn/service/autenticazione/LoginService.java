@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+/**
+ * Questa classe rappresenta il service per il processo di autenticazione di una persona.
+ */
+
 @Service
 @Transactional(readOnly = true)
 @Validated
@@ -25,6 +29,14 @@ public class LoginService {
   @Autowired
   private PersonaRepository personaRepository;
 
+  /**
+   * Implementa la funzionalità del login di una persona
+   *
+   * @param email    Email della persona.
+   * @param password Password della persona.
+   * @return true se l'autenticazione è andata a buon fine, false altrimenti.
+   * @throws jakarta.validation.ConstraintViolationException se l'email o la password risulta null.
+   */
   public boolean login(@NotNull String email, @NotNull String password) {
     Optional<Persona> optional = personaRepository.findByEmail(email);
     if (optional.isEmpty()) {

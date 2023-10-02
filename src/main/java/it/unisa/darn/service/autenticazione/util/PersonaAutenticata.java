@@ -6,6 +6,10 @@ import lombok.Setter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+/**
+ * Questa classe rappresenta il bean di sessione che conserva l'istanza dell'utente autenticato.
+ */
+
 @Component
 @SessionScope
 @Setter
