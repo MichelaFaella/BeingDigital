@@ -30,7 +30,7 @@ public class DatiUtentiService {
     return utenteRepository.findAll();
   }
 
-  public int getPercentualePerLivello(@NotNull Livello livello) {
+  public int getPercentualeUtenti(@NotNull Livello livello) {
     long totaleUtenti = utenteRepository.count();
     long utentiLivello = utenteRepository.countByLivello(livello);
 

@@ -30,13 +30,13 @@ public class AreaPersonaleController {
       model.addAttribute("admin", persona);
       model.addAttribute("listaUtenti", datiUtentiService.getAllUtenti());
       model.addAttribute("percentualeBase",
-          datiUtentiService.getPercentualePerLivello(Livello.BASE));
+          datiUtentiService.getPercentualeUtenti(Livello.BASE));
       model.addAttribute("percentualeIntermedio",
-          datiUtentiService.getPercentualePerLivello(Livello.INTERMEDIO));
+          datiUtentiService.getPercentualeUtenti(Livello.INTERMEDIO));
       model.addAttribute("percentualeAvanzato",
-          datiUtentiService.getPercentualePerLivello(Livello.AVANZATO));
+          datiUtentiService.getPercentualeUtenti(Livello.AVANZATO));
       model.addAttribute("percentualeMaster",
-          datiUtentiService.getPercentualePerLivello(Livello.MASTER));
+          datiUtentiService.getPercentualeUtenti(Livello.MASTER));
       return "profilo/admin";
     } else {
       model.addAttribute("utente", persona);

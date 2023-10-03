@@ -19,7 +19,7 @@ public class ExistsEmailService {
   @Autowired
   private PersonaRepository personaRepository;
 
-  public boolean existsEmail(@NotNull String email) {
+  public boolean existsPersonaByEmail(@NotNull String email) {
     return personaRepository.existsByEmail(email);
   }
 }

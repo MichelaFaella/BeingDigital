@@ -19,7 +19,7 @@ public class ExistsEmailController {
 
   @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> post(@RequestParam String email) {
-    boolean result = existsEmailService.existsEmail(email);
+    boolean result = existsEmailService.existsPersonaByEmail(email);
 
     return ResponseEntity.ok(Collections.singletonMap("result", result));
   }

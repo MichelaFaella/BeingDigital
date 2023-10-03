@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/cittadinanzaDigitale")
-public class CittadinanzaDigitaleController {
+@RequestMapping("/lezioniCittadinanza")
+public class LezioniCittadinanzaController {
 
   @Autowired
   private PrelievoArgomentoService prelievoArgomentoService;
@@ -17,7 +17,8 @@ public class CittadinanzaDigitaleController {
   @GetMapping
   public String get(Model model) {
     model.addAttribute("lezioniPerMetaInfo",
-        prelievoArgomentoService.getLezioniCittadinanzaDigitale());
-    return "presentazionerisorse/listaLezioniCittadinanza";
+        prelievoArgomentoService.getLezioniCittadinanzaPerMetaInfoSortedByKeywordTitolo());
+    model.addAttribute("tipo", "cittadinanza");
+    return "presentazionerisorse/listaLezioni";
   }
 }

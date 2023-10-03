@@ -24,7 +24,8 @@ public class LezioniController {
     Utente utente = (Utente) personaAutenticata.getPersona().get();
 
     model.addAttribute("lezioniPerMetaInfo",
-        prelievoArgomentoService.getLezioniDaStudiare(utente));
+        prelievoArgomentoService.getLezioniDaStudiarePerMetaInfoSortedByLivelloKeywordTitolo(
+            utente));
     return "presentazionerisorse/listaLezioni";
   }
 }

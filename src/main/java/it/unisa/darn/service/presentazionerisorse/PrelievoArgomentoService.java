@@ -86,7 +86,9 @@ public class PrelievoArgomentoService {
             .thenComparing(Racconto::getTitolo)).toList();
   }
 
-  public List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniDaStudiare(@NotNull Utente utente) {
+  public List<
+      Map.Entry<MetaInfo, List<Lezione>>
+      > getLezioniDaStudiarePerMetaInfoSortedByLivelloKeywordTitolo(@NotNull Utente utente) {
     List<MetaInfo> metaInfoDaVedere;
 
     if (utente.getLivello() != Livello.MASTER) {
@@ -114,17 +116,18 @@ public class PrelievoArgomentoService {
           .filter(metaInfo -> metaInfo.getLivello() != Livello.CITTADINANZA_DIGITALE).toList();
     }
 
-    return getLezioniPerMetaInfo(metaInfoDaVedere);
+    return getLezioniPerMetaInfoSortedByTitolo(metaInfoDaVedere);
   }
 
-  public List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniCittadinanzaDigitale() {
+  public List<
+      Map.Entry<MetaInfo, List<Lezione>>> getLezioniCittadinanzaPerMetaInfoSortedByKeywordTitolo() {
     List<MetaInfo> metaInfo =
         metaInfoRepository.findByLivello(Livello.CITTADINANZA_DIGITALE, Sort.by("keyword"));
 
-    return getLezioniPerMetaInfo(metaInfo);
+    return getLezioniPerMetaInfoSortedByTitolo(metaInfo);
   }
 
-  private List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniPerMetaInfo(
+  private List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniPerMetaInfoSortedByTitolo(
       @NotNull List<MetaInfo> metaInfo) {
     List<Map.Entry<MetaInfo, List<Lezione>>> lezioniPerMetaInfo = new ArrayList<>();
     for (MetaInfo metaInfo1 : metaInfo) {
