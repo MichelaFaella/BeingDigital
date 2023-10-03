@@ -59,7 +59,7 @@ public class InserimentoRisorsaService {
   }
 
   public boolean inserimentoMetaInfo(@NotNull String keyword, @NotNull Livello livello) {
-    if (metaInfoRepository.existsByKeyword(keyword)) {
+    if (metaInfoRepository.existsByKeyword(keyword) || livello == Livello.MASTER) {
       return false;
     }
 
@@ -72,7 +72,7 @@ public class InserimentoRisorsaService {
                                     @NotNull String sbagliata1, @NotNull String sbagliata2,
                                     @NotNull String sbagliata3, @NotNull Long metaInfoId) {
     Optional<MetaInfo> optional = metaInfoRepository.findById(metaInfoId);
-    if (optional.isEmpty()) {
+    if (optional.isEmpty() || optional.get().getLivello() == Livello.CITTADINANZA_DIGITALE) {
       return false;
     }
 

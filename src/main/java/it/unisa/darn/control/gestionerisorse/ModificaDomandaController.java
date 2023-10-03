@@ -49,7 +49,7 @@ public class ModificaDomandaController {
     domandaForm.setMetaInfoId(domanda.getMetaInfo().getId());
 
     model.addAttribute("metaInfo",
-        prelievoMetaInfoService.getAllMetaInfoSortedByLivelloKeyword());
+        prelievoMetaInfoService.getMetaInfoSortedByLivelloKeywordWithoutCittadinanza());
 
     return "gestionerisorse/modificaDomanda";
   }

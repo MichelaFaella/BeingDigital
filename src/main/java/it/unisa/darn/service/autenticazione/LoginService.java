@@ -30,7 +30,9 @@ public class LoginService {
   private PersonaRepository personaRepository;
 
   /**
-   * Implementa la funzionalità del login di una persona
+   * Implementa la funzionalità del login di una persona.
+   * Si assume che la corretta formulazione di email e password sia stata controllata prima
+   * di effettuare la chiamata.
    *
    * @param email    Email della persona.
    * @param password Password della persona.

@@ -31,6 +31,8 @@ public class RegistrazioneService {
 
   /**
    * Implementa la funzionalità di registrazione di un utente.
+   * Si assume che la corretta formulazione dei parametri sia stata controllata prima
+   * di effettuare la chiamata.
    *
    * @param email    Email dell'utente.
    * @param password Password dell'utente.

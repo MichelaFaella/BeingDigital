@@ -28,7 +28,7 @@ public class InserimentoDomandaController {
   @GetMapping
   public String get(@ModelAttribute DomandaForm domandaForm, Model model) {
     model.addAttribute("metaInfo",
-        prelievoMetaInfoService.getAllMetaInfoSortedByLivelloKeyword());
+        prelievoMetaInfoService.getMetaInfoSortedByLivelloKeywordWithoutCittadinanza());
 
     return "gestionerisorse/modificaDomanda";
   }
