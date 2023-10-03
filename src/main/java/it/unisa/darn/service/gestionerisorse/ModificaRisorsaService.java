@@ -70,7 +70,7 @@ public class ModificaRisorsaService {
     return true;
   }
 
-  public boolean modificaMetaInfo(@NotNull Long id, String keyword, Livello livello) {
+  public boolean modificaMetaInfo(@NotNull Long id, String keyword, Livello livello, byte[] icona) {
     if (livello == Livello.MASTER) {
       return false;
     }
@@ -95,6 +95,10 @@ public class ModificaRisorsaService {
         rispostaRepository.deleteByDomandaMetaInfo(metaInfo);
         metaInfo.setLivello(livello);
       }
+    }
+
+    if (icona != null) {
+      metaInfo.setIcona(icona);
     }
 
     return true;

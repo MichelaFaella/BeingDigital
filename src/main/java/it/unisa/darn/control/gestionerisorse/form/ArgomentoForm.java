@@ -25,7 +25,7 @@ public class ArgomentoForm {
   @Size(max = 65535)
   private String corpo;
 
-  @CopertinaConstraint
+  @MultipartFileConstraint(maxSize = 2097152, mimeType = "image/jpeg")
   private MultipartFile copertina;
 
   @NotNull

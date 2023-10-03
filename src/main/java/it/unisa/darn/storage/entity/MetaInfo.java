@@ -1,6 +1,7 @@
 package it.unisa.darn.storage.entity;
 
 import it.unisa.darn.storage.entity.util.Livello;
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,6 +9,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,8 +38,14 @@ public class MetaInfo {
   @Column(nullable = false)
   private Livello livello;
 
-  public MetaInfo(String keyword, Livello livello) {
+  @Lob
+  @Basic
+  @Column(nullable = false, length = 102400)
+  private byte[] icona;
+
+  public MetaInfo(String keyword, Livello livello, byte[] icona) {
     this.keyword = keyword;
     this.livello = livello;
+    this.icona = icona;
   }
 }

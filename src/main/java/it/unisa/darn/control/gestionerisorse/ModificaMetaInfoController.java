@@ -5,6 +5,7 @@ import it.unisa.darn.service.gestionerisorse.ModificaRisorsaService;
 import it.unisa.darn.service.presentazionerisorse.PrelievoMetaInfoService;
 import it.unisa.darn.storage.entity.MetaInfo;
 import jakarta.validation.Valid;
+import java.io.IOException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,13 +46,18 @@ public class ModificaMetaInfoController {
   @PostMapping
   public String post(@RequestParam Long id,
                      @ModelAttribute @Valid MetaInfoForm metaInfoForm,
-                     BindingResult bindingResult, Model model) {
+                     BindingResult bindingResult, Model model) throws IOException {
     if (bindingResult.hasErrors()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
+    byte[] icona = null;
+    if (metaInfoForm.getIcona() != null && !metaInfoForm.getIcona().isEmpty()) {
+      icona = metaInfoForm.getIcona().getBytes();
+    }
+
     if (!modificaRisorsaService.modificaMetaInfo(id, metaInfoForm.getKeyword(),
-        metaInfoForm.getLivello())) {
+        metaInfoForm.getLivello(), icona)) {
       model.addAttribute("keywordEsistente", true);
       return "gestionerisorse/modificaMetaInfo";
     }

@@ -3,6 +3,7 @@ package it.unisa.darn.control.gestionerisorse;
 import it.unisa.darn.control.gestionerisorse.form.MetaInfoForm;
 import it.unisa.darn.service.gestionerisorse.InserimentoRisorsaService;
 import jakarta.validation.Valid;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -28,13 +29,17 @@ public class InserimentoMetaInfoController {
 
   @PostMapping
   public String post(@ModelAttribute @Valid MetaInfoForm metaInfoForm,
-                     BindingResult bindingResult, Model model) {
+                     BindingResult bindingResult, Model model) throws IOException {
     if (bindingResult.hasErrors()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
+    if (metaInfoForm.getIcona() == null || metaInfoForm.getIcona().isEmpty()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+
     if (!inserimentoRisorsaService.inserimentoMetaInfo(metaInfoForm.getKeyword(),
-        metaInfoForm.getLivello())) {
+        metaInfoForm.getLivello(), metaInfoForm.getIcona().getBytes())) {
       model.addAttribute("keywordEsistente", true);
       return "gestionerisorse/modificaMetaInfo";
     }
