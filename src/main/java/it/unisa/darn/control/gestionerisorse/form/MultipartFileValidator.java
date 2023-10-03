@@ -4,11 +4,19 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.web.multipart.MultipartFile;
 
-public class CopertinaValidator implements ConstraintValidator<CopertinaConstraint, MultipartFile> {
+public class MultipartFileValidator
+    implements ConstraintValidator<MultipartFileConstraint, MultipartFile> {
+
+  private long maxSize;
+
+  private String mimeType;
 
   @Override
-  public void initialize(CopertinaConstraint constraintAnnotation) {
+  public void initialize(MultipartFileConstraint constraintAnnotation) {
     ConstraintValidator.super.initialize(constraintAnnotation);
+
+    maxSize = constraintAnnotation.maxSize();
+    mimeType = constraintAnnotation.mimeType();
   }
 
   @Override
@@ -18,10 +26,6 @@ public class CopertinaValidator implements ConstraintValidator<CopertinaConstrai
       return true;
     }
 
-    if (multipartFile.getSize() > 2097152 || !"image/jpeg".equals(multipartFile.getContentType())) {
-      return false;
-    }
-
-    return true;
+    return multipartFile.getSize() <= maxSize && mimeType.equals(multipartFile.getContentType());
   }
 }

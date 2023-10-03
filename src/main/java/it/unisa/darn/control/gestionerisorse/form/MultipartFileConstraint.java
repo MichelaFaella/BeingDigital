@@ -9,14 +9,18 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Documented
-@Constraint(validatedBy = CopertinaValidator.class)
+@Constraint(validatedBy = MultipartFileValidator.class)
 @Target({ElementType.TYPE, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CopertinaConstraint {
+public @interface MultipartFileConstraint {
 
-  String message() default "Copertina troppo grande o del formato errato";
+  String message() default "File troppo grande o del formato errato";
 
   Class<?>[] groups() default {};
 
   Class<? extends Payload>[] payload() default {};
+
+  long maxSize();
+
+  String mimeType();
 }

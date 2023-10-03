@@ -58,12 +58,13 @@ public class InserimentoRisorsaService {
     return true;
   }
 
-  public boolean inserimentoMetaInfo(@NotNull String keyword, @NotNull Livello livello) {
+  public boolean inserimentoMetaInfo(@NotNull String keyword, @NotNull Livello livello,
+                                     @NotNull byte[] icona) {
     if (metaInfoRepository.existsByKeyword(keyword) || livello == Livello.MASTER) {
       return false;
     }
 
-    MetaInfo metaInfo = new MetaInfo(keyword, livello);
+    MetaInfo metaInfo = new MetaInfo(keyword, livello, icona);
     metaInfoRepository.save(metaInfo);
     return true;
   }
