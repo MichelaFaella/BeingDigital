@@ -30,8 +30,11 @@
                     <li><a href="">Giochi</a></li>
                 </ul>
             </li>
-            <th:block th:with="accesso = ${@personaAutenticata.persona.isEmpty()}">
-                <li th:if="${!accesso}"><a href="#">Privacy online <b>+</b></a>
+            <th:block th:with="accesso = ${@personaAutenticata.persona.isPresent()}">
+                <li th:if="${accesso
+                && !(@personaAutenticata.persona.get() instanceof T(it.unisa.darn.storage.entity.Admin))}">
+                    <a href="#">Privacy online
+                        <b>+</b></a>
                     <ul>
                         <li><a href="">Racconti</a></li>
                         <li><a href="">Lezioni</a></li>
@@ -39,8 +42,8 @@
                         <li><a href="">Test</a></li>
                     </ul>
                 </li>
-                <li><a href="/login" th:if="${accesso}">Accesso</a>
-                    <a href="/auth/areaPersonale" th:if="${!accesso}">Area personale</a>
+                <li><a href="/login" th:if="${!accesso}">Accesso</a>
+                    <a href="/auth/areaPersonale" th:if="${accesso}">Area personale</a>
                 </li>
             </th:block>
         </ul>
