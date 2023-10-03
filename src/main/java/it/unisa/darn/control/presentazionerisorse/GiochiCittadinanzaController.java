@@ -1,6 +1,6 @@
 package it.unisa.darn.control.presentazionerisorse;
 
-import it.unisa.darn.service.presentazionerisorse.PrelievoArgomentoService;
+import it.unisa.darn.service.presentazionerisorse.PrelievoGiocoService;
 import it.unisa.darn.storage.entity.util.Livello;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,18 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/lezioniCittadinanza")
-public class LezioniCittadinanzaController {
+@RequestMapping("/giochiCittadinanza")
+public class GiochiCittadinanzaController {
 
   @Autowired
-  private PrelievoArgomentoService prelievoArgomentoService;
+  private PrelievoGiocoService prelievoGiocoService;
 
   @GetMapping
   public String get(Model model) {
-    model.addAttribute("lezioniPerMetaInfo",
-        prelievoArgomentoService.getLezioniPerMetaInfoSortedByLivelloKeywordTitolo(
-            Livello.CITTADINANZA_DIGITALE));
+    model.addAttribute("giochi",
+        prelievoGiocoService.getGiochiSortedByNome(Livello.CITTADINANZA_DIGITALE));
     model.addAttribute("tipo", "cittadinanza");
-    return "presentazionerisorse/listaLezioni";
+    return "presentazionerisorse/giochi";
   }
 }

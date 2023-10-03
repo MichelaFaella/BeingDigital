@@ -1,7 +1,7 @@
 package it.unisa.darn.control.presentazionerisorse;
 
 import it.unisa.darn.service.presentazionerisorse.PrelievoArgomentoService;
-import it.unisa.darn.storage.entity.Racconto;
+import it.unisa.darn.storage.entity.Argomento;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 @Controller
-@RequestMapping("/racconto")
-public class RaccontoController {
+@RequestMapping("/argomento")
+public class ArgomentoController {
 
   @Autowired
   private PrelievoArgomentoService prelievoArgomentoService;
 
   @GetMapping
   public String get(@RequestParam Long id, Model model) {
-    Optional<Racconto> optional = prelievoArgomentoService.getRacconto(id);
+    Optional<Argomento> optional = prelievoArgomentoService.getArgomento(id);
     if (optional.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }

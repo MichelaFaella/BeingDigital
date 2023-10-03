@@ -2,6 +2,7 @@ package it.unisa.darn.storage.repository;
 
 import it.unisa.darn.storage.entity.Argomento;
 import it.unisa.darn.storage.entity.MetaInfo;
+import it.unisa.darn.storage.entity.util.Livello;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,6 @@ public interface ArgomentoGenericRepository<T extends Argomento> extends JpaRepo
   List<T> findByMetaInfo(MetaInfo metaInfo, Sort sort);
 
   void deleteByMetaInfo(MetaInfo metaInfo);
+
+  List<T> findByMetaInfoLivello(Livello livello, Sort sort);
 }

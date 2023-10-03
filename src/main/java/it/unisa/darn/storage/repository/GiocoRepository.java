@@ -2,7 +2,10 @@ package it.unisa.darn.storage.repository;
 
 import it.unisa.darn.storage.entity.Gioco;
 import it.unisa.darn.storage.entity.MetaInfo;
+import it.unisa.darn.storage.entity.util.Livello;
+import java.util.List;
 import java.util.Optional;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -16,6 +19,8 @@ public interface GiocoRepository extends JpaRepository<Gioco, Long> {
   Optional<Gioco> findByNome(String nome);
 
   Optional<Gioco> findByMetaInfo(MetaInfo metaInfo);
+
+  List<Gioco> findByMetaInfoLivello(Livello livello, Sort sort);
 
   void deleteByMetaInfo(MetaInfo metaInfo);
 

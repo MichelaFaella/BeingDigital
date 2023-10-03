@@ -20,7 +20,7 @@
             <ul>
                 <th:block th:each="arg, istat: ${instance.value}">
                     <li><span th:text="${istat.count}"></span> <a
-                            th:href="@{/auth/lezione(id=${arg.id})}"
+                            th:href="@{/argomento(id=${arg.id})}"
                             th:text="${arg.titolo}"></a></li>
                 </th:block>
             </ul>

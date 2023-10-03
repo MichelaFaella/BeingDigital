@@ -75,8 +75,14 @@ public class PrelievoArgomentoService {
             .thenComparing(Lezione::getTitolo)).toList();
   }
 
-  public List<Racconto> getAllRaccontiSortedByTitolo() {
-    return raccontoRepository.findAll(Sort.by("titolo"));
+  public List<Racconto> getRaccontiSortedByTitolo(@NotNull Livello livello) {
+    if (livello == Livello.MASTER) {
+      return raccontoRepository.findAll(Sort.by("titolo")).stream()
+          .filter(racconto -> racconto.getMetaInfo().getLivello() != Livello.CITTADINANZA_DIGITALE)
+          .toList();
+    } else {
+      return raccontoRepository.findByMetaInfoLivello(livello, Sort.by("titolo"));
+    }
   }
 
   public List<Racconto> getAllRaccontiSortedByLivelloKeywordTitolo() {
@@ -120,11 +126,17 @@ public class PrelievoArgomentoService {
   }
 
   public List<
-      Map.Entry<MetaInfo, List<Lezione>>> getLezioniCittadinanzaPerMetaInfoSortedByKeywordTitolo() {
-    List<MetaInfo> metaInfo =
-        metaInfoRepository.findByLivello(Livello.CITTADINANZA_DIGITALE, Sort.by("keyword"));
+      Map.Entry<MetaInfo, List<Lezione>>> getLezioniPerMetaInfoSortedByLivelloKeywordTitolo(
+      @NotNull Livello livello) {
+    List<MetaInfo> metaInfos;
+    if (livello == Livello.MASTER) {
+      metaInfos = prelievoMetaInfoService.getAllMetaInfoSortedByLivelloKeyword().stream()
+          .filter(metaInfo -> metaInfo.getLivello() != Livello.CITTADINANZA_DIGITALE).toList();
+    } else {
+      metaInfos = metaInfoRepository.findByLivello(livello, Sort.by("keyword"));
+    }
 
-    return getLezioniPerMetaInfoSortedByTitolo(metaInfo);
+    return getLezioniPerMetaInfoSortedByTitolo(metaInfos);
   }
 
   private List<Map.Entry<MetaInfo, List<Lezione>>> getLezioniPerMetaInfoSortedByTitolo(

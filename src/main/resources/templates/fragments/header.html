@@ -25,9 +25,9 @@
         <ul>
             <li><a href="#">Cittadinanza digitale <b>+</b></a>
                 <ul>
-                    <li><a href="">Racconti</a></li>
-                    <li><a href="">Lezioni</a></li>
-                    <li><a href="">Giochi</a></li>
+                    <li><a href="/raccontiCittadinanza">Racconti</a></li>
+                    <li><a href="/lezioniCittadinanza">Lezioni</a></li>
+                    <li><a href="/giochiCittadinanza">Giochi</a></li>
                 </ul>
             </li>
             <th:block th:with="accesso = ${@personaAutenticata.persona.isPresent()}">
@@ -36,10 +36,12 @@
                     <a href="#">Privacy online
                         <b>+</b></a>
                     <ul>
-                        <li><a href="">Racconti</a></li>
-                        <li><a href="">Lezioni</a></li>
-                        <li><a href="">Giochi</a></li>
-                        <li><a href="">Test</a></li>
+                        <li><a href="/utente/raccontiPrivacy">Racconti</a></li>
+                        <li><a href="/utente/lezioniPrivacy">Lezioni</a></li>
+                        <li><a href="/utente/giochiPrivacy">Giochi</a></li>
+                        <li th:if="${@personaAutenticata.persona.get().livello.name() != 'MASTER'}"><a
+                                href="/utente/test">Test</a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="/login" th:if="${!accesso}">Accesso</a>
