@@ -139,7 +139,7 @@
     margin-top: 15px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .banner-text h1 {
         font-size: 100px;
     }

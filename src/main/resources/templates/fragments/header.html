@@ -13,34 +13,38 @@
 
 </head>
 <body class>
-<header class="all-headerbody">
+<header class="all-headerbody" id="header">
     <a href="/"><img alt="" class="logo" src="/img/Logo.png"></a>
-
-    <ul class="nav-menu" th:with="accesso = ${@personaAutenticata.persona.isEmpty()}">
-        <li><a href="/cittadinanzaDigitale" th:if="${!accesso}">Privacy</a>
-
-        </li>
-        <li><a href="/cittadinanzaDigitale" th:if="${!accesso}">Cittadinanza digitale</a></li>
-        <li>
-            <a href="/login" th:if="${accesso}">Accesso</a>
-            <a href="/auth/areaPersonale" th:if="${!accesso}">Area personale</a>
-        </li>
-    </ul>
-
-    <div class="boh">
-        <ul>
-            <li><a>Racconti</a></li>
-            <li><a>Lezioni</a></li>
-            <li><a>Giochi</a></li>
-        </ul>
-    </div>
-
     <div class="hamburger">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
     </div>
 
+    <nav id="menu">
+        <ul>
+            <li><a href="#">Cittadinanza digitale <b>+</b></a>
+                <ul>
+                    <li><a href="">Racconti</a></li>
+                    <li><a href="">Lezioni</a></li>
+                    <li><a href="">Giochi</a></li>
+                </ul>
+            </li>
+            <th:block th:with="accesso = ${@personaAutenticata.persona.isEmpty()}">
+                <li th:if="${!accesso}"><a href="#">Privacy online <b>+</b></a>
+                    <ul>
+                        <li><a href="">Racconti</a></li>
+                        <li><a href="">Lezioni</a></li>
+                        <li><a href="">Giochi</a></li>
+                        <li><a href="">Test</a></li>
+                    </ul>
+                </li>
+                <li><a href="/login" th:if="${accesso}">Accesso</a>
+                    <a href="/auth/areaPersonale" th:if="${!accesso}">Area personale</a>
+                </li>
+            </th:block>
+        </ul>
+    </nav>
 </header>
 
 
