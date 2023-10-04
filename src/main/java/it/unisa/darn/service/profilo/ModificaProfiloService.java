@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * Questa classe rappresenta il service per la modifica di un account di una persona.
+ * Questa classe rappresenta il service per la modifica del profilo di una persona.
  */
 
 @Service
@@ -26,11 +26,12 @@ public class ModificaProfiloService {
   private PasswordEncryptor passwordEncryptor;
 
   /**
-   * Implementa la funzionalità di cancellazione di un account di una persona.
-   * Si assume che la corretta formulazione dei paramentri sia stata controllata prima
-   * di effettuare la chiamata.
+   * Implementa la funzionalità di modifica del profilo di una persona.
+   * Si assume che la corretta formulazione dei parametri sia stata controllata prima
+   * di effettuare la chiamata e che la persona sia presente nel database.
+   * Tutti i parametri tranne persona possono essere nulli, se non si vuole modificare quel dato.
    *
-   * @param persona  L'account della persona da modificare.
+   * @param persona  La persona da modificare.
    * @param nome     Il nome modificato.
    * @param cognome  Il cognome modificato.
    * @param email    L'email modificata.
