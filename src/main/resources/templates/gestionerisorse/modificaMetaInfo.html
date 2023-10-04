@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Meta-info</title>
     <link rel="stylesheet" th:href="@{/stylesheet/modificaMetaInfo.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/stylesheet/drag_drop.css}" type="text/css"/>
 </head>
 <th:block th:include="fragments/header"></th:block>
 <body>
@@ -27,6 +28,18 @@
                     </select>
                 </div>
             </div>
+            <div class="drop-zone">
+                <span class="drop-zone__prompt" th:if="${param.id==null}"
+                >Inserisci un'immagine</span>
+                <input accept="image/jpeg" class="drop-zone__input" id="icona" name="copertina"
+                       onchange="img()" th:if="${param.id!=null}"
+                       type="file">
+                <input accept="image/jpeg" class="drop-zone__input" id="icona" name="copertina"
+                       onchange="img()" required
+                       th:if="${param.id==null} " type="file">
+                <div class="drop-zone__thumb" th:if="${param.id!=null}"
+                     th:style="'background-image: url('+@{/copertina(idArgomento=${param.id})}+')'"></div>
+            </div>
             <input onclick="return validateMeta(this)" type="submit" value="COMPLETATO">
         </form>
     </div>
@@ -39,6 +52,7 @@
 <th:block th:include="fragments/footer"></th:block>
 <script th:src="@{/js/select.js}"></script>
 <script th:src="@{/js/modifica.js}"></script>
+<script th:src="@{/js/drag_drop.js}"></script>
 <script th:if="${keywordEsistente!=null}">
     toast("La keyword risulta essere già esistente! <br> Inserirne un'altra.");
 </script>
