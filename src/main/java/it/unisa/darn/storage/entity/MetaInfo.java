@@ -43,6 +43,9 @@ public class MetaInfo {
   @Column(nullable = false, length = 102400)
   private byte[] icona;
 
+  /**
+   * Costruttore per la meta-info.
+   */
   public MetaInfo(String keyword, Livello livello, byte[] icona) {
     this.keyword = keyword;
     this.livello = livello;

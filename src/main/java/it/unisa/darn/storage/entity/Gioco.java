@@ -14,7 +14,8 @@ import lombok.ToString;
 
 /**
  * Questa classe rappresenta un gioco.
- * Ogni gioco ha una meta-info associata e può essere giocato da ogni utente di equal livello della sua meta-info.
+ * Ogni gioco ha una meta-info associata e può essere giocato da ogni utente di equal livello della
+ * sua meta-info.
  */
 @Entity
 @NoArgsConstructor
@@ -37,6 +38,9 @@ public class Gioco {
   @JoinColumn(nullable = false)
   private MetaInfo metaInfo;
 
+  /**
+   * Costruttore per gioco.
+   */
   public Gioco(String nome, String path, MetaInfo metaInfo) {
     this.nome = nome;
     this.path = path;
