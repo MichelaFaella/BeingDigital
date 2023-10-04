@@ -27,6 +27,20 @@
     background-size: contain;
 }
 
+.lezioni .left {
+    position: absolute;
+    width: 50px;
+    left: 10px;
+    top: 10px;
+}
+
+.lezioni .right {
+    position: absolute;
+    width: 50px;
+    right: 10px;
+    top: 10px;
+}
+
 .lezioni .box {
     width: 70%;
     position: relative;

@@ -119,6 +119,7 @@
 /* Form */
 .form {
     width: 80%;
+    min-width: 550px;
     z-index: 0;
     margin: 0 auto;
     background-color: var(--white-color);

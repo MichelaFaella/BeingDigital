@@ -133,6 +133,10 @@ function img() {
     toast("ATTEZIONE: inserire l'immagine di peso <br>massimo di 2MB")
 }
 
+function icon() {
+    toast("ATTEZIONE: inserire l'immagine di peso <br>massimo di 100KB")
+}
+
 //toast
 
 function toast(txt) {

@@ -11,7 +11,8 @@
 <div class="modifica" id="modArg">
     <h2>Meta-info</h2>
     <div class="daticard">
-        <form method="post" th:action="${param.id==null ? '/admin/inserimentoMetaInfo':'/admin/modificaMetaInfo'}"
+        <form enctype="multipart/form-data" method="post"
+              th:action="${param.id==null ? '/admin/inserimentoMetaInfo':'/admin/modificaMetaInfo'}"
               th:object="${metaInfoForm}">
             <input class="input" id="id" name="id" style="display: none" th:value="${param.id}" type="text">
             <label for="keyword">Keyword:</label>
@@ -30,15 +31,15 @@
             </div>
             <div class="drop-zone">
                 <span class="drop-zone__prompt" th:if="${param.id==null}"
-                >Inserisci un'immagine</span>
-                <input accept="image/jpeg" class="drop-zone__input" id="icona" name="copertina"
-                       onchange="img()" th:if="${param.id!=null}"
+                >Inserisci un'icona</span>
+                <input accept="image/png" class="drop-zone__input" id="icona" name="icona"
+                       onchange="icon()" th:if="${param.id!=null}"
                        type="file">
-                <input accept="image/jpeg" class="drop-zone__input" id="icona" name="copertina"
-                       onchange="img()" required
+                <input accept="image/png" class="drop-zone__input" id="icona" name="icona"
+                       onchange="icon()" required
                        th:if="${param.id==null} " type="file">
                 <div class="drop-zone__thumb" th:if="${param.id!=null}"
-                     th:style="'background-image: url('+@{/copertina(idArgomento=${param.id})}+')'"></div>
+                     th:style="'background-image: url('+@{/icona(idMetaInfo=${param.id})}+')'"></div>
             </div>
             <input onclick="return validateMeta(this)" type="submit" value="COMPLETATO">
         </form>

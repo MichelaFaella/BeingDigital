@@ -20,7 +20,7 @@ public class LezioniCittadinanzaController {
     model.addAttribute("lezioniPerMetaInfo",
         prelievoArgomentoService.getLezioniPerMetaInfoSortedByLivelloKeywordTitolo(
             Livello.CITTADINANZA_DIGITALE));
-    model.addAttribute("tipo", "cittadinanza");
+    model.addAttribute("tipo", "lezioniCittadinanza");
     return "presentazionerisorse/listaLezioni";
   }
 }
