@@ -13,8 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * Questa classe rappresenta il service per il calcolo di percentuali da mostrare nell'area
- * personale della persona.
+ * Questa classe rappresenta il service per il prelievo di dati riguardanti gli utenti.
  */
 
 @Service
@@ -37,8 +36,6 @@ public class DatiUtentiService {
 
   /**
    * Implementa la funzionalità di calcolo della percentuale di utenti presenti per livello.
-   * Si assume che la corretta formulazione del livello sia stata controllata prima
-   * di effettuare la chiamata.
    *
    * @param livello Il livello per cui calcolare la percentuale.
    * @return intero rappresentante la percentuale calcolata.
@@ -53,8 +50,7 @@ public class DatiUtentiService {
 
   /**
    * Implementa la funzionalità di calcolo della percentuale di test superato dell'utente.
-   * Si assume che la corretta formulazione dell'utente sia stata controllata prima
-   * di effettuare la chiamata.
+   * Si assume che l'utente sia presente nel database.
    *
    * @param utente L'utente per cui calcolare la percentuale.
    * @return intero rappresentante la percentuale calcolata.
