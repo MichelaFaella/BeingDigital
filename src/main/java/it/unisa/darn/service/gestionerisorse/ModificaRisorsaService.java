@@ -17,6 +17,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+/**
+ * Questa classe rappresenta il service per la modifica di una risorsa.
+ */
+
 @Service
 @Transactional
 @Validated
@@ -37,6 +41,18 @@ public class ModificaRisorsaService {
   @Autowired
   private RispostaRepository rispostaRepository;
 
+  /**
+   * Implementa la funzionalità di modifica di un argomento.
+   * Si assume che la corretta formulazione dei parametri sia stata controllata prima
+   * di effettuare la chiamata.
+   *
+   * @param titolo     Titolo dell'argomento.
+   * @param corpo      Testo scritto che compone l'argomento.
+   * @param copertina  Copertina dell'argomento.
+   * @param metaInfoId Id della meta-info associata all'argomento.
+   * @return true se la modifica è andato a buon fine, false altrimenti.
+   * @throws jakarta.validation.ConstraintViolationException se l'id risulta null.
+   */
   public boolean modificaArgomento(@NotNull Long id, String titolo, String corpo, byte[] copertina,
                                    Long metaInfoId) {
     Optional<Argomento> optionalArgomento = argomentoRepository.findById(id);
@@ -70,6 +86,17 @@ public class ModificaRisorsaService {
     return true;
   }
 
+  /**
+   * Implementa la funzionalità di modifica di una meta-info.
+   * Si assume che la corretta formulazione dei parametri sia stata controllata prima
+   * di effettuare la chiamata.
+   *
+   * @param keyword Nome della meta-info.
+   * @param livello Livello associato alla meta-info.
+   * @param icona   Immagine rappresentativa della meta-info.
+   * @return true se la modifica è andata a buon fine, false altrimenti.
+   * @throws jakarta.validation.ConstraintViolationException se l'id risulta null.
+   */
   public boolean modificaMetaInfo(@NotNull Long id, String keyword, Livello livello, byte[] icona) {
     if (livello == Livello.MASTER) {
       return false;
@@ -104,6 +131,20 @@ public class ModificaRisorsaService {
     return true;
   }
 
+  /**
+   * Implementa la funzionalità di modifica di una domanda.
+   * Si assume che la corretta formulazione dei parametri sia stata controllata prima
+   * di effettuare la chiamata.
+   *
+   * @param testo      Testo che compone la domanda.
+   * @param corretta   Risposta corretta.
+   * @param sbagliata1 Prima risposta sbagliata.
+   * @param sbagliata2 Seconda risposta sbagliata.
+   * @param sbagliata3 Terza risposta sbagliata.
+   * @param metaInfoId Id della meta-info associata alla domanda.
+   * @return true se la modifica è andata a buon fine, false altrimenti.
+   * @throws jakarta.validation.ConstraintViolationException se l'id risulta null.
+   */
   public boolean modificaDomanda(@NotNull Long id, String testo, String corretta, String sbagliata1,
                                  String sbagliata2, String sbagliata3, Long metaInfoId) {
     Optional<Domanda> optional = domandaRepository.findById(id);
@@ -146,6 +187,17 @@ public class ModificaRisorsaService {
     return true;
   }
 
+  /**
+   * Implementa la funzionalità di modifica di un gioco.
+   * Si assume che la corretta formulazione dei parametri sia stata controllata prima
+   * di effettuare la chiamata.
+   *
+   * @param nome       Nome del gioco.
+   * @param path       Path del gioco.
+   * @param metaInfoId Id della meta-info associata al gioco.
+   * @return true se la modifica è andato a buon fine, false altrimenti.
+   * @throws jakarta.validation.ConstraintViolationException se l'id risulta null.
+   */
   public boolean modificaGioco(@NotNull Long id, String nome, String path, Long metaInfoId) {
     Optional<Gioco> optional = giocoRepository.findById(id);
     if (optional.isEmpty()) {

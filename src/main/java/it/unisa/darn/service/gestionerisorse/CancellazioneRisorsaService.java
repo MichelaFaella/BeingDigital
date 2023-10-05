@@ -14,6 +14,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+/**
+ * Questa classe rappresenta il service per la cancellazione di una risorsa.
+ */
+
 @Service
 @Transactional
 @Validated
@@ -34,6 +38,15 @@ public class CancellazioneRisorsaService {
   @Autowired
   private RispostaRepository rispostaRepository;
 
+  /**
+   * Implementa la funzionalità di cancellazione di una meta-info.
+   * Si assume che la corretta formulazione dell'id sia stata controllata prima
+   * di effettuare la chiamata.
+   *
+   * @param id Id della meta-info.
+   * @return true se la cancellazione è andata a buon fine, false altrimenti.
+   * @throws jakarta.validation.ConstraintViolationException se l'id risulta null.
+   */
   public boolean cancellazioneMetaInfo(@NotNull Long id) {
     Optional<MetaInfo> optional = metaInfoRepository.findById(id);
     if (optional.isEmpty()) {
@@ -49,6 +62,15 @@ public class CancellazioneRisorsaService {
     return true;
   }
 
+  /**
+   * Implementa la funzionalità di cancellazione di un argomento.
+   * Si assume che la corretta formulazione dell'id sia stata controllata prima
+   * di effettuare la chiamata.
+   *
+   * @param id Id di un argomento.
+   * @return true se la cancellazione è andata a buon fine, false altrimenti.
+   * @throws jakarta.validation.ConstraintViolationException se l'id risulta null.
+   */
   public boolean cancellazioneArgomento(@NotNull Long id) {
     if (!argomentoRepository.existsById(id)) {
       return false;
@@ -58,6 +80,15 @@ public class CancellazioneRisorsaService {
     return true;
   }
 
+  /**
+   * Implementa la funzionalità di cancellazione di un gioco.
+   * Si assume che la corretta formulazione dell'id sia stata controllata prima
+   * di effettuare la chiamata.
+   *
+   * @param id Id di un gioco.
+   * @return true se la cancellazione è andata a buon fine, false altrimenti.
+   * @throws jakarta.validation.ConstraintViolationException se l'id risulta null.
+   */
   public boolean cancellazioneGioco(@NotNull Long id) {
     if (!giocoRepository.existsById(id)) {
       return false;
@@ -66,6 +97,16 @@ public class CancellazioneRisorsaService {
     giocoRepository.deleteById(id);
     return true;
   }
+
+  /**
+   * Implementa la funzionalità di cancellazione di una domanda.
+   * Si assume che la corretta formulazione dell'id sia stata controllata prima
+   * di effettuare la chiamata.
+   *
+   * @param id Id di una domanda.
+   * @return true se la cancellazione è andata a buon fine, false altrimenti.
+   * @throws jakarta.validation.ConstraintViolationException se l'id risulta null.
+   */
 
   public boolean cancellazioneDomanda(@NotNull Long id) {
     Optional<Domanda> optional = domandaRepository.findById(id);
