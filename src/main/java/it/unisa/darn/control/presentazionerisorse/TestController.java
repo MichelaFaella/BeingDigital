@@ -63,7 +63,7 @@ public class TestController {
 
     try {
       if (testService.test(risposte, utente)) {
-        return "redirect:/auth/areaPersonale";
+        return "redirect:/auth/areaPersonale?testCompletato=true";
       }
       return "redirect:/utente/risposte";
     } catch (IllegalArgumentException exception) {
