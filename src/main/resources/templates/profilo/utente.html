@@ -95,7 +95,23 @@
     </div>
 </form>
 
+<div class="contsnack">
+    <div id="snackbar"></div>
+</div>
+<script th:if="${param.testCompletato != null}">
 
+    toast("Complimenti, hai completato il test! <br> Sei salito di livello!")
+
+    function toast(txt) {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        x.innerHTML = txt;
+        setTimeout(function () {
+            x.className = x.className.replace("show", "");
+        }, 3000);
+    }
+
+</script>
 <th:block th:include="fragments/footer"></th:block>
 <script th:src="@{/js/utente.js}"></script>
 
