@@ -1,4 +1,4 @@
-# Darn
+# Being Digital
 
 <p align = "center">
   <img src = "src/main/resources/static/img/Logo.png" width="577" height="219" alt="Logo">
