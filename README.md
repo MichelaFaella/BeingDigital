@@ -1,7 +1,7 @@
 # Being Digital
 
 <p align = "center">
-  <img src = "src/main/resources/static/img/Logo2.png" width="577" alt="Logo">
+  <img src = "src/main/resources/static/img/BeingDigital2.png" width="577" alt="Logo">
 </p>
 
 <p align = "center">
@@ -34,7 +34,7 @@ Follow these steps:
 1. Download and start MySQL 8.0.33;
 2. Download Java SE 17;
 3. Clone this repo;
-4. Go into Darn directory;
+4. Go into Being_Digital directory;
 5. Run `./mwnw (or .\mvnw.cmd if you're on windows) clean package` and wait for maven to build;
 6. Run `java -jar target/Darn-1.0.jar –spring.datasource.password="<password_database>"
    –spring.datasource.username="<username_database>"`;
