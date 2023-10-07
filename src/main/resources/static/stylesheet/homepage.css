@@ -1,7 +1,8 @@
 #banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), #282828c4), url(/img/privacy.jpg);
+    background: url(/img/BeingDigital.png);
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
+    padding-bottom: 65px;
     height: 90vh;
     min-width: 600px;
 }
