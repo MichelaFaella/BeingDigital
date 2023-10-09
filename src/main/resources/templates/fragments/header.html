@@ -31,7 +31,7 @@
             </li>
             <th:block th:with="accesso = ${@personaAutenticata.persona.isPresent()}">
                 <li th:if="${accesso
-                && !(@personaAutenticata.persona.get() instanceof T(it.unisa.darn.storage.entity.Admin))}">
+                && !(@personaAutenticata.persona.get().getClass().getSimpleName().equals('Admin'))}">
                     <a href="#">Privacy online
                         <b>+</b></a>
                     <ul>
