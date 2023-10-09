@@ -15,7 +15,7 @@ on:
     branches: [ "master" ]
 
 env:
-  DB_DATABASE: darn
+  DB_DATABASE: beingdigital
   DB_USER: root
   DB_PASSWORD: root
 
