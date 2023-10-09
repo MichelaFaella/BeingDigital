@@ -34,9 +34,9 @@ Follow these steps:
 1. Download and start MySQL 8.0.33;
 2. Download Java SE 17;
 3. Clone this repo;
-4. Go into Being_Digital directory;
+4. Go into BeingDigital directory;
 5. Run `./mwnw (or .\mvnw.cmd if you're on windows) clean package` and wait for maven to build;
-6. Run `java -jar target/Darn-1.0.jar –spring.datasource.password="<password_database>"
+6. Run `java -jar target/BeingDigital-1.0.jar –spring.datasource.password="<password_database>"
    –spring.datasource.username="<username_database>"`;
 7. Open your browser at `localhost:8080`.
 
@@ -50,8 +50,8 @@ Follow these steps:
 
 # Contributors
 
-<a href="https://github.com/MichelaFaella/Darn/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=MichelaFaella/Darn" />
+<a href="https://github.com/MichelaFaella/BeingDigital/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=MichelaFaella/BeingDigital" />
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).

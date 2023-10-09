@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>it.unisa</groupId>
-    <artifactId>Darn</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Darn</name>
-    <description>DARN: privacy literacy website</description>
+    <artifactId>BeingDigital</artifactId>
+    <version>1.0</version>
+    <name>Being Digital</name>
+    <description>Being Digital: A... playful tool for digital literacy</description>
     <properties>
         <java.version>17</java.version>
     </properties>
