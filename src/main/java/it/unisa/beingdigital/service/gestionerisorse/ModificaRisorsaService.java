@@ -45,6 +45,7 @@ public class ModificaRisorsaService {
    * Implementa la funzionalità di modifica di un argomento.
    * Si assume che la corretta formulazione dei parametri sia stata controllata prima
    * di effettuare la chiamata.
+   * Tutti i parametri, tranne id, possono essere nulli, se non si vuole modificare quel dato.
    *
    * @param titolo     Titolo dell'argomento.
    * @param corpo      Testo scritto che compone l'argomento.
@@ -90,6 +91,7 @@ public class ModificaRisorsaService {
    * Implementa la funzionalità di modifica di una meta-info.
    * Si assume che la corretta formulazione dei parametri sia stata controllata prima
    * di effettuare la chiamata.
+   * Tutti i parametri, tranne id, possono essere nulli, se non si vuole modificare quel dato.
    *
    * @param keyword Nome della meta-info.
    * @param livello Livello associato alla meta-info.
@@ -135,6 +137,7 @@ public class ModificaRisorsaService {
    * Implementa la funzionalità di modifica di una domanda.
    * Si assume che la corretta formulazione dei parametri sia stata controllata prima
    * di effettuare la chiamata.
+   * Tutti i parametri, tranne id, possono essere nulli, se non si vuole modificare quel dato.
    *
    * @param testo      Testo che compone la domanda.
    * @param corretta   Risposta corretta.
@@ -191,6 +194,7 @@ public class ModificaRisorsaService {
    * Implementa la funzionalità di modifica di un gioco.
    * Si assume che la corretta formulazione dei parametri sia stata controllata prima
    * di effettuare la chiamata.
+   * Tutti i parametri, tranne id, possono essere nulli, se non si vuole modificare quel dato.
    *
    * @param nome       Nome del gioco.
    * @param path       Path del gioco.

@@ -29,7 +29,7 @@ public class ModificaProfiloService {
    * Implementa la funzionalità di modifica del profilo di una persona.
    * Si assume che la corretta formulazione dei parametri sia stata controllata prima
    * di effettuare la chiamata e che la persona sia presente nel database.
-   * Tutti i parametri tranne persona possono essere nulli, se non si vuole modificare quel dato.
+   * Tutti i parametri, tranne persona, possono essere nulli, se non si vuole modificare quel dato.
    *
    * @param persona  La persona da modificare.
    * @param nome     Il nome modificato.
