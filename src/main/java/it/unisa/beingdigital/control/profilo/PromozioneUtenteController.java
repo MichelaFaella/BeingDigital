@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per la promozione di un utente.
+ */
+
 @Controller
 @RequestMapping("/admin/promozioneUtente")
 public class PromozioneUtenteController {
