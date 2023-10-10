@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta il form contente una lista di risposte.
+ */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

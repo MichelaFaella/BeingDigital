@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta il form di una risposta.
+ */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

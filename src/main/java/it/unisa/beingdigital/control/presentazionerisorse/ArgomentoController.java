@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per il prelievo argomenti.
+ */
+
 @Controller
 @RequestMapping("/argomento")
 public class ArgomentoController {
@@ -19,6 +23,13 @@ public class ArgomentoController {
   @Autowired
   private PrelievoArgomentoService prelievoArgomentoService;
 
+  /**
+   * Implementa il get per la visualizzazione di un argomento.
+   *
+   * @param id    Id dell'argomento.
+   * @param model Model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   */
   @GetMapping
   public String get(@RequestParam Long id, Model model) {
     Optional<Argomento> optional = prelievoArgomentoService.getArgomento(id);
