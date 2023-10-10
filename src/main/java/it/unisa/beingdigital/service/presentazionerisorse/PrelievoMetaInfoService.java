@@ -17,6 +17,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
+/**
+ * Questa classe rappresenta il service per il prelievo delle meta-info.
+ */
+
 @Service
 @Transactional(readOnly = true)
 @Validated
@@ -32,6 +36,11 @@ public class PrelievoMetaInfoService {
     return metaInfoRepository.findById(id);
   }
 
+  /**
+   * Implementa la funzionalità di prelievo di tutti le meta-info ordinate per livello e keyword.
+   *
+   * @return lista di meta-info.
+   */
   public List<MetaInfo> getAllMetaInfoSortedByLivelloKeyword() {
     return metaInfoRepository.findAll().stream()
         .sorted(Comparator.comparing(MetaInfo::getLivello).thenComparing(MetaInfo::getKeyword))
@@ -43,6 +52,14 @@ public class PrelievoMetaInfoService {
         .filter(metaInfo -> metaInfo.getLivello() != Livello.CITTADINANZA_DIGITALE).toList();
   }
 
+  /**
+   * Implementa la funzionalità di prelievo di tutte le meta-info non associate a nessun gioco.
+   * Si assume che la corretta formulazione dell'id sia stata controllata prima
+   * di effettuare la chiamata.
+   *
+   * @param includeMetaInfoId id di una meta-info che deve obbligatoriamente apparire nella lista.
+   * @return lista di meta-info.
+   */
   public List<MetaInfo> getMetaInfoSenzaGiocoSortedByLivelloKeyword(Long includeMetaInfoId) {
     Set<MetaInfo> metaInfoConGioco =
         giocoRepository.findAll().stream().map(Gioco::getMetaInfo)
