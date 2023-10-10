@@ -16,6 +16,13 @@ public class PromozioneUtenteController {
   @Autowired
   private PromozioneUtenteService promozioneUtenteService;
 
+  /**
+   * Implementa il post per la promozione di un utente ad admin.
+   *
+   * @param id Id dell'utente.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se la promozione non viene completata.
+   */
   @PostMapping
   public String post(@RequestParam Long id) {
     if (!promozioneUtenteService.promozioneUtente(id)) {

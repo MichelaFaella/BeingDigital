@@ -12,6 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Questa classe rappresenta il controller per l'area personale.
+ */
+
 @Controller
 @RequestMapping("/auth/areaPersonale")
 public class AreaPersonaleController {
@@ -22,6 +26,12 @@ public class AreaPersonaleController {
   @Autowired
   private DatiUtentiService datiUtentiService;
 
+  /**
+   * Implementa il get per l'accesso all'area personale.
+   *
+   * @param model Model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   */
   @GetMapping
   public String get(Model model) {
     Persona persona = personaAutenticata.getPersona().get();

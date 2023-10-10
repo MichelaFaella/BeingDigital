@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per la modifica di un account.
+ */
+
 @Controller
 @RequestMapping("/auth/modificaProfilo")
 public class ModificaProfiloController {
@@ -29,6 +33,12 @@ public class ModificaProfiloController {
   @Autowired
   private CheckPasswordService checkPasswordService;
 
+  /**
+   * Implementa il get per la modifica dell'account dell'persona autenticata.
+   *
+   * @param modificaProfiloForm Form contenente i dati della persona autenticata.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   */
   @GetMapping
   public String get(@ModelAttribute ModificaProfiloForm modificaProfiloForm) {
     Persona persona = personaAutenticata.getPersona().get();
@@ -39,6 +49,14 @@ public class ModificaProfiloController {
     return "profilo/modificaProfilo";
   }
 
+  /**
+   * Implementa il post per la modifica dell'account dell'persona autenticata.
+   *
+   * @param modificaProfiloForm Form contenente i dati della persona autenticata.
+   * @param bindingResult       Risultato della validazione del form.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se il form non risulta valido.
+   */
   @PostMapping
   public String post(@ModelAttribute @Valid ModificaProfiloForm modificaProfiloForm,
                      BindingResult bindingResult) {

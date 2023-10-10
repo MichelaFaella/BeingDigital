@@ -9,6 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Questa classe rappresenta il controller per la cancellazione di un account.
+ */
+
 @Controller
 @RequestMapping("/auth/cancellazioneAccount")
 public class CancellazioneAccountController {
@@ -19,6 +23,11 @@ public class CancellazioneAccountController {
   @Autowired
   private PersonaAutenticata personaAutenticata;
 
+  /**
+   * Implementa il post per l'eliminazione dell'account della persona autenticata.
+   *
+   * @return Stringa rappresentante il path della view da rappresentare.
+   */
   @PostMapping
   public String post() {
     Persona persona = personaAutenticata.getPersona().get();

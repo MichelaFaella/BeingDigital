@@ -11,6 +11,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta il form di modifica di un profilo.
+ */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
