@@ -23,6 +23,12 @@ In this section we introduce context information for the project.
 * **Michela Faella** - *Developer* - [MichelaFaella](https://github.com/MichelaFaella)
 * **Lorenzo Sorrentino** - *Developer* - [losor2002](https://github.com/losor2002)
 
+## Documentation
+
+* Project's javadoc can be found in *docs* directory and at the following
+  link: [Javadoc Link](https://michelafaella.github.io/BeingDigital/).
+
+
 # Technical information
 
 In this section we introduce technical information and installing guides!
