@@ -4,6 +4,10 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Classe per la validazione di un MultipartFile.
+ */
+
 public class MultipartFileValidator
     implements ConstraintValidator<MultipartFileConstraint, MultipartFile> {
 

@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per la modifica di un Gioco.
+ */
+
 @Controller
 @RequestMapping("/admin/modificaGioco")
 public class ModificaGiocoController {
@@ -32,6 +36,15 @@ public class ModificaGiocoController {
   @Autowired
   private PrelievoGiocoService prelievoGiocoService;
 
+  /**
+   * Implementa il get per la modifica di un gioco.
+   *
+   * @param id        id del gioco da modificare.
+   * @param giocoForm form da inserire nel model.
+   * @param model     model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se l'id è nullo o non valido.
+   */
   @GetMapping
   public String get(@RequestParam Long id, @ModelAttribute GiocoForm giocoForm,
                     Model model) {
@@ -52,6 +65,17 @@ public class ModificaGiocoController {
     return "gestionerisorse/modificaGioco";
   }
 
+
+  /**
+   * Implementa il post per la modifica di un gioco.
+   *
+   * @param id            id del gioco da modificare.
+   * @param giocoForm     form con i nuovi dati da inserire.
+   * @param bindingResult risultato della validazione del form.
+   * @param model         model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se l'id è nullo o invalido, se il form è malformato.
+   */
   @PostMapping
   public String post(@RequestParam Long id,
                      @ModelAttribute @Valid GiocoForm giocoForm,

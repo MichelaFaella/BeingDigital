@@ -20,6 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per la modifica di un argomento.
+ */
+
 @Controller
 @RequestMapping("/admin/modificaArgomento")
 public class ModificaArgomentoController {
@@ -33,6 +37,15 @@ public class ModificaArgomentoController {
   @Autowired
   private PrelievoArgomentoService prelievoArgomentoService;
 
+  /**
+   * Implementa il get per la modifica di un argomento.
+   *
+   * @param id            id dell'argomento da modificare.
+   * @param argomentoForm form da inserire nel model.
+   * @param model         model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se l'id è nullo o non è valido.
+   */
   @GetMapping
   public String get(@RequestParam Long id,
                     @ModelAttribute ArgomentoForm argomentoForm, Model model) {
@@ -52,6 +65,16 @@ public class ModificaArgomentoController {
     return "gestionerisorse/modificaArgomento";
   }
 
+  /**
+   * Implementa il post per la modifica di un argomento.
+   *
+   * @param id            id dell'argomento da modificare.
+   * @param argomentoForm form con i nuovi dati da modificare.
+   * @param bindingResult risultato della validazione del form.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se l'id è nullo o non è valido, se la modifica non è andata
+   *                                 a buon fine.
+   */
   @PostMapping
   public String post(@RequestParam Long id,
                      @ModelAttribute @Valid ArgomentoForm argomentoForm,

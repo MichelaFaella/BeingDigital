@@ -10,6 +10,10 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Questa classe rappresenta il form per l'inserimento e la modifica di un Argomento.
+ */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per la modifica di una MetaInfo.
+ */
+
 @Controller
 @RequestMapping("/admin/modificaMetaInfo")
 public class ModificaMetaInfoController {
@@ -29,6 +33,14 @@ public class ModificaMetaInfoController {
   @Autowired
   private PrelievoMetaInfoService prelievoMetaInfoService;
 
+  /**
+   * Implementa il get per la modifica di una metainfo.
+   *
+   * @param id           id della metainfo da modificare.
+   * @param metaInfoForm form da inserire nel model.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se l'id è nullo o non valido.
+   */
   @GetMapping
   public String get(@RequestParam Long id,
                     @ModelAttribute MetaInfoForm metaInfoForm) {
@@ -43,6 +55,17 @@ public class ModificaMetaInfoController {
     return "gestionerisorse/modificaMetaInfo";
   }
 
+  /**
+   * Implementa il post per la modifica di una metainfo.
+   *
+   * @param id            id della metainfo da modificare.
+   * @param metaInfoForm  form contenente i nuovi dati.
+   * @param bindingResult risultato della validazione del form.
+   * @param model         model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws IOException             se c'è un errore nel prelievo dell'icona dal form.
+   * @throws ResponseStatusException se l'id risulta nullo, se il form non è ben formato.
+   */
   @PostMapping
   public String post(@RequestParam Long id,
                      @ModelAttribute @Valid MetaInfoForm metaInfoForm,

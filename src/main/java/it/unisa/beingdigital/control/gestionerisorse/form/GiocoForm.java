@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta il form per l'inserimento e la modifica di un Gioco.
+ */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

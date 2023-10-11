@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta un controller per la cancellazione di una risorsa.
+ */
+
 @Controller
 @RequestMapping("/admin/cancellazioneRisorsa")
 public class CancellazioneRisorsaController {
@@ -16,6 +20,15 @@ public class CancellazioneRisorsaController {
   @Autowired
   private CancellazioneRisorsaService cancellazioneRisorsaService;
 
+  /**
+   * Implementa il post per la cancellazione di una risorsa.
+   *
+   * @param risorsa tipo di risorsa da cancellare.
+   * @param id      id della risorsa.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se risorsa o id sono nulli, oppure se la
+   *                                 cancellazione non è andata a buon fine.
+   */
   @PostMapping
   public String post(@RequestParam String risorsa, @RequestParam Long id) {
     boolean result = switch (risorsa) {

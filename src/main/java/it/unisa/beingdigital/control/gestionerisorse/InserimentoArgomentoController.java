@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta un controller per l'inserimento di un argomento.
+ */
+
 @Controller
 @RequestMapping("/admin/inserimentoArgomento")
 public class InserimentoArgomentoController {
@@ -27,6 +31,13 @@ public class InserimentoArgomentoController {
   @Autowired
   private PrelievoMetaInfoService prelievoMetaInfoService;
 
+  /**
+   * Implementa il get per l'inserimento di un argomento.
+   *
+   * @param argomentoForm form da inserire nel model.
+   * @param model         model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   */
   @GetMapping
   public String get(@ModelAttribute ArgomentoForm argomentoForm, Model model) {
     model.addAttribute("metaInfo",
@@ -35,6 +46,16 @@ public class InserimentoArgomentoController {
     return "gestionerisorse/modificaArgomento";
   }
 
+  /**
+   * Implementa il post per l'inserimento di un argomento.
+   *
+   * @param tipo          tipo di argomento da inserire
+   * @param argomentoForm form rappresentante l'argomento da inserire.
+   * @param bindingResult risultato della validazione di argomentoForm.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se tipo è nullo o se argomentoForm è mal formato,
+   *                                 se la copertina è vuota, se l'inserimento non va a buon fine.
+   */
   @PostMapping
   public String post(@RequestParam String tipo,
                      @ModelAttribute @Valid ArgomentoForm argomentoForm,

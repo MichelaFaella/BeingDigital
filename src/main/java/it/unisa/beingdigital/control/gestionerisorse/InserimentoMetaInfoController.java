@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta un controller per l'inserimento di una MetaInfo.
+ */
+
 @Controller
 @RequestMapping("/admin/inserimentoMetaInfo")
 public class InserimentoMetaInfoController {
@@ -27,6 +31,16 @@ public class InserimentoMetaInfoController {
     return "gestionerisorse/modificaMetaInfo";
   }
 
+  /**
+   * Implementa il post per l'inserimento di una metainfo.
+   *
+   * @param metaInfoForm  form rappresentante la metainfo da inserire.
+   * @param bindingResult risultato della validazione di metaInfoForm.
+   * @param model         model da passare alla view
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se metaInfoForm è mal formato, l'icona è nulla o
+   *                                 l'inserimento non va a buon fine.
+   */
   @PostMapping
   public String post(@ModelAttribute @Valid MetaInfoForm metaInfoForm,
                      BindingResult bindingResult, Model model) throws IOException {
