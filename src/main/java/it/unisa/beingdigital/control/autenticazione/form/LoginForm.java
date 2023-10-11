@@ -10,6 +10,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta il form di login.
+ */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Questa classe rappresenta il controller per il controllo dell'esistenza di un dato indirizzo
+ * email nel database.
+ */
+
 @Controller
 @RequestMapping("/existsEmail")
 public class ExistsEmailController {
@@ -17,6 +22,13 @@ public class ExistsEmailController {
   @Autowired
   private ExistsEmailService existsEmailService;
 
+  /**
+   * Implementa il post per il controllo dell'esistenza dell'email.
+   *
+   * @param email Email da controllare.
+   * @return ResponseEntity rappresentante la risposta da inviare al client
+   * @throws org.springframework.web.server.ResponseStatusException se l'email è nulla
+   */
   @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> post(@RequestParam String email) {
     boolean result = existsEmailService.existsPersonaByEmail(email);

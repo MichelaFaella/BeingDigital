@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per la registrazione di un utente.
+ */
+
 @Controller
 @RequestMapping("/registrazione")
 public class RegistrazioneController {
@@ -19,6 +23,15 @@ public class RegistrazioneController {
   @Autowired
   private RegistrazioneService registrazioneService;
 
+  /**
+   * Implementa il post per la registrazione.
+   *
+   * @param registrazioneForm form di registrazione.
+   * @param bindingResult     risultato della validazione di registrazioneForm.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se il form è malformato o se la registrazione non va
+   *                                 a buon fine
+   */
   @PostMapping
   public String post(@ModelAttribute @Valid RegistrazioneForm registrazioneForm,
                      BindingResult bindingResult) {

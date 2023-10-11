@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per il login.
+ */
+
 @Controller
 @RequestMapping("/login")
 public class LoginController {
@@ -27,6 +31,16 @@ public class LoginController {
     return "autenticazione/login";
   }
 
+  /**
+   * Implementa il post per il login.
+   *
+   * @param loginForm     form di login.
+   * @param bindingResult risultato della validazione del loginForm.
+   * @param risorsa       risorsa alla quale ridirezionare l'utente una volta loggato
+   * @param model         model da passare alla view
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se il loginForm è malformato
+   */
   @PostMapping
   public String post(@ModelAttribute @Valid LoginForm loginForm, BindingResult bindingResult,
                      @RequestParam(required = false) String risorsa, Model model) {

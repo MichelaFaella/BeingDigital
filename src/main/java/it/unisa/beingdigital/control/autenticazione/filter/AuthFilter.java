@@ -14,6 +14,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Filtro per le pagine a cui può accedere solo una persona autenticata.
+ */
+
 @Component
 public class AuthFilter implements Filter {
 

@@ -10,6 +10,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Questa classe rappresenta il form per la registrazione.
+ */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
