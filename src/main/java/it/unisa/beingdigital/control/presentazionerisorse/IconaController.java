@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per il prelievo di una icona di una meta-info.
+ */
+
 @Controller
 @RequestMapping("/icona")
 public class IconaController {
@@ -20,6 +24,13 @@ public class IconaController {
   @Autowired
   private PrelievoMetaInfoService prelievoMetaInfoService;
 
+  /**
+   * Implementa il get per la visualizzazione dell'icona.
+   *
+   * @param idMetaInfo Id dell'argomento.
+   * @param response   Oggetto risposta.
+   * @throws ResponseStatusException se l'id dell'argomento risulta nullo.
+   */
   @GetMapping
   public void get(@RequestParam Long idMetaInfo, HttpServletResponse response) throws IOException {
     Optional<MetaInfo> optional = prelievoMetaInfoService.getMetaInfo(idMetaInfo);

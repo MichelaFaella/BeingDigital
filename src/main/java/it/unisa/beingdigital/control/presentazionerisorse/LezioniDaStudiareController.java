@@ -9,6 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Questa classe rappresenta il controller per visualizzare le lezioni ancora da studiare.
+ */
+
 @Controller
 @RequestMapping("/utente/lezioniDaStudiare")
 public class LezioniDaStudiareController {
@@ -19,6 +23,12 @@ public class LezioniDaStudiareController {
   @Autowired
   private PersonaAutenticata personaAutenticata;
 
+  /**
+   * Implementa il get per la visualizzazione delle lezioni da studiare da un utente.
+   *
+   * @param model Model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   */
   @GetMapping
   public String get(Model model) {
     Utente utente = (Utente) personaAutenticata.getPersona().get();

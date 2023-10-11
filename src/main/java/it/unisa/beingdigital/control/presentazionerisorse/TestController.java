@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per visualizzare del test.
+ */
+
 @Controller
 @RequestMapping("/utente/test")
 public class TestController {
@@ -32,6 +36,12 @@ public class TestController {
   @Autowired
   private TestService testService;
 
+  /**
+   * Implementa il get per la visualizzazione del test.
+   *
+   * @param model Model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   */
   @GetMapping
   public String get(Model model) {
     Utente utente = (Utente) personaAutenticata.getPersona().get();
@@ -46,6 +56,14 @@ public class TestController {
     return "presentazionerisorse/test";
   }
 
+  /**
+   * Implementa il post per la valutazione del test.
+   *
+   * @param rispostaFormsWrapper Id dell'account da eliminare
+   * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se il form non è valido o se un utente livello master prova
+   *                                 a effettuare il test o il test non è andato a buon fine.
+   */
   @PostMapping
   public String post(@Valid RispostaFormsWrapper rispostaFormsWrapper) {
     Utente utente = (Utente) personaAutenticata.getPersona().get();

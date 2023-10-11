@@ -9,6 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Questa classe rappresenta il controller per visualizzare i racconti inerenti alla privacy.
+ */
+
 @Controller
 @RequestMapping("/utente/raccontiPrivacy")
 public class RaccontiPrivacyController {
@@ -19,6 +23,12 @@ public class RaccontiPrivacyController {
   @Autowired
   private PersonaAutenticata personaAutenticata;
 
+  /**
+   * Implementa il get per la visualizzazione di racconti di privacy.
+   *
+   * @param model Model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
+   */
   @GetMapping
   public String get(Model model) {
     Utente utente = (Utente) personaAutenticata.getPersona().get();

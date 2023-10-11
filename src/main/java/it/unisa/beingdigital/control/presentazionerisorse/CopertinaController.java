@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * Questa classe rappresenta il controller per il prelievo della copertina di un argomento.
+ */
+
 @Controller
 @RequestMapping("/copertina")
 public class CopertinaController {
@@ -20,6 +24,13 @@ public class CopertinaController {
   @Autowired
   private PrelievoArgomentoService prelievoArgomentoService;
 
+  /**
+   * Implementa il get per la visualizzazione della copertina.
+   *
+   * @param idArgomento Id dell'argomento.
+   * @param response    Oggetto risposta.
+   * @throws ResponseStatusException se l'id dell'argomento risulta nullo.
+   */
   @GetMapping
   public void get(@RequestParam Long idArgomento, HttpServletResponse response) throws IOException {
     Optional<Argomento> optional = prelievoArgomentoService.getArgomento(idArgomento);

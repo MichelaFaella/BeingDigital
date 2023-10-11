@@ -8,6 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Questa classe rappresenta il controller per visualizzare i giochi inerenti alla cittadinanza
+ * digitale.
+ */
+
 @Controller
 @RequestMapping("/giochiCittadinanza")
 public class GiochiCittadinanzaController {
@@ -15,6 +20,11 @@ public class GiochiCittadinanzaController {
   @Autowired
   private PrelievoGiocoService prelievoGiocoService;
 
+  /**
+   * Implementa il get per la visualizzazione dei giochi di cittadinanza digitale.
+   *
+   * @param model Model da passare alla view.
+   */
   @GetMapping
   public String get(Model model) {
     model.addAttribute("giochi",

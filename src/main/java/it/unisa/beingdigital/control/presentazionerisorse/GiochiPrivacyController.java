@@ -9,6 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Questa classe rappresenta il controller per visualizzare i giochi inerenti alla privacy.
+ */
+
 @Controller
 @RequestMapping("/utente/giochiPrivacy")
 public class GiochiPrivacyController {
@@ -19,6 +23,11 @@ public class GiochiPrivacyController {
   @Autowired
   private PersonaAutenticata personaAutenticata;
 
+  /**
+   * Implementa il get per la visualizzazione dei giochi di privacy.
+   *
+   * @param model Model da passare alla view.
+   */
   @GetMapping
   public String get(Model model) {
     Utente utente = (Utente) personaAutenticata.getPersona().get();
