@@ -24,6 +24,7 @@ public class GiochiCittadinanzaController {
    * Implementa il get per la visualizzazione dei giochi di cittadinanza digitale.
    *
    * @param model Model da passare alla view.
+   * @return Stringa rappresentante il path della view da rappresentare.
    */
   @GetMapping
   public String get(Model model) {
