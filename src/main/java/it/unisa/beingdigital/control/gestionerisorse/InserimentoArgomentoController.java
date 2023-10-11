@@ -53,6 +53,7 @@ public class InserimentoArgomentoController {
    * @param argomentoForm form rappresentante l'argomento da inserire.
    * @param bindingResult risultato della validazione di argomentoForm.
    * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws IOException             se c'è un errore mel prelievo della copertina dal form.
    * @throws ResponseStatusException se tipo è nullo o se argomentoForm è mal formato,
    *                                 se la copertina è vuota, se l'inserimento non va a buon fine.
    */

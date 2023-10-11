@@ -41,6 +41,7 @@ public class TestController {
    *
    * @param model Model da passare alla view.
    * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se l'utente autenticato è di livello MASTER
    */
   @GetMapping
   public String get(Model model) {

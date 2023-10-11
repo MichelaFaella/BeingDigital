@@ -38,6 +38,7 @@ public class InserimentoMetaInfoController {
    * @param bindingResult risultato della validazione di metaInfoForm.
    * @param model         model da passare alla view
    * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws IOException             se c'è un errore nel prelievo dell'icona dal form.
    * @throws ResponseStatusException se metaInfoForm è mal formato, l'icona è nulla o
    *                                 l'inserimento non va a buon fine.
    */

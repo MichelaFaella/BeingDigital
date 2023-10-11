@@ -38,6 +38,13 @@ public class TestService {
   @Autowired
   private UtenteRepository utenteRepository;
 
+  /**
+   * Sostitusce le risposte attuali dell'utente con quelle fornite.
+   *
+   * @param risposte nuove risposte, sottoforma di lista di coppie id domanda - risposta.
+   * @param utente   utente a cui sostituire le risposte.
+   * @throws IllegalArgumentException se l'id di una domanda non è valido.
+   */
   private void replaceRisposte(@NotNull List<Map.Entry<Long, String>> risposte,
                                @NotNull Utente utente) {
     rispostaRepository.deleteByUtente(utente);
@@ -69,6 +76,13 @@ public class TestService {
     rispostaRepository.saveAll(rispostaEntities);
   }
 
+  /**
+   * Verifica se l'utente ha completato il test al 100% e nel caso gli aumenta il livello.
+   *
+   * @param utente Utente a cui aumentare il livello.
+   * @return true se il livello è stato aumentato, false altrimenti.
+   * @throws IllegalArgumentException se il livello dell'utente non è uno valido per l'aumento.
+   */
   private boolean aumentaLivello(@NotNull Utente utente) {
     if (datiUtentiService.getPercentualeCompletamento(utente) >= 100) {
       switch (utente.getLivello()) {
@@ -84,6 +98,17 @@ public class TestService {
     return false;
   }
 
+  /**
+   * Permette di salvare i risultati del test dell'utente fornito.
+   * Se il test viene superato al 100% viene anche aumentato il livello dell'utente.
+   *
+   * @param risposte risposte alle domande del test,
+   *                 sottoforma di lista di coppie id domanda - risposta.
+   * @param utente   utente che ha effettuato il test.
+   * @return true se il test è stato superato al 100%, false altrimenti.
+   * @throws IllegalArgumentException se l'id di una domanda non è valido, oppure se il livello
+   *                                  dell'utente non è valido per essere aumentato.
+   */
   public boolean test(@NotNull List<Map.Entry<Long, String>> risposte, @NotNull Utente utente) {
     replaceRisposte(risposte, utente);
     return aumentaLivello(utente);

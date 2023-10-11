@@ -29,6 +29,7 @@ public class ArgomentoController {
    * @param id    Id dell'argomento.
    * @param model Model da passare alla view.
    * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws ResponseStatusException se l'id è nullo o invalido.
    */
   @GetMapping
   public String get(@RequestParam Long id, Model model) {

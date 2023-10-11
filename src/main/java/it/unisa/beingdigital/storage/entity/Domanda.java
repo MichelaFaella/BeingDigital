@@ -47,6 +47,16 @@ public class Domanda {
   @JoinColumn(nullable = false)
   private MetaInfo metaInfo;
 
+  /**
+   * Costruttore di una domanda.
+   *
+   * @param testo      testo della domanda.
+   * @param corretta   risposta corretta.
+   * @param sbagliata1 prima risposta sbagliata.
+   * @param sbagliata2 seconda risposta sbagliata.
+   * @param sbagliata3 terza risposta sbagliata.
+   * @param metaInfo   metainfo a cui si riferisce.
+   */
   public Domanda(String testo, String corretta, String sbagliata1, String sbagliata2,
                  String sbagliata3, MetaInfo metaInfo) {
     this.testo = testo;

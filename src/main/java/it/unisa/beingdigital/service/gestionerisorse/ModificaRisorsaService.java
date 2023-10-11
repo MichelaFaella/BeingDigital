@@ -47,6 +47,7 @@ public class ModificaRisorsaService {
    * di effettuare la chiamata.
    * Tutti i parametri, tranne id, possono essere nulli, se non si vuole modificare quel dato.
    *
+   * @param id         id dell'argomento da modificare.
    * @param titolo     Titolo dell'argomento.
    * @param corpo      Testo scritto che compone l'argomento.
    * @param copertina  Copertina dell'argomento.
@@ -93,6 +94,7 @@ public class ModificaRisorsaService {
    * di effettuare la chiamata.
    * Tutti i parametri, tranne id, possono essere nulli, se non si vuole modificare quel dato.
    *
+   * @param id      id della metainfo da modificare.
    * @param keyword Nome della meta-info.
    * @param livello Livello associato alla meta-info.
    * @param icona   Immagine rappresentativa della meta-info.
@@ -139,6 +141,7 @@ public class ModificaRisorsaService {
    * di effettuare la chiamata.
    * Tutti i parametri, tranne id, possono essere nulli, se non si vuole modificare quel dato.
    *
+   * @param id         id della domanda da modificare.
    * @param testo      Testo che compone la domanda.
    * @param corretta   Risposta corretta.
    * @param sbagliata1 Prima risposta sbagliata.
@@ -196,6 +199,7 @@ public class ModificaRisorsaService {
    * di effettuare la chiamata.
    * Tutti i parametri, tranne id, possono essere nulli, se non si vuole modificare quel dato.
    *
+   * @param id         id del gioco da modificare.
    * @param nome       Nome del gioco.
    * @param path       Path del gioco.
    * @param metaInfoId Id della meta-info associata al gioco.

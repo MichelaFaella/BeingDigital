@@ -40,6 +40,10 @@ public class Gioco {
 
   /**
    * Costruttore per gioco.
+   *
+   * @param nome     nome del gioco.
+   * @param path     path della cartella contenente il gioco compilato, all'interno del server.
+   * @param metaInfo metainfo a cui fa riferimento.
    */
   public Gioco(String nome, String path, MetaInfo metaInfo) {
     this.nome = nome;

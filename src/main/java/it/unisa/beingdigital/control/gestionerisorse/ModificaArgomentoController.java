@@ -72,6 +72,7 @@ public class ModificaArgomentoController {
    * @param argomentoForm form con i nuovi dati da modificare.
    * @param bindingResult risultato della validazione del form.
    * @return Stringa rappresentante il path della view da rappresentare.
+   * @throws IOException             se c'è un errore mel prelievo della copertina dal form.
    * @throws ResponseStatusException se l'id è nullo o non è valido, se la modifica non è andata
    *                                 a buon fine.
    */
