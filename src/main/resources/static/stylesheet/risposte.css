@@ -25,6 +25,7 @@
     align-items: center;
     min-height: 100vh;
     padding-top: 130px;
+    padding-bottom: 50px;
     background: linear-gradient(rgba(0, 0, 0, 0.5), #282828c4), url(/img/backgroundLogo.png);
     background-size: contain;
 }

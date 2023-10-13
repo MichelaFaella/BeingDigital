@@ -138,12 +138,10 @@
 
 .form-step-active {
     display: block;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    display: flex;
+    margin-left: auto;
+    width: 100%;
     overflow-y: auto;
-    max-height: 650px;
+    max-height: 400px;
     flex-direction: column;
 }
 
@@ -163,7 +161,7 @@
 }
 
 .input-group {
-    margin: 2rem 0;
+    margin-bottom: 20px;
     padding: 0 25px;
     width: 80%;
 }
@@ -187,7 +185,7 @@
     justify-content: center;
     align-items: center;
     justify-items: center;
-    margin-top: 40px;
+    margin: 40px 0;
 }
 
 .plus {
@@ -202,11 +200,13 @@
     border: 3px solid var(--notify-color);
     color: var(--white-color);
     text-align: center;
+    /* justify-items: center; */
     cursor: pointer;
     transition: 0.5s;
     width: 150px;
     text-transform: uppercase;
     font-weight: 600;
+    margin: auto;
     font-size: 16px;
 }
 
@@ -243,7 +243,7 @@
 .primo {
     font-size: 20px;
     text-align: center;
-    width: 500px;
+    /* width: 99%; */
     color: var(--bg-color);
     font-weight: 400;
 }
