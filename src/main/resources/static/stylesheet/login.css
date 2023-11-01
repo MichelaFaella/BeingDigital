@@ -27,6 +27,21 @@ body {
     transition: 1s;
 }
 
+.homeBtn {
+    top: 3%;
+    width: 30px;
+    height: 30px;
+    left: 2%;
+    margin: 0 11px;
+    position: absolute;
+    z-index: 1001;
+}
+
+.homeBtn img {
+    width: 100%;
+
+}
+
 .slide {
     background-color: var(--notify-color);
 }
