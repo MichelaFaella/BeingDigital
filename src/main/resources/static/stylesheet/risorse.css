@@ -116,6 +116,12 @@
     color: var(--bg-color);
 }
 
+.risorse td a:hover {
+    text-decoration: none;
+    transition: 1s;
+    color: var(--white-color);
+}
+
 .risorse i:hover {
     color: var(--white-color);
     transition: 1s;

@@ -57,7 +57,7 @@
             </tr>
             <th:block th:each="lezione: ${lezioni}">
                 <tr class="special">
-                    <td th:text="${lezione.titolo}"></td>
+                    <td><a th:href="@{/argomento(id=${lezione.id})}" th:text="${lezione.titolo}"></a></td>
                     <td th:text="${lezione.metaInfo.keyword}"></td>
                     <td><a th:href="@{/admin/modificaArgomento(id=${lezione.id})}"><i class="fa-solid fa-pen"> </i></a>
                     </td>
@@ -83,7 +83,7 @@
 
             <th:block th:each="racconto: ${racconti}">
                 <tr class="special">
-                    <td th:text="${racconto.titolo}"></td>
+                    <td><a th:href="@{/argomento(id=${racconto.id})}" th:text="${racconto.titolo}"></a></td>
                     <td th:text="${racconto.metaInfo.keyword}"></td>
                     <td><a th:href="@{/admin/modificaArgomento(id=${racconto.id})}"><i class="fa-solid fa-pen"> </i></a>
                     </td>
