@@ -30,20 +30,19 @@ function unityShowBanner(msg, type) {
     updateBannerVisibility();
 }
 
-var unityInstance;
+var _script;
+var _unityInstance;
 
 function addGame(gioco) {
 
-    console.log(unityInstance)
-
-    if (unityInstance != null) {
-        unityInstance.Quit();
-        return;
+    if (_unityInstance != null) {
+        _unityInstance.Quit();
+        document.body.removeChild(_script);
     }
 
     var titolo = document.getElementById('giocoTitolo');
     titolo.innerText = gioco.innerText;
-    console.log("Ho fatto" + titolo.innerText);
+    console.log("Ho fatto " + titolo.innerText);
     var buildUrl = gioco.id;
     var loaderUrl = buildUrl + "/Build.loader.js";
     var config = {
@@ -52,7 +51,7 @@ function addGame(gioco) {
         codeUrl: buildUrl + "/Build.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Unisa",
-        productName: "Password Quest",
+        productName: gioco.innerText,
         productVersion: "1.0",
         showBanner: unityShowBanner,
     };
@@ -60,21 +59,21 @@ function addGame(gioco) {
 
     loadingBar.style.display = "block";
 
-    var script = document.createElement("script");
-    script.src = loaderUrl;
-
-    script.onload = () => {
-        unityInstance = createUnityInstance(canvas, config, (progress) => {
+    _script = document.createElement("script");
+    _script.src = loaderUrl;
+    _script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
             progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
             loadingBar.style.display = "none";
             fullscreenButton.onclick = () => {
                 unityInstance.SetFullscreen(1);
             };
+            _unityInstance = unityInstance;
         }).catch((message) => {
             alert(message);
         });
     };
 
-    document.body.appendChild(script);
+    document.body.appendChild(_script);
 }
