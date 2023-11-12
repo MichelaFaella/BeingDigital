@@ -6,6 +6,7 @@
     <title>Lista giochi</title>
     <link rel="stylesheet" th:href="@{/stylesheet/giochi.css}" type="text/css"/>
     <link href="/img/Logo.png" rel="shortcut icon"/>
+    <link rel="stylesheet" th:href="@{/games/PasswordQuest/TemplateData/style.css}">
 </head>
 <body>
 <th:block th:include="fragments/header"></th:block>
@@ -22,7 +23,7 @@
                     </div>
 
                     <div class="contentBox">
-                        <h4 th:text="${gioco.nome}"></h4>
+                        <h4 onclick="addGame(this)" th:id="${gioco.path}" th:text="${gioco.nome}"></h4>
                         <p th:text="${gioco.metaInfo.keyword}"></p>
 
                     </div>
@@ -31,8 +32,24 @@
 
         </div>
     </section>
-    <div class="giocoPos"></div>
+    <div class="giocoPos">
+        <h2 id="giocoTitolo"></h2>
+
+        <canvas id="unity-canvas"></canvas>
+        <div id="unity-loading-bar">
+            <div id="unity-logo"></div>
+            <div id="unity-progress-bar-empty">
+                <div id="unity-progress-bar-full"></div>
+            </div>
+        </div>
+        <div id="unity-warning"></div>
+        <div id="unity-footer">
+            <div id="unity-fullscreen-button"></div>
+        </div>
+
+    </div>
 </div>
 <th:block th:include="fragments/footer"></th:block>
 </body>
+<script th:src="@{/js/gioco.js}"></script>
 </html>

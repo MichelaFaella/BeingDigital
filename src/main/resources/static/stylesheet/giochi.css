@@ -147,7 +147,7 @@
     margin-bottom: 20px;
 }
 
-.giocoPos iframe {
+.giocoPos canvas {
     aspect-ratio: 16/9;
     width: 80%;
 }
