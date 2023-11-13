@@ -173,7 +173,7 @@
 }
 
 .lesscard span::before {
-    content: 'Risultato';
+    content: 'Risultati';
     position: absolute;
     width: 150%;
     height: 40px;
