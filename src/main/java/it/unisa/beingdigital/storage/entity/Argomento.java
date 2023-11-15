@@ -38,7 +38,7 @@ public class Argomento {
 
   @Lob
   @Basic
-  @Column(nullable = false, length = 65535)
+  @Column(nullable = false, length = 16777215)
   private String corpo;
 
   @Lob

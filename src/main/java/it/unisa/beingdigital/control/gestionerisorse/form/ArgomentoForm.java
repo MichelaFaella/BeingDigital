@@ -26,7 +26,7 @@ public class ArgomentoForm {
   private String titolo;
 
   @NotBlank
-  @Size(max = 65535)
+  @Size(max = 16777215)
   private String corpo;
 
   @MultipartFileConstraint(maxSize = 2097152, mimeType = "image/jpeg")
