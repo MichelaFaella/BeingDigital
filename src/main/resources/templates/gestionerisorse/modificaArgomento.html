@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/stylesheet/drag_drop.css}" type="text/css"/>
     <link href="/img/Logo.png" rel="shortcut icon"/>
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+    <script src="/js/imageUploadAdapter.js"></script>
 </head>
 <body>
 <style>
@@ -92,7 +93,9 @@
 <th:block th:include="fragments/footer"></th:block>
 <script>
     ClassicEditor
-        .create(document.querySelector('#corpo'))
+        .create(document.querySelector('#corpo'), {
+            extraPlugins: [MyCustomUploadAdapterPlugin]
+        })
         .then(editor => {
             console.log(editor);
         })
