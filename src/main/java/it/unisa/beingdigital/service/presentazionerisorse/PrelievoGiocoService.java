@@ -1,11 +1,13 @@
 package it.unisa.beingdigital.service.presentazionerisorse;
 
 import it.unisa.beingdigital.storage.entity.Gioco;
+import it.unisa.beingdigital.storage.entity.Utente;
 import it.unisa.beingdigital.storage.entity.util.Livello;
 import it.unisa.beingdigital.storage.repository.GiocoRepository;
 import jakarta.validation.constraints.NotNull;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -24,6 +26,9 @@ public class PrelievoGiocoService {
 
   @Autowired
   private GiocoRepository giocoRepository;
+
+  @Autowired
+  private PrelievoMetaInfoService prelievoMetaInfoService;
 
   public Optional<Gioco> getGioco(@NotNull Long id) {
     return giocoRepository.findById(id);
@@ -58,5 +63,23 @@ public class PrelievoGiocoService {
     } else {
       return giocoRepository.findByMetaInfoLivello(livello, Sort.by("nome"));
     }
+  }
+
+  /**
+   * Implementa la funzionalità di prelievo di tutti i giochi da studiare di un utente
+   * ordinati per nome.
+   * Si assume che l'utente sia presente nel DB.
+   *
+   * @param utente utente per cui prelevare i giochi.
+   * @return lista di giochi.
+   * @throws jakarta.validation.ConstraintViolationException se l'utente risulta null.
+   */
+  public List<Gioco> getGiochiDaStudiareSortedByNome(@NotNull Utente utente) {
+    return prelievoMetaInfoService.getMetaInfoDaStudiareSortedByLivelloKeyword(utente).stream()
+        .map(giocoRepository::findByMetaInfo)
+        .map(gioco -> gioco.orElse(null))
+        .filter(Objects::nonNull)
+        .sorted(Comparator.comparing(Gioco::getNome))
+        .toList();
   }
 }
