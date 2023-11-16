@@ -9,6 +9,14 @@
 </head>
 <body>
 <th:block th:include="fragments/header"></th:block>
+<style>
+    .image-style-side {
+        float: right;
+        margin-left: var(--ck-image-style-spacing);
+        max-width: 50%;
+    }
+</style>
+
 <div class="racconto">
     <section class="bannerRacconto"
              th:style="'background: linear-gradient(rgba(0, 0, 0, 0.5), #282828c4), url('+@{/copertina(idArgomento=${param.id})}+'); background-size: cover; background-position: center;'">
