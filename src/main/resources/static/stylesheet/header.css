@@ -114,7 +114,6 @@ header ul li ul li {
 @media (max-width: 971px) {
     header {
         padding: 10px 20px;
-        min-width: 400px;
     }
 
     header .logo {

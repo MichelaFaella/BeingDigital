@@ -25,7 +25,6 @@
 
 .bannerRacconto {
     height: 80vh;
-    min-width: 600px;
 }
 
 .banner-text {
@@ -66,5 +65,15 @@ img {
 @media (max-width: 1285px) {
     .banner-text h1 {
         font-size: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .banner-text h1 {
+        font-size: 60px;
+    }
+
+    .raccontoText {
+        padding: 0 13px;
     }
 }

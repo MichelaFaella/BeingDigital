@@ -116,7 +116,7 @@
 
 .occhio {
     position: absolute;
-    top: 54%;
+    top: 365px;
     transform: translate(-50%);
     right: 15%;
     width: 25px;
@@ -128,7 +128,7 @@
 
 .occhio2 {
     position: absolute;
-    top: 65.5%;
+    top: 444px;
     transform: translate(-50%);
     right: 15%;
     width: 25px;
@@ -168,5 +168,39 @@
 }
 
 
+@media (max-width: 900px) {
+    .daticard {
+        width: 80%;
+    }
+
+    .modifica form label {
+        text-align: left;
+        width: 70%;
+        font-size: 18.2px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--notify-color);
+    }
+
+    .occhio {
+        top: 358px;
+    }
+
+    .occhio2 {
+        top: 432px;
+    }
+
+}
 
 
+@media (max-width: 400px) {
+
+    .occhio {
+        top: 370px;
+    }
+
+    .occhio2 {
+        top: 444px;
+    }
+
+}

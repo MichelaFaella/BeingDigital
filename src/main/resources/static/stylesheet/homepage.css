@@ -169,14 +169,18 @@
 
 
 @media (max-width: 665px) {
-    .banner-text h1 {
-        font-size: 100px;
+    .alltext h1 {
+        font-size: 38px;
+        text-transform: uppercase;
+        font-weight: 900;
+        color: var(--notify-color);
     }
 
-    .banner-text {
-        text-align: center;
-        color: var(--white-color);
-        padding: 177px 0;
+    .alltext p {
+        font-size: 18px;
+        color: var(--second-color);
+        font-weight: bold;
+        margin-top: 15px;
     }
 
     .cardhome {
