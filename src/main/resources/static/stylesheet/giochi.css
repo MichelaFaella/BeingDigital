@@ -151,3 +151,9 @@
     aspect-ratio: 16/9;
     width: 80%;
 }
+
+@media (max-width: 600px) {
+    .box {
+        min-width: 200px
+    }
+}

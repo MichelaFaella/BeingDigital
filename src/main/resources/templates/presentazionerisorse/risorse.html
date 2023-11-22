@@ -24,22 +24,25 @@
     </div>
     <div class="box" id="boxMeta">
         <h2>Meta-info</h2>
-        <table>
-            <tr class="notspecial">
-                <th>Keyword</th>
-                <th>Livello</th>
-                <th>Modifica</th>
-                <th>Elimina</th>
-            </tr>
-            <th:block th:each="meta: ${metainfo}">
-                <tr class="special">
-                    <td th:text="${meta.keyword}"></td>
-                    <td th:text="${meta.livello}"></td>
-                    <td><a th:href="@{/admin/modificaMetaInfo(id=${meta.id})}"><i class="fa-solid fa-pen"> </i></a></td>
-                    <td><i class="fa-solid fa-trash" onclick="showConfermaMeta(this)" th:id="${meta.id}"></i></td>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr class="notspecial">
+                    <th>Keyword</th>
+                    <th>Livello</th>
+                    <th>Modifica</th>
+                    <th>Elimina</th>
                 </tr>
-            </th:block>
-        </table>
+                <th:block th:each="meta: ${metainfo}">
+                    <tr class="special">
+                        <td th:text="${meta.keyword}"></td>
+                        <td th:text="${meta.livello}"></td>
+                        <td><a th:href="@{/admin/modificaMetaInfo(id=${meta.id})}"><i class="fa-solid fa-pen"> </i></a>
+                        </td>
+                        <td><i class="fa-solid fa-trash" onclick="showConfermaMeta(this)" th:id="${meta.id}"></i></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
         <div class="risorsebtn">
             <a href="/admin/inserimentoMetaInfo">Aggiungi</a>
         </div>
@@ -48,23 +51,25 @@
 
     <div class="box" id="boxLezioni">
         <h2>Lezioni</h2>
-        <table>
-            <tr class="notspecial">
-                <th>Titolo</th>
-                <th>Meta-info</th>
-                <th>Modifica</th>
-                <th>Elimina</th>
-            </tr>
-            <th:block th:each="lezione: ${lezioni}">
-                <tr class="special">
-                    <td><a th:href="@{/argomento(id=${lezione.id})}" th:text="${lezione.titolo}"></a></td>
-                    <td th:text="${lezione.metaInfo.keyword}"></td>
-                    <td><a th:href="@{/admin/modificaArgomento(id=${lezione.id})}"><i class="fa-solid fa-pen"> </i></a>
-                    </td>
-                    <td><i class="fa-solid fa-trash" onclick="showConfermaArg(this)" th:id="${lezione.id}"></i></td>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr class="notspecial">
+                    <th>Titolo</th>
+                    <th>Meta-info</th>
+                    <th>Modifica</th>
+                    <th>Elimina</th>
                 </tr>
-            </th:block>
-        </table>
+                <th:block th:each="lezione: ${lezioni}">
+                    <tr class="special">
+                        <td><a th:href="@{/argomento(id=${lezione.id})}" th:text="${lezione.titolo}"></a></td>
+                        <td th:text="${lezione.metaInfo.keyword}"></td>
+                        <td><a th:href="@{/admin/modificaArgomento(id=${lezione.id})}"><i class="fa-solid fa-pen"> </i></a>
+                        </td>
+                        <td><i class="fa-solid fa-trash" onclick="showConfermaArg(this)" th:id="${lezione.id}"></i></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
         <div class="risorsebtn">
             <a href="/admin/inserimentoArgomento">Aggiungi</a>
         </div>
@@ -73,24 +78,27 @@
 
     <div class="box" id="boxRacconti">
         <h2>Racconti</h2>
-        <table>
-            <tr class="notspecial">
-                <th>Titolo</th>
-                <th>Meta-info</th>
-                <th>Modifica</th>
-                <th>Elimina</th>
-            </tr>
-
-            <th:block th:each="racconto: ${racconti}">
-                <tr class="special">
-                    <td><a th:href="@{/argomento(id=${racconto.id})}" th:text="${racconto.titolo}"></a></td>
-                    <td th:text="${racconto.metaInfo.keyword}"></td>
-                    <td><a th:href="@{/admin/modificaArgomento(id=${racconto.id})}"><i class="fa-solid fa-pen"> </i></a>
-                    </td>
-                    <td><i class="fa-solid fa-trash" onclick="showConfermaArg(this)" th:id="${racconto.id}"></i></td>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr class="notspecial">
+                    <th>Titolo</th>
+                    <th>Meta-info</th>
+                    <th>Modifica</th>
+                    <th>Elimina</th>
                 </tr>
-            </th:block>
-        </table>
+
+                <th:block th:each="racconto: ${racconti}">
+                    <tr class="special">
+                        <td><a th:href="@{/argomento(id=${racconto.id})}" th:text="${racconto.titolo}"></a></td>
+                        <td th:text="${racconto.metaInfo.keyword}"></td>
+                        <td><a th:href="@{/admin/modificaArgomento(id=${racconto.id})}"><i class="fa-solid fa-pen"> </i></a>
+                        </td>
+                        <td><i class="fa-solid fa-trash" onclick="showConfermaArg(this)" th:id="${racconto.id}"></i>
+                        </td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
         <div class="risorsebtn">
             <a href="/admin/inserimentoArgomento">Aggiungi</a>
         </div>
@@ -99,23 +107,25 @@
 
     <div class="box" id="boxGiochi">
         <h2>Giochi</h2>
-        <table>
-            <tr class="notspecial">
-                <th>Titolo</th>
-                <th>Meta-info</th>
-                <th>Modifica</th>
-                <th>Elimina</th>
-            </tr>
-            <th:block th:each="gioco: ${giochi}">
-                <tr class="special">
-                    <td th:text="${gioco.nome}"></td>
-                    <td th:text="${gioco.metaInfo.keyword}"></td>
-                    <td><a th:href="@{/admin/modificaGioco(id=${gioco.id})}"><i class="fa-solid fa-pen"> </i></a>
-                    </td>
-                    <td><i class="fa-solid fa-trash" onclick="showConfermaGioco(this)" th:id="${gioco.id}"></i></td>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr class="notspecial">
+                    <th>Titolo</th>
+                    <th>Meta-info</th>
+                    <th>Modifica</th>
+                    <th>Elimina</th>
                 </tr>
-            </th:block>
-        </table>
+                <th:block th:each="gioco: ${giochi}">
+                    <tr class="special">
+                        <td th:text="${gioco.nome}"></td>
+                        <td th:text="${gioco.metaInfo.keyword}"></td>
+                        <td><a th:href="@{/admin/modificaGioco(id=${gioco.id})}"><i class="fa-solid fa-pen"> </i></a>
+                        </td>
+                        <td><i class="fa-solid fa-trash" onclick="showConfermaGioco(this)" th:id="${gioco.id}"></i></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
         <div class="risorsebtn">
             <a href="/admin/inserimentoGioco">Aggiungi</a>
         </div>
@@ -123,23 +133,26 @@
 
     <div class="box" id="boxDomande">
         <h2>Domande</h2>
-        <table>
-            <tr class="notspecial">
-                <th>Testo</th>
-                <th>Meta-info</th>
-                <th>Modifica</th>
-                <th>Elimina</th>
-            </tr>
-            <th:block th:each="domanda: ${domande}">
-                <tr class="special">
-                    <td th:text="${domanda.testo}"></td>
-                    <td th:text="${domanda.metaInfo.keyword}"></td>
-                    <td><a th:href="@{/admin/modificaDomanda(id=${domanda.id})}"><i class="fa-solid fa-pen"> </i></a>
-                    </td>
-                    <td><i class="fa-solid fa-trash" onclick="showConfermaDom(this)" th:id="${domanda.id}"></i></td>
+        <div style="overflow-x:auto;">
+            <table>
+                <tr class="notspecial">
+                    <th>Testo</th>
+                    <th>Meta-info</th>
+                    <th>Modifica</th>
+                    <th>Elimina</th>
                 </tr>
-            </th:block>
-        </table>
+                <th:block th:each="domanda: ${domande}">
+                    <tr class="special">
+                        <td th:text="${domanda.testo}"></td>
+                        <td th:text="${domanda.metaInfo.keyword}"></td>
+                        <td><a th:href="@{/admin/modificaDomanda(id=${domanda.id})}"><i
+                                class="fa-solid fa-pen"> </i></a>
+                        </td>
+                        <td><i class="fa-solid fa-trash" onclick="showConfermaDom(this)" th:id="${domanda.id}"></i></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
         <div class="risorsebtn">
             <a href="/admin/inserimentoDomanda">Aggiungi</a>
         </div>

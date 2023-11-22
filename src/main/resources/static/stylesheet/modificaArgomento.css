@@ -90,7 +90,7 @@
     align-items: center;
     position: relative;
     flex-direction: column;
-    width: 50%;
+    width: 83%;
     height: 770px;
     background-color: var(--white-color);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
@@ -235,7 +235,7 @@ textarea::-webkit-scrollbar-thumb {
 @media (max-width: 1046px) {
 
     .daticard {
-        width: 514px;
+        /* width: 514px; */
         height: 770px;
     }
 }

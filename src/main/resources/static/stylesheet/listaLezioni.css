@@ -120,6 +120,7 @@
     text-transform: uppercase;
     color: var(--white-color);
     padding: 0 5px;
+    text-align: center;
 }
 
 .lezioni p {

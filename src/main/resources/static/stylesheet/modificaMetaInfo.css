@@ -259,3 +259,10 @@
 #snackbar.show {
     visibility: visible;
 }
+
+@media (max-width: 600px) {
+
+    .daticard {
+        min-width: 80%;
+    }
+}

@@ -21,6 +21,7 @@
 .racconto {
     min-height: 200vh;
     background-color: var(--second-color);
+    overflow-x: hidden;
 }
 
 .bannerRacconto {

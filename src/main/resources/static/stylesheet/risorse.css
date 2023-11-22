@@ -19,6 +19,7 @@
 
 
 .risorse {
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,6 +55,7 @@
 
 
 .livello {
+    text-align: center;
     font-size: 35px;
     margin-bottom: 40px;
     letter-spacing: 1px;
@@ -193,6 +195,32 @@
         margin-bottom: 100px;
         display: grid;
         grid-template-columns:1fr 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        width: 700px;
+    }
+
+}
+
+@media (max-width: 650px) {
+    .filtri {
+        gap: 25px;
+        margin-bottom: 100px;
+        display: grid;
+        grid-template-columns:1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        width: 700px;
+    }
+
+}
+
+@media (max-width: 550px) {
+    .filtri {
+        gap: 25px;
+        margin-bottom: 100px;
+        display: grid;
+        grid-template-columns:1fr;
         justify-content: center;
         align-items: center;
         width: 700px;

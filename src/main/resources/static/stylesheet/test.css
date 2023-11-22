@@ -297,4 +297,10 @@
     border-radius: 50%;
     background: white;
 }
-   
+
+@media (max-width: 500px) {
+    .btns-group {
+        display: flex;
+        flex-direction: column;
+    }
+}

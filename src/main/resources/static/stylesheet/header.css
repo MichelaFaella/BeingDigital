@@ -118,7 +118,7 @@ header ul li ul li {
 
     header .logo {
         width: 220px;
-        top: 0px
+        top: 5px
     }
 
     header nav {
@@ -173,5 +173,12 @@ header ul li ul li {
 
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 410px) {
+    header .logo {
+        width: 180px;
+        top: 5px
     }
 }
