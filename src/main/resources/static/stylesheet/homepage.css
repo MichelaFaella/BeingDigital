@@ -12,6 +12,7 @@
     --aggiuntivo4: #b700ff;
 }
 
+
 #banner {
     background-color: var(--bg-color);
     padding-bottom: 65px;
@@ -144,7 +145,7 @@
     margin-top: 15px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1300px) {
     .banner-text h1 {
         font-size: 100px;
     }
