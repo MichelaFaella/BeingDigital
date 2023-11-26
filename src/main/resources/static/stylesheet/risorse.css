@@ -91,7 +91,6 @@
 }
 
 .special:hover {
-    color: white;
     z-index: 100;
     background-color: var(--notify-color);
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
