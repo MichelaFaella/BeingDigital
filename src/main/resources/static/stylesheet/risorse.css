@@ -90,9 +90,8 @@
     color: var(--bg-color);
 }
 
-
 .special:hover {
-    transform: scale(1.1);
+    color: white;
     z-index: 100;
     background-color: var(--notify-color);
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
