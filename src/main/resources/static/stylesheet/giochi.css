@@ -64,8 +64,6 @@
     padding: 10px 0;
     margin: 10px 0;
     cursor: pointer;
-    /* width: 137px; */
-    /* min-width: 300px; */
 }
 
 .box .list::before {

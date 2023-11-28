@@ -16,14 +16,14 @@
             <h3>Lista dei giochi</h3>
 
             <th:block th:each="gioco: ${giochi}">
-                <div class="list">
+                <div class="list" onclick="addGame(this)" th:id="${gioco.path}">
 
                     <div class="imgBox">
                         <img alt="" th:src="@{/icona(idMetaInfo=${gioco.metaInfo.id})}">
                     </div>
 
                     <div class="contentBox">
-                        <h4 onclick="addGame(this)" th:id="${gioco.path}" th:text="${gioco.nome}"></h4>
+                        <h4 th:text="${gioco.nome}"></h4>
                         <p th:text="${gioco.metaInfo.keyword}"></p>
 
                     </div>
